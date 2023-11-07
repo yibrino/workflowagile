@@ -8,6 +8,7 @@ services:
     volumes:
       - .:/backend
     depends_on:
+      - frontend
       - database
   database:
     image: postgres:12
@@ -26,8 +27,6 @@ services:
       - "4200:4200"
     volumes:
       - .:/frontend
-    depends_on:
-      - backend
 
 volumes:
   postgres_data:
