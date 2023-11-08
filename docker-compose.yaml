@@ -2,32 +2,28 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./backend
+      context: backend
     ports:
       - "8000:8000"
-    volumes:
-      - .:/backend
     depends_on:
-      - frontend
-      - database
-  database:
-    image: postgres:12
+      - exam_db
+    volumes:
+      - ./backend:/app
+  exam_db:
+    image: postgres:12.16
+    restart: always
     ports:
       - "5432:5432"
+    volumes:
+      - ./database:/var/lib/postgresql/data
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=exam_net
-    volumes:
-      - ./database:/var/lib/postgresql/data
   frontend:
     build:
-      context: ./frontend
+      context: frontend
+    volumes:
+      - ./frontend:/app
     ports:
       - "4200:4200"
-    volumes:
-      - .:/frontend
-
-volumes:
-  postgres_data:
-    driver: local
