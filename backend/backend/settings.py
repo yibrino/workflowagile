@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -102,7 +103,7 @@ DATABASES = {
         'HOST': env("PG_HOST"),
         'PORT': env("PG_PORT"),
         'OPTIONS': {
-            'options': '-c search_path=schema'
+            'options': '-c search_path=public'
         },
     }
 }
@@ -125,6 +126,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'user.Teacher'
 
 
 # Internationalization
