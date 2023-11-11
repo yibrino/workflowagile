@@ -40,3 +40,44 @@ class RegisterViewTests(APITestCase):
         response = self.client.post(self.url, self.teacher_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Teacher.objects.count(), 0)
+
+class LoginViewTests(APITestCase):
+    def setUp(self):
+        self.user = Teacher.objects.create_user(
+            first_name='Firstname',
+            last_name='Lastname',
+            email='test@example.com',
+            password='password1A_'
+        )
+        self.login_url = reverse('login_teacher')
+
+    def test_successful_login(self):
+        data = {
+            'email': 'test@example.com',
+            'password': 'password1A_',
+        }
+        response = self.client.post(self.login_url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+        self.assertIn('access', response.cookies.keys())
+        self.assertIn('refresh', response.cookies.keys())
+
+    def test_user_not_found(self):
+        data = {
+            'email': 'nonexistent@example.com',
+            'password': 'password1A_',
+        }
+        response = self.client.post(self.login_url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertNotIn('access', response.cookies.keys())
+        self.assertNotIn('refresh', response.cookies.keys())
+
+    def test_incorrect_password(self):
+        data = {
+            'email': 'test@example.com',
+            'password': 'password1B_',
+        }
+        response = self.client.post(self.login_url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertNotIn('access', response.cookies.keys())
+        self.assertNotIn('refresh', response.cookies.keys())
