@@ -12,13 +12,16 @@ class Teacher(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(verbose_name=_('Last name'),max_length=20, blank=False,validators=[validate_last_name])
     email = models.EmailField(verbose_name=_('Email Address'),unique=True,blank=False)
     is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD="email"
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = CustomUserManager()
+
+    def save(self, *args, **kwargs):
+        self.is_active=True
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = _("Teacher")

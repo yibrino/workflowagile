@@ -42,7 +42,21 @@ def test_invalid_email():
     teacher = mixer.blend(Teacher,email="email")
     with pytest.raises(ValidationError):
         teacher.full_clean()
-        
+
+@pytest.mark.django_db
+def test_password_should_contain_at_least_eight_characters(teacher_data):
+    teacher_data['password'] = 'pas_1A'
+    serializer = TeacherSerializer(data=teacher_data)
+    assert not serializer.is_valid()
+    assert 'password' in serializer.errors
+
+@pytest.mark.django_db
+def test_password_should_contain_at_most_sixteen_characters(teacher_data):
+    teacher_data['password'] = 'passwordabsbA1_cdgs'
+    serializer = TeacherSerializer(data=teacher_data)
+    assert not serializer.is_valid()
+    assert 'password' in serializer.errors
+
 @pytest.mark.django_db
 def test_password_should_contain_at_least_one_special_character(teacher_data):
     teacher_data['password'] = 'password1A'
