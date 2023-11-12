@@ -1,7 +1,9 @@
+from django.conf import settings
 from rest_framework import status
 from django.urls import reverse
 from user.models import Teacher
 from rest_framework.test import APITestCase
+from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class RegisterViewTests(APITestCase):
@@ -81,3 +83,37 @@ class LoginViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
         self.assertNotIn('access', response.cookies.keys())
         self.assertNotIn('refresh', response.cookies.keys())
+
+class CookieTokenRefreshViewTests(APITestCase):
+
+    def setUp(self):
+        self.user = Teacher.objects.create_user(
+            first_name='Firstname',
+            last_name='Lastname',
+            email='test@example.com',
+            password='password1A_'
+        )
+        self.url = reverse('refresh_token')
+        self.client.force_authenticate(user=self.user)
+        self.refresh_token = str(RefreshToken.for_user(self.user))
+
+    def test_refresh_token_success(self):
+        self.client.cookies[settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH']] = self.refresh_token
+
+        response = self.client.post(self.url)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertIn('success', response.json())
+        self.assertIn(settings.SIMPLE_JWT['AUTH_COOKIE'], response.cookies)
+
+    def test_refresh_token_expired(self):
+        self.client.cookies[settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH']] = 'expired_refresh_token'
+
+        response = self.client.post(self.url)
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(response.json()['code'],'token_not_valid')
+        
+    def test_refresh_token_missing(self):
+        response = self.client.post(self.url)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertEqual(response.json()['detail'],'No valid refresh token found in cookie')

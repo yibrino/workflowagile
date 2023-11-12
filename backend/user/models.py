@@ -7,7 +7,7 @@ from .managers import CustomUserManager
 from .validators import *
 
 class Teacher(AbstractBaseUser, PermissionsMixin):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
+    id = models.BigAutoField(primary_key=True,editable=False)
     first_name = models.CharField(verbose_name=_('First name'), max_length=20, blank=False,validators=[validate_first_name])
     last_name = models.CharField(verbose_name=_('Last name'),max_length=20, blank=False,validators=[validate_last_name])
     email = models.EmailField(verbose_name=_('Email Address'),unique=True,blank=False)

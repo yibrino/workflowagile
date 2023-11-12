@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Teacher
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+from rest_framework_simplejwt.exceptions import InvalidToken
 
 class TeacherSerializer(serializers.ModelSerializer):
 
@@ -21,3 +23,14 @@ class TeacherSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Password must contain at least one special character.")
         return value
 
+class CookieTokenRefreshSerializer(TokenRefreshSerializer):
+    refresh = None
+
+    def validate(self, attrs):
+        attrs['refresh'] = self.context['request'].COOKIES.get('refresh')
+        if attrs['refresh']:
+            try:
+                res = super().validate(attrs)
+                return res
+            except:
+                raise InvalidToken("Refresh token expired")

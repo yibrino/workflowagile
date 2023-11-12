@@ -2,8 +2,9 @@ from django.conf import settings
 from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
 from rest_framework.exceptions import AuthenticationFailed
-from user.serializers import TeacherSerializer
-from rest_framework_simplejwt import tokens
+from user.serializers import CookieTokenRefreshSerializer, TeacherSerializer
+from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework_simplejwt.views import TokenRefreshView
 from rest_framework import status, response
 from django.core.cache import cache
 from user.models import Teacher
@@ -29,7 +30,7 @@ class RegisterView(APIView):
         return JsonResponse(serializer.data,safe=False,status=status.HTTP_201_CREATED)
     
 def get_user_tokens(user):
-    refresh = tokens.RefreshToken.for_user(user)
+    refresh = RefreshToken.for_user(user)
     return {
         "refresh_token": str(refresh),
         "access_token": str(refresh.access_token)
@@ -74,3 +75,27 @@ class LoginView(APIView):
             samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
         )
         return res
+    
+class CookieTokenRefreshView(TokenRefreshView):
+    serializer_class = CookieTokenRefreshSerializer
+
+    def post(self, request, *args, **kwargs):
+        refresh_token = request.COOKIES.get(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+        if refresh_token:
+            serializer = self.get_serializer(data={'refresh': refresh_token})
+
+            if serializer.is_valid():
+                access_token = serializer.validated_data['access']
+
+                response = JsonResponse({'success': 'success'})
+                response.set_cookie(
+                    key=settings.SIMPLE_JWT['AUTH_COOKIE'],
+                    value=str(access_token),
+                    expires=settings.SIMPLE_JWT['ACCESS_TOKEN_LIFETIME'],
+                    secure=settings.SIMPLE_JWT['AUTH_COOKIE_SECURE'],
+                    httponly=settings.SIMPLE_JWT['AUTH_COOKIE_HTTP_ONLY'],
+                    samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
+                )
+                return response
+
+        return JsonResponse({'detail': 'No valid refresh token found in cookie'},safe=False,status=status.HTTP_400_BAD_REQUEST)
