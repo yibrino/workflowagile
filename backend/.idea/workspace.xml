@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3c790ef8-1a20-40e7-9832-c7c2097b6459" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/questions/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/1247" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/1247" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/1249" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/1249" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/1259" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/1259" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/1259_vm" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/1259_vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2224" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2224" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2608" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2608" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2658" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2658" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2659" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2659" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2662" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2662" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2663" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2663" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2673" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2673" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2674" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2674" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2703" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2703" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/2704" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/2704" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/3455" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/3455" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/base/16384/5002" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/5002" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../database/global/pg_control" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/pg_stat_tmp/db_0.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../database/pg_stat_tmp/db_0.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/pg_stat_tmp/db_16384.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../database/pg_stat_tmp/db_16384.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/pg_stat_tmp/global.stat" beforeDir="false" afterPath="$PROJECT_DIR$/../database/pg_stat_tmp/global.stat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../database/pg_xact/0000" beforeDir="false" afterPath="$PROJECT_DIR$/../database/pg_xact/0000" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="teacher-questions" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2XrVMJz9USfVQmEFiyoBfrssnSL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,11 +62,19 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "teacher-questions",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -73,5 +119,16 @@
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
