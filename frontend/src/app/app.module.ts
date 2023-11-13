@@ -10,13 +10,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TempHomePageComponent } from './temp-home-page/temp-home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TeacherDashboardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    TempHomePageComponent
   ],
   imports: [
     BrowserModule,
