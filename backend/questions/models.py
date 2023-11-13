@@ -8,7 +8,9 @@ class Question(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     text = models.TextField()
     score = models.IntegerField()
+    topic = models.CharField(max_length=100, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
+    latest_version = models.BooleanField(default=True)
 
 
 class Answer(models.Model):
@@ -17,3 +19,4 @@ class Answer(models.Model):
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     correct = models.BooleanField()
+    latest_version = models.BooleanField(default=True)
