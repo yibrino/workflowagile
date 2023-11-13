@@ -1,9 +1,10 @@
 from django.conf import settings
-from rest_framework import status
 from django.urls import reverse
-from user.models import Teacher
+from rest_framework import status
 from rest_framework.test import APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
+
+from user.models import Teacher
 
 
 class RegisterViewTests(APITestCase):
@@ -26,7 +27,7 @@ class RegisterViewTests(APITestCase):
         response = self.client.post(self.url, self.teacher_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Teacher.objects.count(), 0)
-        
+
     def test_mismatch_passwords(self):
         self.teacher_data['repeat_password'] = 'abcd'
         response = self.client.post(self.url, self.teacher_data, format='json')
@@ -42,6 +43,7 @@ class RegisterViewTests(APITestCase):
         response = self.client.post(self.url, self.teacher_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(Teacher.objects.count(), 0)
+
 
 class LoginViewTests(APITestCase):
     def setUp(self):
@@ -84,6 +86,7 @@ class LoginViewTests(APITestCase):
         self.assertNotIn('access', response.cookies.keys())
         self.assertNotIn('refresh', response.cookies.keys())
 
+
 class CookieTokenRefreshViewTests(APITestCase):
 
     def setUp(self):
@@ -111,9 +114,9 @@ class CookieTokenRefreshViewTests(APITestCase):
 
         response = self.client.post(self.url)
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-        self.assertEqual(response.json()['code'],'token_not_valid')
-        
+        self.assertEqual(response.json()['code'], 'token_not_valid')
+
     def test_refresh_token_missing(self):
         response = self.client.post(self.url)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
-        self.assertEqual(response.json()['detail'],'No valid refresh token found in cookie')
+        self.assertEqual(response.json()['detail'], 'No valid refresh token found in cookie')

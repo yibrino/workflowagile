@@ -1,10 +1,11 @@
 from rest_framework import serializers
-from .models import Teacher
-from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from rest_framework_simplejwt.exceptions import InvalidToken
+from rest_framework_simplejwt.serializers import TokenRefreshSerializer
+
+from .models import Teacher
+
 
 class TeacherSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Teacher
         fields = ('id', 'first_name', 'last_name', 'email', 'password', 'is_staff', 'is_active', 'date_joined')
@@ -22,6 +23,7 @@ class TeacherSerializer(serializers.ModelSerializer):
         if not any(char in "!@#$%^&*()_+-=|;:,.?/" for char in value):
             raise serializers.ValidationError("Password must contain at least one special character.")
         return value
+
 
 class CookieTokenRefreshSerializer(TokenRefreshSerializer):
     refresh = None
