@@ -7,34 +7,42 @@ from questions.serializers import QuestionSerializer, AnswerSerializer
 
 class QuestionViewSet(viewsets.ViewSet):
 
-    def list(self, request):
-        pass
+    @staticmethod
+    def list(request):
+        questions = Question.objects.all()
+        question_serializer = QuestionSerializer(questions, many=True)
+        return Response(question_serializer.data, status=status.HTTP_200_OK)
 
-    def create(self, request, pk=None):
+    @staticmethod
+    def create(request, pk=None):
         question_text = request.data['text']
         question_score = request.data['score']
         question_topic = request.data['topic']
-        question_serializer = QuestionSerializer(text=question_text, score=question_score, topic=question_topic)
-        question_serializer.save()
-        if pk is None:
-            answers = request.data['answers']
-            for answer in answers:
-                answer_text = answer['text']
-                answer_correct = answer['correct']
-                answer_serializer = AnswerSerializer(text=answer_text, correct=answer_correct,
-                                                     question=question_serializer)
-                answer_serializer.save()
-        if pk is not None:
-            question = Question.objects.get(question_id=pk)
-            question.latest_version = False
-        return Response(question_serializer.data, status=status.HTTP_201_CREATED)
+        question_serializer = QuestionSerializer(
+            data={'text': question_text, 'score': question_score, 'topic': question_topic})
+        if question_serializer.is_valid():
+            question = question_serializer.save()
 
+            answers_data = request.data.get('answers', [])  # Ottieni la lista delle risposte
+            answer_serializer_list = []
+            for answer_data in answers_data:
+                answer_data['question'] = question.id  # Collega la risposta alla nuova domanda
+                answer_serializer = AnswerSerializer(data=answer_data)
+                if answer_serializer.is_valid():
+                    answer_serializer.save()
+                    answer_serializer_list.append(answer_serializer)
 
-    def retrieve(self, request, pk=None):
-        pass
+            if pk is not None:
+                question = Question.objects.get(question_id=pk)
+                question.latest_version = False
+                question.save()
 
+            return Response(QuestionSerializer(question).data, status=status.HTTP_201_CREATED)
 
-class AnswerViewSet(viewsets.ViewSet):
+        return Response(question_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def create(self, request, pk=None):
-        pass
+    @staticmethod
+    def retrieve(request, pk=None):
+        question = Question.objects.get(question_id=pk)
+        question_serializer = QuestionSerializer(question)
+        return Response(question_serializer.data, status=status.HTTP_200_OK)
