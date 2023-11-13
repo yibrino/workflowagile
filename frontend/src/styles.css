@@ -2,3 +2,15 @@
 
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
+
+html, body { height: 100%; }
+/*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
+
+.error-snackbar {
+    max-width: max-content !important;
+    color: white;
+    --mdc-snackbar-container-color: rgba(255, 0, 0, 0.745);
+    border-color: black;
+    --mat-mdc-snack-bar-button-color: white;
+    --mdc-snackbar-supporting-text-color: white;
+  }
