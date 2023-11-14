@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../auth.service';
+import { AlertService } from '../alert.service';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +14,40 @@ export class LoginComponent {
   form?: FormGroup;
 
   constructor(private formBuilder : FormBuilder,
-    private modalService : NgbModal, private authService : AuthService) {}
+    private modalService : NgbModal, private authService : AuthService, private alert : AlertService) {}
 
   ngOnInit() : void {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
+    const emailControl = this.form.get('email');
+    if (emailControl) {
+      emailControl.valueChanges.subscribe(value => {
+        if (!value) {
+          this.wrong_credentials = false;
+        }
+      });
+    }
   }
+  
   submit_clicked:boolean=false;
+  wrong_credentials:boolean=false;
   submit() : void {
     if (this.form?.valid) {
-      this.authService.login(this.form?.getRawValue());
+      this.authService.login(this.form?.getRawValue()).subscribe({
+        next : (response) => {
+          this.authService.setData(true);
+          this.alert.showSuccessAlert("Successfully logged in","Close",3000);
+          //localStorage.setItem("auth","1");
+          this.wrong_credentials = false;
+          this.modalService.dismissAll();
+        },
+        error : (e) => {
+          //this.alert.showErrorAlert("Wrong credentials","Close",5000);
+          this.wrong_credentials = true;
+        }
+      });
       this.submit_clicked=false;
     } else {
       this.submit_clicked=true;

@@ -30,7 +30,7 @@ export class AuthService {
     }
   }
 
-  login(form: any) {
+  /*login(form: any) {
     this.http.post(this.apiUrl+"/login", form, {
       withCredentials:true,
       observe:'response',
@@ -45,6 +45,14 @@ export class AuthService {
       error : (e) => {
         this.alert.showErrorAlert("Wrong credentials","Close",5000);
       }
+    })
+  }*/
+
+  login(form: any) {
+    return this.http.post(this.apiUrl+"/login", form, {
+      withCredentials:true,
+      observe:'response',
+      responseType: 'text'
     })
   }
 

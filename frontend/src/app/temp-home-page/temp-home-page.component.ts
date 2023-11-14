@@ -10,8 +10,12 @@ export class TempHomePageComponent {
 
   constructor(private modalService: NgbModal) {}
 
-  open(content : any) {
-		this.modalService.open(content, { centered: true  })
+  open(content : any, content1 : any) {
+		this.modalService.open(content, { centered: true  }).dismissed.subscribe(reason => {
+      if (reason == 10) {
+        this.open(content1,content);
+      }
+    })
 	}
    
   ngOnDestroy(): void {
