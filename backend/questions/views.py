@@ -1,6 +1,7 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
+from user.models import Teacher
 from questions.models import Question
 from questions.serializers import QuestionSerializer, AnswerSerializer
 
@@ -18,11 +19,12 @@ class QuestionViewSet(viewsets.ViewSet):
         question_text = request.data['text']
         question_score = request.data['score']
         question_topic = request.data['topic']
+        question_teacher = request.teacher
         question_serializer = QuestionSerializer(
-            data={'text': question_text, 'score': question_score, 'topic': question_topic})
+            data={'teacher': question_teacher, 'text': question_text, 'score': question_score,
+                  'topic': question_topic})
         if question_serializer.is_valid():
             question = question_serializer.save()
-
             answers_data = request.data.get('answers', [])  # Ottieni la lista delle risposte
             answer_serializer_list = []
             for answer_data in answers_data:

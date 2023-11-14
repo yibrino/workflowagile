@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c790ef8-1a20-40e7-9832-c7c2097b6459" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/questions/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../database/pg_stat_tmp/db_0.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../database/pg_stat_tmp/db_16384.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../database/pg_stat_tmp/global.stat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../database/postmaster.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/questions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/base/16384/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../database/base/16384/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/global/pg_control" beforeDir="false" afterPath="$PROJECT_DIR$/../database/global/pg_control" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/global/pg_internal.init" beforeDir="false" afterPath="$PROJECT_DIR$/../database/global/pg_internal.init" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/pg_stat/db_0.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/pg_stat/db_16384.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/pg_stat/global.stat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../database/pg_wal/000000010000000000000001" beforeDir="false" afterPath="$PROJECT_DIR$/../database/pg_wal/000000010000000000000001" afterDir="false" />
-    </list>
+    <list default="true" id="3c790ef8-1a20-40e7-9832-c7c2097b6459" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +95,7 @@
       <workItem from="1699867367632" duration="1584000" />
       <workItem from="1699891795244" duration="4134000" />
       <workItem from="1699907875506" duration="1721000" />
+      <workItem from="1699978264883" duration="311000" />
     </task>
     <servers />
   </component>
