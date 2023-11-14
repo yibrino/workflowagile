@@ -1,0 +1,22 @@
+.exam-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .exam-form {
+    width: 100%;
+  }
+  
+  .answer-container {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+  }
+  
+  button {
+    margin-top: 16px;
+  }
+  
