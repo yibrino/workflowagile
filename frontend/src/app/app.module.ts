@@ -9,8 +9,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TempHomePageComponent } from './temp-home-page/temp-home-page.component';
+import { TokenInterceptor } from './token.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,11 @@ import { TempHomePageComponent } from './temp-home-page/temp-home-page.component
     MatSnackBarModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [    {
+    provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
