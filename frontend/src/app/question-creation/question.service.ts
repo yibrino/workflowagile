@@ -7,7 +7,7 @@ import { Topic, Question } from './question.model';
   providedIn: 'root',
 })
 export class QuestionService {
-  private apiUrl = 'http://backend:8000/';//django api
+  private apiUrl = 'http://backend:8000/api';//django api
 
   constructor(private http: HttpClient) {}
 

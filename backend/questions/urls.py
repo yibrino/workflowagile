@@ -25,5 +25,8 @@ urlpatterns = [
     path('question/<int:pk>', QuestionViewSet.as_view({
         'get': 'retrieve',
         'post': 'create'
+    })),
+    path('topics', QuestionViewSet.as_view({
+        'get': 'list_topics'
     }))
 ]

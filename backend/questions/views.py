@@ -1,3 +1,4 @@
+from django.db.models import Count
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
@@ -13,6 +14,12 @@ class QuestionViewSet(viewsets.ViewSet):
         questions = Question.objects.all()
         question_serializer = QuestionSerializer(questions, many=True)
         return Response(question_serializer.data, status=status.HTTP_200_OK)
+
+    @staticmethod
+    def list_topics(request):
+        topics_count = Question.objects.values('topic').annotate(count=Count('topic'))
+        unique_topics = [item['topic'] for item in topics_count]
+        return Response({'topics': unique_topics}, status=200)
 
     @staticmethod
     def create(request, pk=None):
