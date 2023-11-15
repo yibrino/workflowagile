@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-temp-home-page',
@@ -8,7 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TempHomePageComponent {
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private authService: AuthService) {}
 
   open(content : any, content1 : any) {
 		this.modalService.open(content, { centered: true  }).dismissed.subscribe(reason => {
@@ -20,6 +21,10 @@ export class TempHomePageComponent {
    
   ngOnDestroy(): void {
     this.modalService.dismissAll();
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

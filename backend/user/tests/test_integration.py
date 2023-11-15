@@ -84,6 +84,23 @@ class LoginViewTests(APITestCase):
         self.assertNotIn('access', response.cookies.keys())
         self.assertNotIn('refresh', response.cookies.keys())
 
+class LogoutViewTests(APITestCase):
+    def setUp(self):
+        self.user = Teacher.objects.create_user(
+            first_name='Firstname',
+            last_name='Lastname',
+            email='test@example.com',
+            password='password1A_'
+        )
+        self.client.force_authenticate(user=self.user)
+        self.logout_url = reverse('logout_teacher')
+
+    def test_successful_logout(self):
+        response = self.client.post(self.logout_url, format='json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual("", response.cookies['access'].value)
+        self.assertIn("", response.cookies['refresh'].value)
+
 class CookieTokenRefreshViewTests(APITestCase):
 
     def setUp(self):

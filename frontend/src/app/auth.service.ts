@@ -75,11 +75,11 @@ export class AuthService {
   logout() {
     this.http.post(this.apiUrl+"/logout", null, {withCredentials:true}).subscribe({
       next : (response) => {
-        this.setData(false); this.router.navigate(["/home-page"]);
+        this.setData(false); this.router.navigate(["/temp-home-page"]);
         this.alert.showSuccessAlert("Successfully logged out","Close",3000);
       },
       error : (e) => {
-        //this.alert.showErrorAlert("An unexpecte error occurred. If the problem persists please contact us.","Close",5000)
+        //this.alert.showErrorAlert("An unexpected error occurred. If the problem persists please contact us.","Close",5000)
       }
     })
   }
@@ -90,7 +90,7 @@ export class AuthService {
 
   checkLogged() {
     //return this.localService.getData("auth") /*localStorage.getItem("auth")*/ == "1";
-    localStorage.getItem("auth") == "1";
+    return localStorage.getItem("auth") && localStorage.getItem("auth") == "1";
   }
 
 }
