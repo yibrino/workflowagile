@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 
 class RegisterView(APIView):
     def post(self,request):
+        print(request.data)
         password = request.data["password"]
         try:
             password1 = request.data["repeat_password"]
