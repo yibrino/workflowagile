@@ -55,6 +55,7 @@ export class QuestionCreationComponent implements OnInit {
 
   
   checkCorrectAnswers(): void {
+    //it checks if there s at least 1 correct answer (there must be at least one)
     const correctAnswers = this.answers.value.filter((answer: any) => answer.isCorrect);
     this.hasCorrectAnswer = correctAnswers.length > 0;
   }
@@ -91,6 +92,7 @@ export class QuestionCreationComponent implements OnInit {
   }
 
   onTopicSelected(event: MatSelectChange): void {
+    //binds selected topic with input field in order to visualize it
     const selectedTopic = event.value;
     this.questionForm.patchValue({ topic: selectedTopic });
   }
@@ -111,7 +113,8 @@ export class QuestionCreationComponent implements OnInit {
 
 
   submitQuestion(): void {
-    this.questionForm.markAllAsTouched()
+    //it shows missing fields if any
+    this.questionForm.markAllAsTouched();
   
     // Check if there are at least two answers with non-empty texts
     const answerControls = this.answers.controls as FormGroup[];
@@ -126,8 +129,8 @@ export class QuestionCreationComponent implements OnInit {
   
       this.questionForm.reset();
     }
-    else {
-     this.updateShowErrorMessage();
+    else if(validAnswers.length < 2) {
+       this.updateShowErrorMessage();
     }
   }
   
