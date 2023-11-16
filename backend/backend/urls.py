@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path, re_path, include
 
 urlpatterns = [
-    path('admin-ydfHzN&4$vEmJJ9MNdQuV7qzn9S7Q/', admin.site.urls),
+    path('admin/', admin.site.urls),
     re_path(r'^', include('user.urls')),
-    path('api/', include('questions.urls'))
+    path('api/', include('questions.urls')),
+ path('api/', include('quesionsstoredasjson.urls')),  # Include other url configurations
+
 ]
