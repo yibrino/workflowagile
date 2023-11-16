@@ -2,12 +2,20 @@
   <h2>Create Question</h2>
   <form [formGroup]="questionForm" class="exam-form">
     <mat-form-field>
+      <mat-label>Question Score</mat-label>
       <input matInput type="number" formControlName="score" placeholder="Enter question score" />
+      
+      <mat-error *ngIf="questionForm.get('score')?.invalid && questionForm.get('score')?.touched">
+        Please enter a valid question score.
+      </mat-error>
     </mat-form-field>
 
     
     <mat-form-field>
-      <textarea matInput placeholder="Enter your question here" formControlName="text"></textarea>
+      <textarea matInput placeholder="Enter your question here*" formControlName="text"></textarea>
+      <mat-error *ngIf="questionForm.get('text')?.invalid && questionForm.get('text')?.touched">
+        Question text is required.
+      </mat-error>
     </mat-form-field>
 
 
@@ -15,9 +23,10 @@
     <mat-form-field>
       <mat-label>Topic</mat-label>
       <input matInput formControlName="topic" placeholder="Type a new topic or select from the list" />
-      <mat-select formControlName="topic" *ngIf="isTopicListVisible()">
+      <mat-select formControlName="topic" *ngIf="isTopicListVisible()" (selectionChange)="onTopicSelected($event)" >
         <mat-option *ngFor="let topic of topics" [value]="topic">{{ topic }}</mat-option>
       </mat-select>
+      
     </mat-form-field>
 
     <div formArrayName="answers">
@@ -26,16 +35,35 @@
           <input matInput placeholder="Answer {{ i + 1 }}" [formControl]="answer.get('text')" />
         </mat-form-field>
 
-        <mat-checkbox [formControl]="answer.get('isCorrect')">Correct Answer</mat-checkbox>
+        <mat-checkbox [formControl]="answer.get('isCorrect')" (click)="checkCorrectAnswers()">Correct Answer</mat-checkbox>
 
         <button mat-icon-button type="button" (click)="removeAnswer(i)">
           <mat-icon>clear</mat-icon>
         </button>
+
       </div>
+
+      <div *ngIf="showDeleteErrorMessage" class="error-message">
+        At least two answers are required.
+      </div>
+      <div *ngIf="!showDeleteErrorMessage" class="error-message"></div>
+
+    
     </div>
 
-    <button mat-raised-button color="primary" type="button" (click)="addAnswer()">Add Answer</button>
+    <div *ngIf="!hasCorrectAnswer" class="error-correct-message">
+      At least one correct answer is required.
+    </div>
+    
+    <div *ngIf="hasCorrectAnswer" class="error-correct-message"></div>
 
-    <button mat-raised-button color="accent" type="button" (click)="submitQuestion()">Submit Question</button>
+
+    
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="button" (click)="addAnswer()">Add Answer</button>
+
+      <button mat-raised-button color="accent" type="button" (click)="submitQuestion()">Submit Question</button>
+    </div>
   </form>
 </div>

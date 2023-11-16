@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Question, Answer } from './question.model';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-question',
@@ -15,7 +16,9 @@ import { Question, Answer } from './question.model';
 })
 export class QuestionCreationComponent implements OnInit {
   questionForm: FormGroup;
-  topics: string[] = []; 
+  topics: string[] = ["tru"]; 
+  showDeleteErrorMessage: boolean = false;
+  hasCorrectAnswer: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -28,13 +31,34 @@ export class QuestionCreationComponent implements OnInit {
       answers: this.fb.array([
         this.fb.group({
           text: ['', Validators.required], 
+          isCorrect: [true] 
+        }),
+        this.fb.group({
+          text: ['', Validators.required], 
           isCorrect: [false] 
-        })//,
+        }),
       
       ]),
       score: [null, [Validators.required, Validators.pattern(/^[0-9]+$/)]],
     });
+  
   }
+
+  updateShowErrorMessage(): void {
+    this.showDeleteErrorMessage = true;
+      setTimeout(
+        () => {
+        this.showDeleteErrorMessage = false;
+      }, 3000
+      );
+  }
+
+  
+  checkCorrectAnswers(): void {
+    const correctAnswers = this.answers.value.filter((answer: any) => answer.isCorrect);
+    this.hasCorrectAnswer = correctAnswers.length > 0;
+  }
+
 
   get answers(): any {
     return this.questionForm.get('answers');
@@ -51,6 +75,7 @@ export class QuestionCreationComponent implements OnInit {
     
   }
 
+
   isTopicListVisible(): boolean {
     const topicControl = this.questionForm.get('topic');
     const isTextEmpty = topicControl?.value === null || topicControl?.value === '';
@@ -65,21 +90,46 @@ export class QuestionCreationComponent implements OnInit {
     }));
   }
 
+  onTopicSelected(event: MatSelectChange): void {
+    const selectedTopic = event.value;
+    this.questionForm.patchValue({ topic: selectedTopic });
+  }
 
   removeAnswer(index: number): void {
-    this.answers.removeAt(index);
+    const answers = this.answers as FormArray;
+  
+    if (answers.length === 2) {
+      this.updateShowErrorMessage();
+      
+    } 
+    else {
+      answers.removeAt(index);
+    }
   }
+  
+
+
 
   submitQuestion(): void {
-    const newQuestion = 
-    this.questionForm.value;
-
-    this.questionService.addQuestion(newQuestion).subscribe((response) => {
-      
-    });
-
-    this.questionForm.reset();
+    this.questionForm.markAllAsTouched();
+  
+    // Check if there are at least two answers with non-empty texts
+    const answerControls = this.answers.controls as FormGroup[];
+    const validAnswers = answerControls.filter((answer) => answer.get('text')?.value.trim() !== null && answer.get('text')?.value.trim() !== '' );
+  
+    if (this.questionForm.valid && validAnswers.length >= 2 && this.hasCorrectAnswer) {
+      const newQuestion = this.questionForm.value;
+      console.log(newQuestion);
+      /* this.questionService.addQuestion(newQuestion).subscribe((response) => {
+          
+      });*/
+  
+      this.questionForm.reset();
+    }
+    else {
+     this.updateShowErrorMessage();
+    }
   }
-
- 
+  
+  
 }
