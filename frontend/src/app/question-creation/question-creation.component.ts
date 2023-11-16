@@ -16,7 +16,7 @@ import { MatSelectChange } from '@angular/material/select';
 })
 export class QuestionCreationComponent implements OnInit {
   questionForm: FormGroup;
-  topics: string[] = ["tru"]; 
+  topics: string[] = []; 
   showDeleteErrorMessage: boolean = false;
   hasCorrectAnswer: boolean = true;
 
@@ -111,7 +111,7 @@ export class QuestionCreationComponent implements OnInit {
 
 
   submitQuestion(): void {
-    this.questionForm.markAllAsTouched();
+    this.questionForm.markAllAsTouched()
   
     // Check if there are at least two answers with non-empty texts
     const answerControls = this.answers.controls as FormGroup[];
@@ -119,10 +119,10 @@ export class QuestionCreationComponent implements OnInit {
   
     if (this.questionForm.valid && validAnswers.length >= 2 && this.hasCorrectAnswer) {
       const newQuestion = this.questionForm.value;
-      console.log(newQuestion);
-      /* this.questionService.addQuestion(newQuestion).subscribe((response) => {
+      
+       this.questionService.addQuestion(newQuestion).subscribe((response) => {
           
-      });*/
+      });
   
       this.questionForm.reset();
     }

@@ -1,33 +1,40 @@
 <div class="exam-container">
   <h2>Create Question</h2>
   <form [formGroup]="questionForm" class="exam-form">
-    <mat-form-field>
-      <mat-label>Question Score</mat-label>
-      <input matInput type="number" formControlName="score" placeholder="Enter question score" />
-      
+
+    
+
+   
+    
+
+    <!-- Topic on top left -->
+    <mat-form-field class="topic-field">
+      <mat-label>Topic</mat-label>
+      <input matInput formControlName="topic" placeholder="Type a new topic or select it" />
+      <mat-select formControlName="topic" *ngIf="isTopicListVisible()" (selectionChange)="onTopicSelected($event)">
+        <mat-option *ngFor="let topic of topics" [value]="topic">{{ topic }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="spacer"></div>
+
+    <!-- Score on top right -->
+    <mat-form-field class="score-field">
+      <mat-label>Score</mat-label>
+      <input matInput type="number" formControlName="score" placeholder="Enter" />
       <mat-error *ngIf="questionForm.get('score')?.invalid && questionForm.get('score')?.touched">
         Please enter a valid question score.
       </mat-error>
     </mat-form-field>
 
-    
-    <mat-form-field>
+    <!-- Question text area in the center -->
+    <mat-form-field class="question-text-field">
       <textarea matInput placeholder="Enter your question here*" formControlName="text"></textarea>
       <mat-error *ngIf="questionForm.get('text')?.invalid && questionForm.get('text')?.touched">
         Question text is required.
       </mat-error>
     </mat-form-field>
 
-
-
-    <mat-form-field>
-      <mat-label>Topic</mat-label>
-      <input matInput formControlName="topic" placeholder="Type a new topic or select from the list" />
-      <mat-select formControlName="topic" *ngIf="isTopicListVisible()" (selectionChange)="onTopicSelected($event)" >
-        <mat-option *ngFor="let topic of topics" [value]="topic">{{ topic }}</mat-option>
-      </mat-select>
-      
-    </mat-form-field>
 
     <div formArrayName="answers">
       <div *ngFor="let answer of answers.controls; let i = index" class="answer-container">
@@ -40,30 +47,23 @@
         <button mat-icon-button type="button" (click)="removeAnswer(i)">
           <mat-icon>clear</mat-icon>
         </button>
-
       </div>
 
       <div *ngIf="showDeleteErrorMessage" class="error-message">
-        At least two answers are required.
-      </div>
+        At least two answers are required.</div>
       <div *ngIf="!showDeleteErrorMessage" class="error-message"></div>
-
-    
     </div>
 
     <div *ngIf="!hasCorrectAnswer" class="error-correct-message">
       At least one correct answer is required.
     </div>
-    
+
     <div *ngIf="hasCorrectAnswer" class="error-correct-message"></div>
-
-
-    
 
     <div class="button-container">
       <button mat-raised-button color="primary" type="button" (click)="addAnswer()">Add Answer</button>
-
       <button mat-raised-button color="accent" type="button" (click)="submitQuestion()">Submit Question</button>
     </div>
   </form>
 </div>
+
