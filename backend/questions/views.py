@@ -2,7 +2,6 @@ from django.db.models import Count
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 
-from user.models import Teacher
 from questions.models import Question
 from questions.serializers import QuestionSerializer, AnswerSerializer
 
@@ -26,7 +25,7 @@ class QuestionViewSet(viewsets.ViewSet):
         question_text = request.data['text']
         question_score = request.data['score']
         question_topic = request.data['topic']
-        question_teacher = request.teacher
+        question_teacher = request.data['teacher']
         question_serializer = QuestionSerializer(
             data={'teacher': question_teacher, 'text': question_text, 'score': question_score,
                   'topic': question_topic})
