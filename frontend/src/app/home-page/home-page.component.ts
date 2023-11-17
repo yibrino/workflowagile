@@ -3,11 +3,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-temp-home-page',
-  templateUrl: './temp-home-page.component.html',
-  styleUrls: ['./temp-home-page.component.css']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.css']
 })
-export class TempHomePageComponent {
+export class HomePageComponent {
 
   constructor(private modalService: NgbModal, private authService: AuthService) {}
 

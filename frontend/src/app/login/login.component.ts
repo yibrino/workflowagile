@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../auth.service';
 import { AlertService } from '../alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +14,8 @@ export class LoginComponent {
 
   form?: FormGroup;
 
-  constructor(private formBuilder : FormBuilder,
-    private modalService : NgbModal, private authService : AuthService, private alert : AlertService) {}
+  constructor(private formBuilder : FormBuilder, private modalService : NgbModal, 
+    private authService : AuthService, private alert : AlertService, private router: Router) {}
 
   ngOnInit() : void {
     this.form = this.formBuilder.group({
@@ -42,6 +43,7 @@ export class LoginComponent {
           //localStorage.setItem("auth","1");
           this.wrong_credentials = false;
           this.modalService.dismissAll();
+          this.router.navigate(["/dashboard"])
         },
         error : (e) => {
           //this.alert.showErrorAlert("Wrong credentials","Close",5000);

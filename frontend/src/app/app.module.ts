@@ -10,7 +10,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { TempHomePageComponent } from './temp-home-page/temp-home-page.component';
 import { TokenInterceptor } from './token.interceptor';
 import { QuestionCreationComponent } from './question-creation/question-creation.component';
 import { MatInputModule } from '@angular/material/input';
@@ -26,6 +25,8 @@ import { ContactComponent } from './contact/contact.component';
 import { ExamListsComponent } from './exam-lists/exam-lists.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HomePageComponent } from './home-page/home-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +34,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     TeacherDashboardComponent,
     RegisterComponent,
     LoginComponent,
-    TempHomePageComponent,
     QuestionCreationComponent,
     BrowseQuestionsComponent,
     LayoutComponent,
     HeaderComponent,
     ContactComponent,
     ExamListsComponent,
+    HomePageComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

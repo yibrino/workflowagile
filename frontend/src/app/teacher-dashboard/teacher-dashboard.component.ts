@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {end} from "@popperjs/core";
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,4 +12,11 @@ import {end} from "@popperjs/core";
 export class TeacherDashboardComponent {
   $NewExam: any = "New Exam";
   protected readonly end = end;
+
+  constructor(private authService: AuthService, private router: Router){}
+
+  logout() {
+    this.authService.logout();
+  }
+ 
 }

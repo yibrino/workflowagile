@@ -75,7 +75,7 @@ export class AuthService {
   logout() {
     this.http.post(this.apiUrl+"/logout", null, {withCredentials:true}).subscribe({
       next : (response) => {
-        this.setData(false); this.router.navigate(["/temp-home-page"]);
+        this.setData(false); this.router.navigate(["/home-page"]);
         this.alert.showSuccessAlert("Successfully logged out","Close",3000);
       },
       error : (e) => {
