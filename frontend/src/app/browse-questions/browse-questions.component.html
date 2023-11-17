@@ -1,0 +1,17 @@
+<!-- src/app/browse-questions/browse-questions.component.html -->
+
+<div class="questions-container">
+  <div
+    *ngFor="let question of questions; let i = index"
+    class="question"
+    (click)="toggleChoices(i)"
+  >
+    <p class="question-text">Question {{ i + 1 }}: {{ question.question }}</p>
+    <div class="choices-container" [class.hidden]="!showChoices[i]">
+      <label *ngFor="let choice of question.choices" class="choice-label">
+        <input type="radio" [name]="'question' + i" class="choice-radio" />
+        <span class="choice-text">{{ choice }}</span>
+      </label>
+    </div>
+  </div>
+</div>

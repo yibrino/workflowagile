@@ -12,9 +12,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
+
 import environ
 
-env = environ.Env(DEBUG=(bool,False))
+env = environ.Env(DEBUG=(bool, False))
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,7 +32,6 @@ DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS").split(" ")
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
-    'user'
+    'questions',
+    'user',
+    'quesionsstoredasjson'
 ]
 
 MIDDLEWARE = [
@@ -122,7 +124,7 @@ SIMPLE_JWT = {
     'AUTH_COOKIE': 'access',
     'AUTH_COOKIE_REFRESH': 'refresh',
     'AUTH_COOKIE_DOMAIN': None,
-    'AUTH_COOKIE_SECURE': True, 
+    'AUTH_COOKIE_SECURE': True,
     'AUTH_COOKIE_HTTP_ONLY': True,
     'AUTH_COOKIE_PATH': '/',
     'AUTH_COOKIE_SAMESITE': 'Lax',
@@ -139,7 +141,6 @@ REST_FRAMEWORK = {
     ]
 }
 
-
 DATABASES = {
     'default': {
         'ENGINE': env("POSTGRES_ENGINE"),
@@ -153,7 +154,6 @@ DATABASES = {
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -175,7 +175,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'user.Teacher'
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -186,7 +185,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

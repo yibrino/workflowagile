@@ -7,11 +7,23 @@ import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard
 import { RegisterComponent } from './register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TempHomePageComponent } from './temp-home-page/temp-home-page.component';
 import { TokenInterceptor } from './token.interceptor';
+import { QuestionCreationComponent } from './question-creation/question-creation.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { BrowseQuestionsComponent } from './browse-questions/browse-questions.component';
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactComponent } from './contact/contact.component';
+import { ExamListsComponent } from './exam-lists/exam-lists.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +31,13 @@ import { TokenInterceptor } from './token.interceptor';
     TeacherDashboardComponent,
     RegisterComponent,
     LoginComponent,
-    TempHomePageComponent
+    TempHomePageComponent,
+    QuestionCreationComponent,
+    BrowseQuestionsComponent,
+    LayoutComponent,
+    HeaderComponent,
+    ContactComponent,
+    ExamListsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +47,14 @@ import { TokenInterceptor } from './token.interceptor';
     BrowserAnimationsModule,
     MatSnackBarModule,
     HttpClientModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatButtonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
@@ -37,4 +63,4 @@ import { TokenInterceptor } from './token.interceptor';
   },],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
