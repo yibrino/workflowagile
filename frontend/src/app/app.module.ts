@@ -24,6 +24,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExamListsComponent } from './exam-lists/exam-lists.component';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,12 @@ import { ExamListsComponent } from './exam-lists/exam-lists.component';
     MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    NgbModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
