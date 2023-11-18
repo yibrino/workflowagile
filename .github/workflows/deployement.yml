@@ -19,8 +19,9 @@ jobs:
 
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:12.16
         env:
+          POSTGRES_HOST: exam_db
           POSTGRES_DB: exam_net
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
