@@ -48,3 +48,12 @@ jobs:
           ls
           cd backend
           poetry run pytest
+      - name: Run Flake8 liniting 
+        run: |
+          cd backend 
+          poetry run flake8
+      - name: Calcualte code coverage 
+        run: |
+          cd backend
+          poetry run coverage run --source=. -m pytest
+          poetry run coverage report -m
