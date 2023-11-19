@@ -1,17 +1,19 @@
 # views.py
 from rest_framework import viewsets
 from rest_framework.response import Response
+from .models import Question
 from .serializers import QuestionWithAnswersSerializer
+from .serializers import AnswerSerializer
 from django.db.models import Count
 from django.http import JsonResponse
 from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
+
 from questions.models import Answer, Question
 from questions.serializers import  AnswerSerializer
 from user.models import Teacher
 class QuestionViewSet(viewsets.ModelViewSet):
-    # permission_classes=[IsAuthenticated]
-
+    
     queryset = Question.objects.all()
     serializer_class = QuestionWithAnswersSerializer
 

@@ -7,18 +7,18 @@ import { Topic, Question } from './question.model';
   providedIn: 'root',
 })
 export class QuestionService {
-  private apiUrl = 'http://backend:8000/api';//django api
+  private apiUrl = 'http://localhost:8000/api/';//django api
 
   constructor(private http: HttpClient) {}
 
   //get topics
   getTopics(): Observable<string[]> {
-    return this.http.get<string[]>(`${this.apiUrl}topics/`);
+    return this.http.get<string[]>(`${this.apiUrl}topics`, {withCredentials:true});
   }
 
  
 
   addQuestion(question: Question): Observable<Question> {
-    return this.http.post<Question>(`${this.apiUrl}questions/`, question);
+    return this.http.post<Question>(`${this.apiUrl}questions/create`, question, {withCredentials:true});
   }
 }
