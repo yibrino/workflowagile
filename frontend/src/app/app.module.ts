@@ -23,8 +23,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExamListsComponent } from './exam-lists/exam-lists.component';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -66,11 +66,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     MatSidenavModule,
     MatIconModule,
   ],
-  providers: [    {
-    provide: HTTP_INTERCEPTORS,
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true,
-  },],
-  bootstrap: [AppComponent]
+    },
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

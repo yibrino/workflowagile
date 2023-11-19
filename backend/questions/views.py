@@ -10,7 +10,7 @@ from rest_framework import viewsets, status
 from rest_framework.permissions import IsAuthenticated
 
 from questions.models import Answer, Question
-from questions.serializers import  AnswerSerializer
+from questions.serializers import  AnswerSerializer,QuestionSerializer
 from user.models import Teacher
 class QuestionViewSet(viewsets.ModelViewSet):
     

@@ -13,8 +13,8 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: TeacherDashboardComponent,
-    canActivate: [AuthGuard],
-    data: { role: 'teacher' },
+    // canActivate: [AuthGuard],
+    // data: { role: 'teacher' },
   },
   { path: 'question-creation', component: QuestionCreationComponent },
   { path: 'questions-list', component: BrowseQuestionsComponent },
