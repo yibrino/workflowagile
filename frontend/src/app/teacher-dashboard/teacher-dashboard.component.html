@@ -6,13 +6,13 @@
 
     <div class="button-container">
 
-      <button mat-button id="NewExam-Button" class="center-icon">
+      <button mat-button id="NewExam-Button" class="center-icon" (click)="showChildComponent()">
         <span class="material-icons" >edit</span>
-        New Exam
+        New Question
       </button>
       <button mat-button id="ExamList-Button" class="center-icon">
         <span class="material-icons">list</span>
-        Exam list</button>
+        Question list</button>
       <button mat-button id="Profile-Button" class="center-icon">
         <span class="material-icons">person</span>
         Profile</button>
@@ -22,4 +22,5 @@
       </button>
     </div>
   </mat-toolbar>
+  <app-question *ngIf="isChildVisible"></app-question>
 </div>

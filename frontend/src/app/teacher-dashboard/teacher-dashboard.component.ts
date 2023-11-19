@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef, } from '@angular/core';
 import {end} from "@popperjs/core";
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -18,5 +18,11 @@ export class TeacherDashboardComponent {
   logout() {
     this.authService.logout();
   }
- 
+
+  isChildVisible: boolean = false;
+
+  showChildComponent() {
+    this.isChildVisible = true;
+  }
+
 }
