@@ -48,7 +48,7 @@ jobs:
           ls
           cd backend
           poetry run pytest
-      - name: Calculate Code Coverage
+      - name: Calculate Code Coverage.
         run: |
             cd backend  
             poetry run coverage run --source=. -m pytest
