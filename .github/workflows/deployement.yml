@@ -1,3 +1,6 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
 name: Python application
 
 on:
@@ -25,28 +28,28 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.11
         uses: actions/setup-python@v3
         with:
           python-version: "3.11"
-      - name: Install poetry and Flake8
+      - name: Install poetry
+        run: pip install poetry
+      - name: Setup env
         run: |
-          pip install poetry
+          cd backend
           poetry config virtualenvs.create false
           poetry install
-          poetry run pip install flake8
-      - name: Setup environment and install dependencies
-        run: |
-          cd backend
           python manage.py migrate
-      - name: Run Django tests
+      - name: Run tests
         run: |
+          ls
           cd backend
           poetry run pytest
-      - name: Calculate code coverage
+      - name: Calculate Code Coverage
         run: |
-          cd backend
-          poetry run coverage run --source=. -m pytest
-          poetry run coverage report -m
+            cd backend  
+            poetry run coverage run --source=. -m pytest
+            poetry run coverage report -m
