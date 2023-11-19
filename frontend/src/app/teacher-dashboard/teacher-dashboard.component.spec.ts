@@ -2,17 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeacherDashboardComponent } from './teacher-dashboard.component';
 
-
-
 describe('TeacherDashboardComponent', () => {
   let component: TeacherDashboardComponent;
   let fixture: ComponentFixture<TeacherDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TeacherDashboardComponent ]
-    })
-    .compileComponents();
+      declarations: [TeacherDashboardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TeacherDashboardComponent);
     component = fixture.componentInstance;

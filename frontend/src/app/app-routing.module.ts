@@ -5,22 +5,27 @@ import { QuestionCreationComponent } from './question-creation/question-creation
 import { BrowseQuestionsComponent } from './browse-questions/browse-questions.component';
 import { ContactComponent } from './contact/contact.component';
 import { ExamListsComponent } from './exam-lists/exam-lists.component';
-import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './auth.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
-  {path: 'dashboard', component: TeacherDashboardComponent, canActivate : [AuthGuard], data: {role: 'teacher'} },
+  {
+    path: 'dashboard',
+    component: TeacherDashboardComponent,
+    canActivate: [AuthGuard],
+    data: { role: 'teacher' },
+  },
   { path: 'question-creation', component: QuestionCreationComponent },
-  { path: 'jsonquestions', component: BrowseQuestionsComponent },
+  { path: 'questions-list', component: BrowseQuestionsComponent },
+
   { path: 'contactus', component: ContactComponent },
   { path: 'examlists', component: ExamListsComponent },
-  { path: 'home-page', component: HomePageComponent, canActivate : [AuthGuard] },
-  { path: '', redirectTo: '/home-page', pathMatch: 'full'},
-  {path: "", redirectTo: "home-page",pathMatch:"full"},
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'},
+  { path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/home-page', pathMatch: 'full' },
+  { path: '', redirectTo: 'home-page', pathMatch: 'full' },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ItemService {
-  private apiUrl = 'http://127.0.0.1:8000/api/jsonquestions/';
+  private apiUrl = 'http://localhost:8000/api/questions/';
 
   constructor(private http: HttpClient) {}
 

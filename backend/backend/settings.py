@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'questions',
     'user',
-    'quesionsstoredasjson'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +80,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_ALL_ORIGINS = True
+
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
 ]
