@@ -10,5 +10,6 @@ urlpatterns = [
     path('topics', QuestionViewSet.as_view({'get': 'list_topics'}), name='question-list-topics'),
     path('question/<int:pk>', QuestionViewSet.as_view({'get': 'retrieve'}), name='question-retrieve'),
     path('questions/create', QuestionViewSet.as_view({'post': 'create'}), name='question-create'),
-    path('questions/', QuestionViewSet.as_view({'get': 'list'}), name='question-list'),  # Aggiunta questa riga
+    path('questions/', QuestionViewSet.as_view({'get': 'list'}), name='question-list'),
+    path('questions/import', QuestionViewSet.as_view({'post': 'import_json'}), name='import-json'),  # Aggiunta questa riga
 ]

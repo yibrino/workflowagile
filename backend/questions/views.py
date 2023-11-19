@@ -1,4 +1,6 @@
 # views.py
+import json
+
 from rest_framework import viewsets
 from rest_framework.response import Response
 from .models import Question
@@ -56,6 +58,40 @@ class QuestionViewSet(viewsets.ModelViewSet):
             return JsonResponse(QuestionSerializer(question).data, safe=False, status=status.HTTP_201_CREATED)
 
         return JsonResponse(question_serializer.errors, safe=False, status=status.HTTP_400_BAD_REQUEST)
+
+    @staticmethod
+    def import_json(request):
+
+        questions = request.data['questions']
+        teacher = Teacher.objects.get(email=request.user)
+        errors = []
+
+        for question in questions:
+            question_serializer = QuestionSerializer(
+                data={'teacher': teacher.pk, 'text': question['text'], 'score': question['score'],
+                      'topic': question['topic']}
+                )
+            if question_serializer.is_valid():
+                saved_question = question_serializer.save()
+                answers = question['answers']
+                for answer_data in answers:
+                    answer = Answer(question=saved_question, text=answer_data['text'],
+                                    correct=answer_data['correct'] or False)
+                    answer.save()
+
+            else:
+                errors.append(QuestionSerializer(question).data)
+
+        if errors:
+            return JsonResponse(errors, safe=False, status=status.HTTP_200_OK)
+        else:
+            return JsonResponse(len(questions), safe=False, status=status.HTTP_200_OK)
+
+
+    @staticmethod
+    def create_question(teacher, text, score, topic, answers):
+        ...
+
 
     @staticmethod
     def retrieve(request, pk=None):
