@@ -1,4 +1,4 @@
-name: Python application
+name: Python Application Workflow
 
 on:
   push:
@@ -14,43 +14,35 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-    services:
-      postgres:
-        image: postgres:12.16
-        env:
-          POSTGRES_DB: exam_net
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports:
-          - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.11
+      - name: Set up Python 3.11 and Poetry
         uses: actions/setup-python@v3
         with:
           python-version: "3.11"
-      - name: Install poetry and Flake8
+      - name: Install Poetry and Dependencies
         run: |
+          pip install --upgrade pip
           pip install poetry
-          poetry config virtualenvs.create false
+          poetry --version
+          cd backend  
+          poetry init -n  
           poetry install
-          poetry run pip install flake8
-      - name: Setup environment and install dependencies
+          python manage.py migrate  
+      - name: Run Unit Tests
         run: |
-          cd backend
-          python manage.py migrate
+          cd backend  
+          poetry run pytest -m "not integration"
+      - name: Run Integration Tests
+        run: |
+          cd backend  
+          poetry run pytest -m "integration"
       - name: Run Flake8 linting
         run: |
-          cd backend
+          cd backend 
           poetry run flake8
-      - name: Run Django tests
+      - name: Calculate Code Coverage
         run: |
-          cd backend
-          poetry run pytest
-      - name: Calculate code coverage
-        run: |
-          cd backend
+          cd backend  
           poetry run coverage run --source=. -m pytest
           poetry run coverage report -m
