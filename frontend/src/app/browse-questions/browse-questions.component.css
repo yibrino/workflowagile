@@ -73,3 +73,76 @@
   color: green;
   font-size: 16px;
 }
+/* src/app/browse-questions/browse-questions.component.css */
+
+.question-group {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.topic-heading {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.question {
+  margin-top: 10px;
+}
+
+.question-text {
+  font-size: 1.2em;
+}
+
+.choices-container {
+  margin-top: 10px;
+}
+
+.choice-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.choice-radio {
+  margin-right: 5px;
+}
+
+.choice-text {
+  font-weight: bold;
+}
+/* src/app/browse-questions/browse-questions.component.css */
+
+.browse-button-container {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin based on your design preferences */
+}
+
+.browse-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #4caf50; /* Green background color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.browse-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   backend:
     build:
@@ -11,7 +11,6 @@ services:
       - ./backend:/app
   exam_db:
     image: postgres:12.16
-    restart: always
     ports:
       - "5432:5432"
     volumes:

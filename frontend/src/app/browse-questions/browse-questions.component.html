@@ -1,17 +1,42 @@
 <!-- src/app/browse-questions/browse-questions.component.html -->
 
 <div class="questions-container">
-  <div
-    *ngFor="let question of questions; let i = index"
-    class="question"
-    (click)="toggleChoices(i)"
-  >
-    <p class="question-text">Question {{ i + 1 }}: {{ question.question }}</p>
-    <div class="choices-container" [class.hidden]="!showChoices[i]">
-      <label *ngFor="let choice of question.choices" class="choice-label">
-        <input type="radio" [name]="'question' + i" class="choice-radio" />
-        <span class="choice-text">{{ choice }}</span>
-      </label>
+  <div class="browse-button-container">
+    <button class="browse-button" (click)="showQuestions = true">
+      Browse All Questions
+    </button>
+  </div>
+
+  <div *ngIf="showQuestions" class="questions-container">
+    <div
+      *ngFor="let questionGroup of questionsGroupedByTopic"
+      class="question-group"
+    >
+      <div class="header-container">
+        <h3 class="topic-heading">{{ questionGroup.topic }}</h3>
+        <div class="header-actions">
+          <!-- Add any attractive header actions or buttons here -->
+        </div>
+      </div>
+      <div
+        *ngFor="let question of questionGroup.questions; let i = index"
+        class="question"
+        (click)="toggleChoices(questionGroup.topic, i)"
+      >
+        <p class="question-text">
+          Question {{ i + 1 }}: {{ question.text }} (Score:
+          {{ question.score }})
+        </p>
+        <div
+          class="choices-container"
+          [class.hidden]="!showChoices[questionGroup.topic][i]"
+        >
+          <label *ngFor="let answer of question.answers" class="choice-label">
+            <input type="radio" [name]="'question' + i" class="choice-radio" />
+            <span class="choice-text">{{ answer.text }}</span>
+          </label>
+        </div>
+      </div>
     </div>
   </div>
 </div>
