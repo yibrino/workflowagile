@@ -72,7 +72,8 @@ export class AuthService {
           this.modalService.dismissAll();
         },
         error: (error: any) => {
-          this.alert.showErrorAlert('Error.', 'Close', 5000);
+          this.modalService.dismissAll();
+          this.alert.showErrorAlert('User with this email address already exists.', 'Close', 5000);
         },
       });
   }
