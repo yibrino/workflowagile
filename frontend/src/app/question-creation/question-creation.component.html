@@ -23,7 +23,7 @@
       <mat-label>Score</mat-label>
       <input matInput type="number" formControlName="score" placeholder="Enter" />
       <mat-error *ngIf="questionForm.get('score')?.invalid && questionForm.get('score')?.touched">
-        Please enter a valid question score.
+        Please enter a valid score.
       </mat-error>
     </mat-form-field>
 

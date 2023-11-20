@@ -3,7 +3,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormArray } from '@angular/forms';
 import { QuestionService } from './question.service';  
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { AlertService } from "../alert.service";
 
 import { Observable } from 'rxjs';
 import { Question, Answer } from './question.model';
@@ -23,7 +24,8 @@ export class QuestionCreationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private questionService: QuestionService,  
-    private http: HttpClient
+    private http: HttpClient,
+    private alertService: AlertService
   ) {
     this.questionForm = this.fb.group({
       text: ['', Validators.required],
@@ -123,11 +125,24 @@ export class QuestionCreationComponent implements OnInit {
     if (this.questionForm.valid && validAnswers.length >= 2 && this.hasCorrectAnswer) {
       const newQuestion = this.questionForm.value;
       
-       this.questionService.addQuestion(newQuestion).subscribe((response) => {
+       this.questionService.addQuestion(newQuestion).subscribe(
+        
+        (response) => {
+          this.alertService.showSuccessAlert(`Question successfully added!`, 'Close', 5000)
+          this.questionForm.reset();
+        },
+        (error) => {
           
-      });
-  
-      this.questionForm.reset();
+          if (error instanceof HttpErrorResponse && error.status === 400) {
+            this.alertService.showErrorAlert("An error occurred!", "Close", 5000)
+          } else {
+            this.alertService.showErrorAlert("Unknown error occurred!", "Close", 5000)
+          }
+        }
+          
+      );
+      
+      
     }
     else if(validAnswers.length < 2) {
        this.updateShowErrorMessage();
