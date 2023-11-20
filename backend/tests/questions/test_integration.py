@@ -57,9 +57,11 @@ class QuestionIntegrationTest(APITestCase):
 
         data = [
             {
+                "question_id": 1,
                 "topic": "Scrum",
                 "text": "What is the role of a Scrum Master?",
                 "score": 1,
+                "latest_version": True,
                 "answers": [
                     {
                         "text": "Facilitator",
@@ -80,9 +82,11 @@ class QuestionIntegrationTest(APITestCase):
                 ]
             },
             {
+                "question_id": 2,
                 "topic": "Agile_Methodology",
                 "text": "What does the term 'Sprint' mean in Agile?",
                 "score": 2,
+                "latest_version": False,
                 "answers": [
                     {
                         "text": "Time-boxed iteration",

@@ -70,14 +70,21 @@ class QuestionViewSet(viewsets.ModelViewSet):
         errors = []
 
         for question in questions:
-            if not all(k in question for k in ('text', 'score', 'topic')):
+            if not all(k in question for k in ('text', 'score', 'topic', 'question_id', 'latest_version')):
                 errors.append('Missing mandatory field (text, score, topic)')
 
             else:
+                question_id = question['question_id']
+
+                if Question.objects.filter(question_id=question_id):
+                    existing_question = Question.objects.get(question_id=question_id)
+                    existing_question.latest_version = False
+                    existing_question.save()
 
                 question_serializer = QuestionSerializer(
-                    data={'teacher': teacher.pk, 'text': question['text'], 'score': question['score'],
-                          'topic': question['topic']}
+                    data={'teacher': teacher.pk, 'question_id': question_id, 'text': question['text'],
+                          'score': question['score'], 'topic': question['topic'],
+                          'latest_version': question['latest_version']}
                 )
 
                 if question_serializer.is_valid():
