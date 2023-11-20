@@ -45,6 +45,11 @@ jobs:
           python manage.py migrate
         env:
           SECRET_KEY: django-insecure-%-m3e8ph3kx6btwkrn8i7$8qm#23ia(mp%qzrvvrilyik_hgy&
+          ALLOWED_HOSTS: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: exam_net
+          PG_HOST: localhost
       - name: Run tests
         run: |
           ls
