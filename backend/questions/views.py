@@ -8,16 +8,18 @@ from .serializers import QuestionWithAnswersSerializer
 from .serializers import AnswerSerializer
 from django.db.models import Count
 from django.http import JsonResponse
-from rest_framework import viewsets, status
+from rest_framework import viewsets, status, permissions
 from rest_framework.permissions import IsAuthenticated
 
 from questions.models import Answer, Question
-from questions.serializers import  AnswerSerializer,QuestionSerializer
+from questions.serializers import AnswerSerializer, QuestionSerializer
 from user.models import Teacher
+
+
 class QuestionViewSet(viewsets.ModelViewSet):
-    
     queryset = Question.objects.all()
     serializer_class = QuestionWithAnswersSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
         questions = self.get_queryset()
@@ -48,7 +50,8 @@ class QuestionViewSet(viewsets.ModelViewSet):
             answers_data = request.data.get('answers', [])  # Ottieni la lista delle risposte
             for answer_data in answers_data:
                 answer_data['question'] = question  # Collega la risposta alla nuova domanda
-                answer = Answer(question=answer_data['question'],text=answer_data['text'],correct=answer_data['isCorrect'] or False)
+                answer = Answer(question=answer_data['question'], text=answer_data['text'],
+                                correct=answer_data['isCorrect'] or False)
                 answer.save()
             if pk is not None:
                 question = Question.objects.get(question_id=pk)
@@ -62,36 +65,38 @@ class QuestionViewSet(viewsets.ModelViewSet):
     @staticmethod
     def import_json(request):
 
+        if 'questions' not in request.data:
+            return JsonResponse('No root called questions', safe=False, status=status.HTTP_400_BAD_REQUEST)
+
         questions = request.data['questions']
         teacher = Teacher.objects.get(email=request.user)
         errors = []
 
         for question in questions:
-            question_serializer = QuestionSerializer(
-                data={'teacher': teacher.pk, 'text': question['text'], 'score': question['score'],
-                      'topic': question['topic']}
-                )
-            if question_serializer.is_valid():
-                saved_question = question_serializer.save()
-                answers = question['answers']
-                for answer_data in answers:
-                    answer = Answer(question=saved_question, text=answer_data['text'],
-                                    correct=answer_data['correct'] or False)
-                    answer.save()
+            if not all(k in question for k in ('text', 'score', 'topic')):
+                errors.append('Missing mandatory field (text, score, topic)')
 
             else:
-                errors.append(QuestionSerializer(question).data)
+
+                question_serializer = QuestionSerializer(
+                    data={'teacher': teacher.pk, 'text': question['text'], 'score': question['score'],
+                          'topic': question['topic']}
+                )
+
+                if question_serializer.is_valid():
+                    saved_question = question_serializer.save()
+                    answers = question['answers']
+                    for answer_data in answers:
+                        answer = Answer(question=saved_question, text=answer_data['text'],
+                                        correct=answer_data['correct'] or False)
+                        answer.save()
+                else:
+                    errors.append(QuestionSerializer(question).data)
 
         if errors:
-            return JsonResponse(errors, safe=False, status=status.HTTP_200_OK)
+            return JsonResponse(errors, safe=False, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
         else:
             return JsonResponse(len(questions), safe=False, status=status.HTTP_200_OK)
-
-
-    @staticmethod
-    def create_question(teacher, text, score, topic, answers):
-        ...
-
 
     @staticmethod
     def retrieve(request, pk=None):
