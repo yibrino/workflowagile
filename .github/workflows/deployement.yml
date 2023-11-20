@@ -29,6 +29,16 @@ jobs:
           - 5432:5432
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
+    env:
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      DEBUG: ${{ secrets.DEBUG }}
+      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+      POSTGRES_ENGINE: django.db.backends.postgresql
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: exam_net
+      PG_HOST: localhost
+      PG_PORT: 5432
 
     steps:
       - uses: actions/checkout@v3
