@@ -44,7 +44,6 @@ jobs:
           poetry config virtualenvs.create false
           poetry install
           python manage.py migrate
-        env:
       - name: Run tests
         run: |
           ls
