@@ -1,1 +1,31 @@
-<p>teacher-dashboard works!</p>
+<div class="myContainer">
+  <mat-toolbar color="primary">
+    <span>Exam.net</span>
+
+    <span class="spacer"></span>
+
+    <div class="button-container">
+
+      <button mat-button id="NewExam-Button" class="center-icon" routerLink="/question-import">
+        <span class="material-icons" >edit</span>
+        Import Questions
+      </button>
+
+      <button mat-button id="NewExam-Button" class="center-icon" (click)="showChildComponent()">
+        <span class="material-icons" >edit</span>
+        New Question
+      </button>
+      <button mat-button id="ExamList-Button" class="center-icon" routerLink="/questions-list">
+        <span class="material-icons">list</span>
+        Question list</button>
+      <button mat-button id="Profile-Button" class="center-icon">
+        <span class="material-icons">person</span>
+        Profile</button>
+      <button mat-button id="LogOut-Button" class="center-icon" (click)="logout()">
+        <span class="material-icons">logout</span>
+        Log out
+      </button>
+    </div>
+  </mat-toolbar>
+  <app-question *ngIf="isChildVisible"></app-question>
+</div>

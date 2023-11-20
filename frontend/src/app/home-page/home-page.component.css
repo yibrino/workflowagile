@@ -1,0 +1,62 @@
+.page {
+    margin-top: 5px;
+}
+
+.sign-in-btn {
+    margin-right: 10px;
+    border-radius: 40px;
+    padding: 12px;
+    background-color: transparent;
+    width: 100px;
+}
+
+.sign-up-btn {
+    margin-right: 40px;
+    border-radius: 40px;
+    padding: 12px;
+    width: 100px;
+}
+
+.logo {
+    margin-left: 40px;
+}
+
+.exit {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .exit i {
+    float: right;
+    cursor: pointer;
+    margin-right: 12px;
+    margin-top: 8px;
+    font-weight: 400;
+    font-size:x-large;
+  }
+
+  .pg {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top:20px;
+    border-radius: 15px;
+  }
+
+  .cnt {
+    min-height: 420px;
+  }
+
+  .btn-warning {
+    color: white;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 500px;
+  }

@@ -1,0 +1,64 @@
+src/app/header/header.component.html
+<header>
+  <div class="nav__wrapper">
+    <!-- Navigation logo -->
+    <div class="logo">
+      <h1><span>Exam.</span> net</h1>
+    </div>
+
+    <!-- Navigation menu -->
+    <div class="navigation" #menuRef (click)="toggleMenu()">
+      <div class="nav__menu">
+        <ng-container *ngFor="let item of menuItems; let index = index">
+          <li [ngClass]="{ hasSubmenu: item.submenu }">
+            <ng-container *ngIf="item.link; else spanLabel">
+              <a
+                [routerLink]="item.link"
+                (click)="setActiveLink(item.label)"
+                [ngClass]="{
+                  activeLink: activeLink === item.label,
+                  not__visited: activeLink !== item.label
+                }"
+              >
+                {{ item.label }}
+              </a>
+            </ng-container>
+            <ng-template #spanLabel>
+              <span
+                [ngClass]="{
+                  activeLink: item.submenu && activeLink === item.label,
+                  not__visited: item.submenu && activeLink !== item.label
+                }"
+              >
+                {{ item.label }}
+              </span>
+            </ng-template>
+
+            <!-- Submenu -->
+            <ul *ngIf="item.submenu" class="submenu">
+              <li
+                *ngFor="let subItem of item.submenu; let subIndex = index"
+                class="submenuItem"
+              >
+                <a
+                  [routerLink]="subItem.link"
+                  (click)="setActiveLink(subItem.label)"
+                  [ngClass]="{
+                    activeLink: activeLink === subItem.label,
+                    not__visited: activeLink !== subItem.label
+                  }"
+                >
+                  {{ subItem.label }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ng-container>
+      </div>
+    </div>
+
+    <span class="mobile__menu">
+      <i class="ri-menu-line" (click)="toggleMenu()"></i>
+    </span>
+  </div>
+</header>

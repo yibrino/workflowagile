@@ -1,0 +1,148 @@
+/* src/app/browse-questions/browse-questions.component.css */
+
+/* Add styling for the component here */
+
+/* Example styles for the questions container */
+.questions-container {
+  margin: 20px;
+  margin-top: 28px;
+}
+
+/* Example styles for individual questions */
+.question {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.question:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Example styles for question text */
+.question-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Set the question text color to a dark shade */
+  margin-bottom: 10px;
+}
+
+/* Example styles for the choices container */
+.choices-container {
+  display: flex;
+  flex-direction: column; /* Display choices in a column */
+}
+
+/* Example styles for choice labels */
+.choice-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.choice-label:hover {
+  background-color: #e0e0e0;
+}
+
+/* Example styles for choice radio buttons */
+.choice-radio {
+  margin-right: 10px;
+}
+
+/* Example styles for choice text */
+.choice-text {
+  font-size: 16px;
+}
+
+/* Hide choices by default */
+.choices-container.hidden {
+  display: none;
+}
+
+/* Example styles for correct answer */
+.correct-answer {
+  font-weight: bold;
+  color: green;
+  font-size: 16px;
+}
+/* src/app/browse-questions/browse-questions.component.css */
+
+.question-group {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 8px;
+  border-bottom: 1px solid #ccc;
+}
+
+.topic-heading {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.question {
+  margin-top: 10px;
+}
+
+.question-text {
+  font-size: 1.2em;
+}
+
+.choices-container {
+  margin-top: 10px;
+}
+
+.choice-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.choice-radio {
+  margin-right: 5px;
+}
+
+.choice-text {
+  font-weight: bold;
+}
+/* src/app/browse-questions/browse-questions.component.css */
+
+.browse-button-container {
+  text-align: center;
+  margin-top: 20px; /* Adjust the margin based on your design preferences */
+}
+
+.browse-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #4caf50; /* Green background color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.browse-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}

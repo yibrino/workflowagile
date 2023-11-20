@@ -1,0 +1,15 @@
+<div class="exam-container">
+  <h2>Create Question</h2>
+  <form class="exam-form">
+
+    <!-- Question text area in the center -->
+    <div class="upload-field">
+      <input  type="file" placeholder="Browse file" (change)="onFileChange($event)"/>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="accent" type="button" (click)="onSubmit()">Submit Question</button>
+    </div>
+  </form>
+</div>
+

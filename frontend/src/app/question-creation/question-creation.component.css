@@ -1,0 +1,78 @@
+.exam-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+.exam-form {
+  width: 100%;
+}
+
+.score-field {
+  width: 20%; 
+  float: inline-end;
+  margin-bottom: 30px;
+}
+
+.spacer {
+  width: 80%; 
+  float: right;
+}
+
+.topic-field {
+  width: 48%;
+  height:12%;
+  float: inline-start;
+}
+
+.question-text-field {
+  width: 100%;
+}
+
+.button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.answer-container {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  position: relative;
+}
+
+button {
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  padding-bottom: 10px;
+  height: 20px;
+  opacity: 1;
+  animation: fadeOut 3s ease;
+}
+
+
+.error-correct-message {
+  color: red;
+  padding-bottom: 10px;
+  height: 20px;
+  opacity: 1;
+  bottom: 0;
+  padding-left: 300px;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
