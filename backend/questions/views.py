@@ -65,10 +65,7 @@ class QuestionViewSet(viewsets.ModelViewSet):
     @staticmethod
     def import_json(request):
 
-        if 'questions' not in request.data:
-            return JsonResponse('No root called questions', safe=False, status=status.HTTP_400_BAD_REQUEST)
-
-        questions = request.data['questions']
+        questions = request.data
         teacher = Teacher.objects.get(email=request.user)
         errors = []
 

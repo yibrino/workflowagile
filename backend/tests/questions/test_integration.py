@@ -53,63 +53,57 @@ class QuestionIntegrationTest(APITestCase):
 
     def test_import_json(self):
         teacher = Teacher.objects.create(first_name="John", last_name="Doe", email="john@example.com")
-        data = {
-            'text': 'What is the capital of Spain?',
-            'score': 10,
-            'topic': 'Geography',
-            'teacher': teacher.id
-        }
 
-        data = {
-            "questions": [
-                {
-                    "topic": "Scrum",
-                    "text": "What is the role of a Scrum Master?",
-                    "score": 1,
-                    "answers": [
-                        {
-                            "text": "Facilitator",
-                            "correct": True
-                        },
-                        {
-                            "text": "Servant-leader",
-                            "correct": False
-                        },
-                        {
-                            "text": "Coach",
-                            "correct": True
-                        },
-                        {
-                            "text": "None of the above",
-                            "correct": False
-                        }
-                    ]
-                },
-                {
-                    "topic": "Agile_Methodology",
-                    "text": "What does the term 'Sprint' mean in Agile?",
-                    "score": 2,
-                    "answers": [
-                        {
-                            "text": "Time-boxed iteration",
-                            "correct": False
-                        },
-                        {
-                            "text": "Project deadline",
-                            "correct": True
-                        },
-                        {
-                            "text": "Daily meeting",
-                            "correct": False
-                        },
-                        {
-                            "text": "Release cycle",
-                            "correct": False
-                        }
-                    ]
-                }
-            ]
-        }
+
+        data = [
+            {
+                "topic": "Scrum",
+                "text": "What is the role of a Scrum Master?",
+                "score": 1,
+                "answers": [
+                    {
+                        "text": "Facilitator",
+                        "correct": True
+                    },
+                    {
+                        "text": "Servant-leader",
+                        "correct": False
+                    },
+                    {
+                        "text": "Coach",
+                        "correct": True
+                    },
+                    {
+                        "text": "None of the above",
+                        "correct": False
+                    }
+                ]
+            },
+            {
+                "topic": "Agile_Methodology",
+                "text": "What does the term 'Sprint' mean in Agile?",
+                "score": 2,
+                "answers": [
+                    {
+                        "text": "Time-boxed iteration",
+                        "correct": False
+                    },
+                    {
+                        "text": "Project deadline",
+                        "correct": True
+                    },
+                    {
+                        "text": "Daily meeting",
+                        "correct": False
+                    },
+                    {
+                        "text": "Release cycle",
+                        "correct": False
+                    }
+                ]
+            }
+        ]
+
         url = reverse('import-json')
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -152,19 +146,3 @@ class QuestionIntegrationTest(APITestCase):
         url = reverse('import-json')
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_422_UNPROCESSABLE_ENTITY)
-
-    def test_import_json_without_root_throws_400(self):
-        teacher = Teacher.objects.create(first_name="John", last_name="Doe", email="john@example.com")
-        data = {
-            'text': 'What is the capital of Spain?',
-            'score': 10,
-            'topic': 'Geography',
-            'teacher': teacher.id
-        }
-
-        data = {
-            "test": "test"
-        }
-        url = reverse('import-json')
-        response = self.client.post(url, data, format='json')
-        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
