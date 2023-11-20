@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { QuestionImportComponent } from './question-import/question-import.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ExamListsComponent,
     HomePageComponent,
     NotFoundComponent,
+    QuestionImportComponent,
   ],
   imports: [
     BrowserModule,

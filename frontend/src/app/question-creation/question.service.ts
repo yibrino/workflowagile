@@ -16,9 +16,14 @@ export class QuestionService {
     return this.http.get<string[]>(`${this.apiUrl}topics`, {withCredentials:true});
   }
 
- 
+
 
   addQuestion(question: Question): Observable<Question> {
     return this.http.post<Question>(`${this.apiUrl}questions/create`, question, {withCredentials:true});
+  }
+
+  importQuestions(questions: Question[]): Observable<number> {
+    console.log('Import questions')
+    return this.http.post<number>(`${this.apiUrl}questions/import`, questions, {withCredentials:true});
   }
 }
