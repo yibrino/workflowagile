@@ -13,6 +13,6 @@ export class ItemService {
   constructor(private http: HttpClient) {}
 
   getQuestions(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+    return this.http.get<any>(this.apiUrl, {withCredentials:true});
   }
 }
