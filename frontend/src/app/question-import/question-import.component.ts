@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { QuestionService } from "../question-creation/question.service";
 import { Answer, Question } from "../question-creation/question.model";
+import { AlertService } from "../alert.service";
 
 @Component({
   selector: 'app-question-import',
@@ -15,7 +16,7 @@ export class QuestionImportComponent {
   questions: Question[] = []
 
 
-  constructor(private questionService: QuestionService) {}
+  constructor(private questionService: QuestionService, private alertService: AlertService) {}
 
   onFileChange(event: any) {
     const selectedFile = event.target.files[0];
@@ -87,15 +88,15 @@ export class QuestionImportComponent {
         question.answers.push(answer)
       })
 
-      // Assume the endpoint URL is 'http://localhost:3000/questions'
-
       this.questions.push(question)
-      console.log('ProcessdRow', question);
     })
 
     this.questionService.importQuestions(this.questions).subscribe(
       next => {
-        console.log(next)
+        this.alertService.showSuccessAlert(`Successfully added ${next} questions!`, 'Close', 5000)
+      },
+      error => {
+        this.alertService.showErrorAlert("An error occurred!", "Close", 5000)
       }
     )
   }

@@ -1,0 +1,12 @@
+.exam-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+.upload-field {
+  padding: 20px 40px 20px 0;
+}
