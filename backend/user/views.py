@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from user.models import Teacher
 from user.serializers import CookieTokenRefreshSerializer, TeacherSerializer
-
+from django.contrib.auth import logout, login, authenticate
 
 class RegisterView(APIView):
     def post(self, request):
@@ -117,3 +117,34 @@ class CookieTokenRefreshView(TokenRefreshView):
 
         return JsonResponse({'detail': 'No valid refresh token found in cookie'}, safe=False,
                             status=status.HTTP_400_BAD_REQUEST)
+
+class TeacherView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self,request):
+        teacher = Teacher.objects.get(email=request.user)
+        serializer = TeacherSerializer(teacher)
+        filtered_data = {key: serializer.data[key] for key in ['email', 'first_name', 'last_name']}
+        return response.Response(filtered_data)
+
+    def patch(self,request):
+        user = Teacher.objects.get(email=request.user)
+        email = request.data["email"]
+        password = request.data["password"]
+        password1 = request.data["repeat_password"]
+        first_name = request.data["first_name"]
+        last_name = request.data["last_name"]
+        if password != password1:
+            return JsonResponse({"Error": "Passwords don't match"}, safe=False, status=status.HTTP_400_BAD_REQUEST)
+        serializer = TeacherSerializer(user, data={"first_name":first_name,"last_name":last_name,"email":email,"password":password},partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        teacher = Teacher.objects.get(email=email)
+        serializer = TeacherSerializer(teacher)
+        filtered_data = {key: serializer.data[key] for key in ['email', 'first_name', 'last_name']}
+        return JsonResponse(filtered_data,safe=False)
+
+    def delete(self,request):
+        user = Teacher.objects.get(email=request.user)
+        user.delete()
+        return response.Response(status=200)
