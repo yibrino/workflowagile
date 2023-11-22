@@ -28,6 +28,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from './question-import/question-import.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { QuestionImportComponent } from './question-import/question-import.compo
     HomePageComponent,
     NotFoundComponent,
     QuestionImportComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

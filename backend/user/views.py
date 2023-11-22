@@ -83,15 +83,18 @@ class LoginView(APIView):
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self,request):
-        refreshToken = request.COOKIES.get(
-            settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
-        token = RefreshToken(refreshToken)
-        token.blacklist()
+        return _do_logout(request)
 
-        res = response.Response()
-        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
-        res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
-        return res
+def _do_logout(request):
+    refreshToken = request.COOKIES.get(
+    settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+    token = RefreshToken(refreshToken)
+    token.blacklist()
+
+    res = response.Response()
+    res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
+    res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+    return res
 
 class CookieTokenRefreshView(TokenRefreshView):
     serializer_class = CookieTokenRefreshSerializer
@@ -147,4 +150,4 @@ class TeacherView(APIView):
     def delete(self,request):
         user = Teacher.objects.get(email=request.user)
         user.delete()
-        return response.Response(status=200)
+        return _do_logout(request)

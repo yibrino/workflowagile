@@ -9,6 +9,7 @@ import { AuthGuard } from './auth.guard';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from "./question-import/question-import.component";
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -16,11 +17,14 @@ const routes: Routes = [
     component: TeacherDashboardComponent,
     canActivate: [AuthGuard],
     data: { role: 'teacher' },
+    children: [
+      { path: 'profile', component: ProfileComponent },
+      { path: 'question-creation', component: QuestionCreationComponent },
+      {path: "", redirectTo:"question-creation", pathMatch:"full"},
+    ]
   },
-  { path: 'question-creation', component: QuestionCreationComponent },
   { path: 'question-import', component: QuestionImportComponent },
   { path: 'questions-list', component: BrowseQuestionsComponent },
-
   { path: 'contactus', component: ContactComponent },
   { path: 'examlists', component: ExamListsComponent },
   { path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard] },

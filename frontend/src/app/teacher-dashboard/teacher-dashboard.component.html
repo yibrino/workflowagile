@@ -11,14 +11,14 @@
         Import Questions
       </button>
 
-      <button mat-button id="NewExam-Button" class="center-icon" (click)="showChildComponent()">
+      <button mat-button id="NewExam-Button" class="center-icon" routerLink="question-creation">
         <span class="material-icons" >edit</span>
         New Question
       </button>
       <button mat-button id="ExamList-Button" class="center-icon" routerLink="/questions-list">
         <span class="material-icons">list</span>
         Question list</button>
-      <button mat-button id="Profile-Button" class="center-icon">
+      <button mat-button id="Profile-Button" class="center-icon" routerLink="profile">
         <span class="material-icons">person</span>
         Profile</button>
       <button mat-button id="LogOut-Button" class="center-icon" (click)="logout()">
@@ -27,5 +27,8 @@
       </button>
     </div>
   </mat-toolbar>
-  <app-question *ngIf="isChildVisible"></app-question>
+  <div class="children">
+    <router-outlet></router-outlet>
+  </div>
+  <!--<app-question *ngIf="isChildVisible"></app-question>-->
 </div>
