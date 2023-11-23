@@ -5,6 +5,7 @@
 .button-container {
   display: flex;
   align-items: center;
+  margin-top: 3px;
 }
 
 .center-icon {
@@ -17,4 +18,13 @@
 /* Increase the clickable area for the entire button */
 button {
   padding: 30px 20px; /* Adjust the padding as needed */
+}
+
+.children {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+mat-toolbar{
+  margin-bottom: 20px;
 }

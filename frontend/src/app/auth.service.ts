@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AlertService } from './alert.service';
+import { Teacher } from './models';
 
 @Injectable({
   providedIn: 'root',
@@ -93,6 +94,11 @@ export class AuthService {
       });
   }
 
+  logoutAfterDeleteAccount() {
+    this.router.navigate(['/home-page']);
+    this.setData(false);    
+  }
+
   refreshToken(): Observable<any> {
     return this.http.post<any>(this.apiUrl + '/refreshToken', null, {
       withCredentials: true,
@@ -103,4 +109,23 @@ export class AuthService {
     //return this.localService.getData("auth") /*localStorage.getItem("auth")*/ == "1";
     return localStorage.getItem('auth') && localStorage.getItem('auth') == '1';
   }
+
+  getUserData(): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/teacher', {
+      withCredentials: true,
+    });
+  }
+
+  updateUser(data: any): Observable<Teacher> {
+    return this.http.patch<any>(this.apiUrl + '/teacher', data, {
+      withCredentials: true,
+    });
+  }
+
+  deleteUser(): Observable<any> {
+    return this.http.delete<any>(this.apiUrl + '/teacher', {
+      withCredentials: true,
+    });
+  }
+
 }
