@@ -29,6 +29,8 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from './question-import/question-import.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ProfileComponent } from './profile/profile.component';
     NotFoundComponent,
     QuestionImportComponent,
     ProfileComponent,
+    BrowseExamsComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { ProfileComponent } from './profile/profile.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatTabsModule
   ],
   providers: [
     {

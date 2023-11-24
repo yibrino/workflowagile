@@ -30,8 +30,8 @@ class ExamViewSet(viewsets.ViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
-        queryset = Exam.objects.filter(teacher=request.user,pk=pk)
-        serializer = ExamDetailSerializer(queryset,many=True)
+        queryset = Exam.objects.filter(teacher=request.user,pk=pk).first()
+        serializer = ExamDetailSerializer(queryset)
         return Response(serializer.data)
     
     @action(detail=False, methods=['post'], url_path='create-manually')
