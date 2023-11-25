@@ -10,7 +10,7 @@
 .card {
   min-height: 200px;
   cursor: pointer;
-  width: 400px;
+  width: 350px;
   @media (max-width: 600px) {
     width: 300px; /* If the viewport is at least 600px wide, use 50% width */
   }
@@ -67,6 +67,7 @@
 .container {
   padding: 20px 20px 10px 20px;
   width: 100%;
+  min-height: 60vh;
 }
 
 h4 {

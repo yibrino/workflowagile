@@ -12,7 +12,8 @@
                         <div class="card-header"><h5 class="card-title">{{exam.title}}</h5></div>
                         <div class="card-body">
                             <p class="card-text">{{exam.description}}<p>
-                            <button class="btn btn-outline-success" (click)="activateExam($event)">Activate Exam</button>
+                            <button *ngIf="!exam.is_active" class="btn btn-outline-success" (click)="activateExam($event)">Activate Exam</button>
+                            <button *ngIf="exam.is_active" class="btn btn-outline-success" disabled (click)="activateExam($event)">   Active   </button>
                         </div>
                     </div> 
                 </div>
@@ -46,7 +47,7 @@
 
 <ng-template #examModal let-modal>
     <div class="container">
-        <h4>Question List</h4>
+        <h4>Questions List</h4>
         <ul *ngIf="selected_exam" class="list-group">
           <li *ngFor="let question of selected_exam.questions" class="list-group-item">
             <span class="question-text">{{ question.text }}</span>

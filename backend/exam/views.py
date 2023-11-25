@@ -1,25 +1,9 @@
-"""from rest_framework import viewsets,response
-from .models import Exam
-from .serializers import ExamDetailSerializer, ExamSerializer
-from rest_framework.permissions import IsAuthenticated
-
-class ExamViewSet(viewsets.ModelViewSet):
-    permission_classes=[IsAuthenticated]
-    queryset = Exam.objects.all()
-    serializer_class = ExamSerializer
-    
-    def get_serializer_class(self):
-        print(self.action)
-        if self.action=="list":
-            return ExamDetailSerializer
-        return ExamSerializer"""
-        
 from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
-from .models import Exam
-from .serializers import ExamSerializer, ExamDetailSerializer
+from .models import ActiveExam, Exam
+from .serializers import ActiveExamSerializer, ExamSerializer, ExamDetailSerializer
 
 class ExamViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
@@ -33,6 +17,14 @@ class ExamViewSet(viewsets.ViewSet):
         queryset = Exam.objects.filter(teacher=request.user,pk=pk).first()
         serializer = ExamDetailSerializer(queryset)
         return Response(serializer.data)
+    
+    def create(self, request):
+        request.data["teacher"]=request.user.pk
+        serializer = ExamSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400) 
     
     @action(detail=False, methods=['post'], url_path='create-manually')
     def create_manually(self, request):
@@ -69,3 +61,8 @@ class ExamViewSet(viewsets.ViewSet):
         return Response(serializer.errors, status=400) 
         
         """
+
+class ActiveExamViewSet(viewsets.ModelViewSet):
+    permission_classes=[IsAuthenticated]
+    queryset = ActiveExam.objects.all()
+    serializer_class = ActiveExamSerializer

@@ -12,9 +12,9 @@ class Exam(models.Model):
     
 class ActiveExam(models.Model):
     active_exam_id = models.BigAutoField(primary_key=True)
-    exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
+    exam = models.OneToOneField(Exam, on_delete=models.CASCADE, unique=True)
     activated_at = models.DateTimeField(auto_now_add=True)
-    duration = models.DateTimeField()
+    duration = models.IntegerField()
     token = models.CharField(max_length=15)
     
 """class PastExam(models.Model):
