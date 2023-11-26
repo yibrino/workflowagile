@@ -31,6 +31,8 @@ import { QuestionImportComponent } from './question-import/question-import.compo
 import { ProfileComponent } from './profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
+import { FormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion'; 
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatTabsModule
+    MatTabsModule,
+    FormsModule,
+     MatExpansionModule
   ],
   providers: [
     {

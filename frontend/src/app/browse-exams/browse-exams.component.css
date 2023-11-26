@@ -12,7 +12,7 @@
   cursor: pointer;
   width: 350px;
   @media (max-width: 600px) {
-    width: 300px; /* If the viewport is at least 600px wide, use 50% width */
+    width: 300px;
   }
 }
 
@@ -34,7 +34,7 @@
 
   .card-title {
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 600;
   }
 
   .card-text {
@@ -42,9 +42,9 @@
     color: #6c757d;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: normal; /* Allow text to wrap */
+    white-space: normal;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Number of lines to show */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
 
@@ -70,12 +70,6 @@
   min-height: 60vh;
 }
 
-h4 {
-  text-align: center;
-  color: #333;
-  font-weight: 600;
-  margin-bottom: 15px;
-}
 
 .list-group {
   border: none;
@@ -111,4 +105,64 @@ h4 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+
+.custom-input {
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.custom-input:focus {
+  border-color: #c2c2c2;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(166, 193, 223, 0.25);
+}
+
+.exam-title {
+  font-style: normal;
+  color: #333;
+  font-weight: 600;
+}
+
+.questions-list {
+  font-size: 19.5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+textarea {
+  resize: none;
+  height: 20vh;
+}
+
+.exit {
+  width: 100%;
+  border-radius: 5px;
+  height: auto;
+  margin-bottom: -15px;
+}
+
+.exit i {
+  float: right;
+  cursor: pointer;
+  margin-right: 12px;
+  font-weight: 400;
+  font-size:x-large;
+}
+
+.answer-item {
+  margin-bottom: 2px;
+  font-style: italic;
+}
+
+.answers-list {
+  list-style-type: none;
 }

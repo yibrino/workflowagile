@@ -19,6 +19,20 @@
                 </div>
             </div>  
         </mat-tab>
+        <mat-tab label="Active exams">        
+            <div class="row">
+            <div *ngFor="let exam of exams" class="col col-auto">
+                <div class="card border-dark mb-3"  (click)="openExamModal(examModal,exam.exam_id)">
+                    <div class="card-header"><h5 class="card-title">{{exam.title}}</h5></div>
+                    <div class="card-body">
+                        <p class="card-text">{{exam.description}}<p>
+                        <button *ngIf="!exam.is_active" class="btn btn-outline-success" (click)="activateExam($event)">Activate Exam</button>
+                        <button *ngIf="exam.is_active" class="btn btn-outline-success" disabled (click)="activateExam($event)">   Active   </button>
+                    </div>
+                </div> 
+            </div>
+        </div>  
+    </mat-tab>
             <mat-tab label="Past exams">
                 <div class="row">
                     <div class="col col-auto">
@@ -46,13 +60,41 @@
 </div>
 
 <ng-template #examModal let-modal>
+    <div (click)="modal.dismiss('Cross click')" class="exit"><i class="bi bi-x"></i></div>
     <div class="container">
-        <h4>Questions List</h4>
-        <ul *ngIf="selected_exam" class="list-group">
-          <li *ngFor="let question of selected_exam.questions" class="list-group-item">
-            <span class="question-text">{{ question.text }}</span>
-            <span class="tag">{{ question.topic }}</span>
-          </li>
-        </ul>
+        <div class="form-group">
+            <label for="examTitle"><h5 class="exam-title">Exam Title</h5></label>
+            <div class="input-group">
+              <input type="text" class="form-control custom-input" id="examTitle" [(ngModel)]="selected_exam!.title" placeholder="Enter Exam Title">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="examDescription"><h5 class="exam-title">Description</h5></label>
+            <div class="input-group">
+              <textarea class="form-control custom-input" id="examDescription" [(ngModel)]="selected_exam!.description" placeholder="Enter Exam Description"></textarea>
+            </div>
+          </div>
+          <mat-accordion>
+            <mat-expansion-panel expanded hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                <p class="questions-list">Questions</p>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <ul *ngIf="selected_exam" class="list-group">
+                <li *ngFor="let question of selected_exam.questions" class="list-group-item" (click)="showAnswers(question)">
+                  <span class="question-text">{{ question.text }}</span>
+                  <span class="tag">{{ question.topic }}</span>
+                  <div *ngIf="selected_questions.includes(question)" class="answer-list">
+                    <ul class="answers-list">
+                      <li *ngFor="let answer of question.answers;let i = index" class="answer-item">
+                        {{i+1}}. {{ answer.text }}
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </mat-expansion-panel>
+          </mat-accordion>     
       </div>
 </ng-template>
