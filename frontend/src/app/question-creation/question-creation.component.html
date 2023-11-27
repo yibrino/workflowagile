@@ -2,16 +2,12 @@
   <h2>Create Question</h2>
   <form [formGroup]="questionForm" class="exam-form">
 
-    
-
-   
-    
 
     <!-- Topic on top left -->
     <mat-form-field class="topic-field">
       <mat-label>Topic</mat-label>
-      <input matInput formControlName="topic" placeholder="Type a new topic or select it" />
-      <mat-select formControlName="topic" *ngIf="isTopicListVisible()" (selectionChange)="onTopicSelected($event)">
+      <input formControlName="topic" matInput placeholder="Type a new topic or select it"/>
+      <mat-select (selectionChange)="onTopicSelected($event)" *ngIf="isTopicListVisible()" formControlName="topic">
         <mat-option *ngFor="let topic of topics" [value]="topic">{{ topic }}</mat-option>
       </mat-select>
     </mat-form-field>
@@ -21,7 +17,7 @@
     <!-- Score on top right -->
     <mat-form-field class="score-field">
       <mat-label>Score</mat-label>
-      <input matInput type="number" formControlName="score" placeholder="Enter" />
+      <input formControlName="score" matInput placeholder="Enter" type="number"/>
       <mat-error *ngIf="questionForm.get('score')?.invalid && questionForm.get('score')?.touched">
         Please enter a valid score.
       </mat-error>
@@ -29,7 +25,7 @@
 
     <!-- Question text area in the center -->
     <mat-form-field class="question-text-field">
-      <textarea matInput placeholder="Enter your question here*" formControlName="text"></textarea>
+      <textarea formControlName="text" matInput placeholder="Enter your question here*"></textarea>
       <mat-error *ngIf="questionForm.get('text')?.invalid && questionForm.get('text')?.touched">
         Question text is required.
       </mat-error>
@@ -39,18 +35,20 @@
     <div formArrayName="answers">
       <div *ngFor="let answer of answers.controls; let i = index" class="answer-container">
         <mat-form-field>
-          <input matInput placeholder="Answer {{ i + 1 }}" [formControl]="answer.get('text')" />
+          <input [formControl]="answer.get('text')" matInput placeholder="Answer {{ i + 1 }}"/>
         </mat-form-field>
 
-        <mat-checkbox [formControl]="answer.get('isCorrect')" (click)="checkCorrectAnswers()">Correct Answer</mat-checkbox>
+        <mat-checkbox (click)="checkCorrectAnswers()" [formControl]="answer.get('isCorrect')">Correct Answer
+        </mat-checkbox>
 
-        <button mat-icon-button type="button" (click)="removeAnswer(i)">
+        <button (click)="removeAnswer(i)" mat-icon-button type="button">
           <mat-icon>clear</mat-icon>
         </button>
       </div>
 
       <div *ngIf="showDeleteErrorMessage" class="error-message">
-        At least two answers are required.</div>
+        At least two answers are required.
+      </div>
       <div *ngIf="!showDeleteErrorMessage" class="error-message"></div>
     </div>
 
@@ -61,8 +59,8 @@
     <div *ngIf="hasCorrectAnswer" class="error-correct-message"></div>
 
     <div class="button-container">
-      <button mat-raised-button color="primary" type="button" (click)="addAnswer()">Add Answer</button>
-      <button mat-raised-button color="accent" type="button" (click)="submitQuestion()">Submit Question</button>
+      <button (click)="addAnswer()" color="primary" mat-raised-button type="button">Add Answer</button>
+      <button (click)="submitQuestion()" color="accent" mat-raised-button type="button">Submit Question</button>
     </div>
   </form>
 </div>

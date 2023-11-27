@@ -1,6 +1,6 @@
-import { Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {end} from "@popperjs/core";
-import { AuthService } from '../auth.service';
+import {AuthService} from '../auth.service';
 
 
 @Component({
@@ -10,15 +10,15 @@ import { AuthService } from '../auth.service';
 })
 export class TeacherDashboardComponent {
   $NewExam: any = "New Exam";
+  isChildVisible: boolean = false;
   protected readonly end = end;
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {
+  }
 
   logout() {
     this.authService.logout();
   }
-
-  isChildVisible: boolean = false;
 
   showChildComponent() {
     this.isChildVisible = true;

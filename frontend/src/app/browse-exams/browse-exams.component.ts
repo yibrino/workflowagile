@@ -11,25 +11,32 @@ import { Question } from '../question-creation/question.model';
 })
 export class BrowseExamsComponent {
 
-  constructor(private examService: ExamService, private modalService: NgbModal) {}
-
   exams: Exam[] = []
   selected_exam?: Exam;
 
+  constructor(private examService: ExamService, private modalService: NgbModal) {
+  }
+
   ngOnInit() {
-    this.examService.getExams().subscribe((exams:Exam[]) => {
+    this.examService.getExams().subscribe((exams: Exam[]) => {
       this.exams = exams;
     })
   }
 
   openExamModal(content: any, exam_id: number) {
-    this.examService.getExam(exam_id).subscribe((exam:Exam) => {
+    this.examService.getExam(exam_id).subscribe((exam: Exam) => {
       this.selected_exam = exam;
-      this.modalService.open(content, { scrollable: true, size: 'lg' })
+      this.modalService.open(content, {scrollable: true, size: 'lg'});
     })
   }
 
-  activateExam(event : Event) {
+  getExam(exam_id: number) {
+    this.examService.getExam(exam_id).subscribe((exam: Exam) => {
+      this.selected_exam = exam;
+    })
+  }
+
+  activateExam(event: Event) {
     event.stopPropagation();
   }
 

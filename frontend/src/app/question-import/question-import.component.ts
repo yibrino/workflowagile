@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import * as XLSX from 'xlsx';
-import { QuestionService } from "../question-creation/question.service";
-import { Answer, Question } from "../question-creation/question.model";
-import { AlertService } from "../alert.service";
+import {QuestionService} from "../question-creation/question.service";
+import {Answer, Question} from "../question-creation/question.model";
+import {AlertService} from "../alert.service";
 
 @Component({
   selector: 'app-question-import',
@@ -16,7 +16,8 @@ export class QuestionImportComponent {
   questions: Question[] = []
 
 
-  constructor(private questionService: QuestionService, private alertService: AlertService) {}
+  constructor(private questionService: QuestionService, private alertService: AlertService) {
+  }
 
   onFileChange(event: any) {
     const selectedFile = event.target.files[0];
@@ -26,7 +27,7 @@ export class QuestionImportComponent {
 
       fileReader.onload = (event: any) => {
         const fileData = event.target.result;
-        const workbook = XLSX.read(fileData, { type: 'binary' });
+        const workbook = XLSX.read(fileData, {type: 'binary'});
         const sheetName = workbook.SheetNames[0];
         const sheet = workbook.Sheets[sheetName];
 
@@ -82,7 +83,7 @@ export class QuestionImportComponent {
       options.forEach((option: string, index: number) => {
         const answer: Answer = {
           text: option.trim(),
-          correct: correctAnswerIndices.has(index+1),
+          correct: correctAnswerIndices.has(index + 1),
           latest_version: true
         }
         question.answers.push(answer)

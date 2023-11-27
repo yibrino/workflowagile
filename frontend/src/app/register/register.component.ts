@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControlOptions, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from '../auth.service';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, FormControlOptions, FormGroup, Validators} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {AuthService} from '../auth.service';
+
 //import { AlertService } from '../alert.service';
 
 @Component({
@@ -9,21 +10,23 @@ import { AuthService } from '../auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   form?: FormGroup;
+  submit_clicked: boolean = false;
 
-  constructor(private formBuilder : FormBuilder, private authService : AuthService,
-    private modalService: NgbModal) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService,
+              private modalService: NgbModal) {
+  }
 
-  ngOnInit() : void {
+  ngOnInit(): void {
     this.form = this.formBuilder.group({
-      first_name : ['',[ Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      last_name : ['', [Validators.required, Validators.minLength(3),  Validators.maxLength(20)]],
-      email : ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), this.passwordStrengthValidator]],
+      first_name: ['', [Validators.required, Validators.minLength(3)]],
+      last_name: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(8), this.passwordStrengthValidator]],
       repeat_password: ['', Validators.required],
-    }, { validator: this.passwordMatchValidator } as FormControlOptions);
+    }, {validator: this.passwordMatchValidator} as FormControlOptions);
   }
 
   passwordMatchValidator(control: AbstractControl) {
@@ -31,14 +34,13 @@ export class RegisterComponent {
     const confirmPassword = control.get('repeat_password')?.value;
 
     if (password !== confirmPassword) {
-      control.get('repeat_password')?.setErrors({ passwordMismatch: true });
+      control.get('repeat_password')?.setErrors({passwordMismatch: true});
     } else {
       control.get('repeat_password')?.setErrors(null);
     }
   }
 
-  submit_clicked:boolean = false;
-  submit() : void {
+  submit(): void {
     // console.log(this.form!.getRawValue())
     if (this.form?.valid) {
       // Form is valid, perform login logic here
@@ -61,7 +63,7 @@ export class RegisterComponent {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=|;:,.?/]).+$/;
 
     if (!passwordPattern.test(control.value)) {
-      return { weakPassword: true };
+      return {weakPassword: true};
     }
 
     return null;

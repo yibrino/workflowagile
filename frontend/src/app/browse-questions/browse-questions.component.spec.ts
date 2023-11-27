@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BrowseQuestionsComponent } from './browse-questions.component';
+import {BrowseQuestionsComponent} from './browse-questions.component';
 
 describe('BrowseQuestionsComponent', () => {
   let component: BrowseQuestionsComponent;

@@ -5,14 +5,105 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c790ef8-1a20-40e7-9832-c7c2097b6459" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a/storage_v2/_src_/database/exam_net.fWl1cw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a/storage_v2/_src_/database/exam_net.fWl1cw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/migrations/0002_alter_activeexam_exam.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/migrations/0002_alter_activeexam_exam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/migrations/0003_alter_activeexam_exam.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/migrations/0003_alter_activeexam_exam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0002_question_topic.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0002_question_topic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0003_answer_latest_version_question_latest_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0003_answer_latest_version_question_latest_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/utils/xslxtojson.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/utils/xslxtojson.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/exam/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/exam/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/questions/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/questions/test_integration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/questions/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/questions/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/user/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/user/test_integration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/user/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/user/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/migrations/0002_alter_teacher_date_joined.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/migrations/0002_alter_teacher_date_joined.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/.vscode/extensions.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/.vscode/extensions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/alert.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/alert.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/alert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/alert.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/auth.guard.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/auth.guard.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/auth.service.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/auth.service.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-exams/browse-exams.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/browse-questions/browse-questions.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/contact/contact.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/contact/contact.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/contact/contact.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/contact/contact.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/exam-lists/exam-lists.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/exam-lists/exam-lists.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/exam-lists/exam-lists.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/exam-lists/exam-lists.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/header/header.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/header/header.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/header/header.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/header/header.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/home-page/home-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/layout/layout.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/layout/layout.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/layout/layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/layout/layout.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/login/login.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/login/login.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/login/login.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/login/login.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/not-found/not-found.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/not-found/not-found.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/not-found/not-found.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/not-found/not-found.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/profile/profile.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-creation/question-creation.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-creation/question.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-creation/question.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-creation/question.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-creation/question.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-import/question-import.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-import/question-import.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-import/question-import.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-import/question-import.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/question-import/question-import.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/question-import/question-import.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/register/register.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/register/register.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/register/register.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/register/register.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/services/exam.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/services/exam.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/services/item.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/services/item.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/teacher-dashboard/teacher-dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/token.interceptor.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/token.interceptor.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/token.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/token.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,7 +150,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;first-sprint&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;exam-model&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/pietro/Documents/exam_net/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -186,6 +277,10 @@
       <workItem from="1699907875506" duration="1721000" />
       <workItem from="1699978264883" duration="3165000" />
       <workItem from="1700066601981" duration="364000" />
+      <workItem from="1701015009757" duration="2794000" />
+      <workItem from="1701072381273" duration="2184000" />
+      <workItem from="1701104971606" duration="3146000" />
+      <workItem from="1701114976142" duration="2529000" />
     </task>
     <servers />
   </component>
@@ -222,8 +317,9 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/backend$Test__tests_questions.coverage" NAME="Test: tests.questions Coverage Results" MODIFIED="1700760210779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/backend$Test__questions_tests_test_integration_QuestionIntegrationTest.coverage" NAME="Test: questions.tests.test_integration.QuestionIntegrationTest Coverage Results" MODIFIED="1700234460592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/backend$Test__user_tests.coverage" NAME="Test: user.tests Coverage Results" MODIFIED="1700234091193" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/backend$Test__questions_tests.coverage" NAME="Test: questions.tests Coverage Results" MODIFIED="1700310212289" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/backend$Test__questions_tests.coverage" NAME="Test: questions.tests Coverage Results" MODIFIED="1700759936382" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

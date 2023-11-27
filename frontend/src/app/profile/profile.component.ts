@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { Teacher } from '../models';
-import { AbstractControl, FormBuilder, FormControlOptions, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { AlertService } from '../alert.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {Component} from '@angular/core';
+import {Teacher} from '../models';
+import {AbstractControl, FormBuilder, FormControlOptions, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../auth.service';
+import {AlertService} from '../alert.service';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
@@ -12,26 +12,28 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProfileComponent {
 
-  constructor(private alertService: AlertService,  private formBuilder : FormBuilder, 
-    private authService : AuthService, private modal: NgbModal) {}
-
   form: FormGroup = this.formBuilder.group({
-    first_name : ['',[ Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-    last_name : ['', [Validators.required, Validators.minLength(3),Validators.maxLength(20)]],
+    first_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    last_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), this.passwordStrengthValidator]],
     repeat_password: ['', Validators.required],
-  }, { validator: this.passwordMatchValidator } as FormControlOptions);
-  
+  }, {validator: this.passwordMatchValidator} as FormControlOptions);
   teacher?: Teacher
+  submit_clicked: boolean = false;
+
+  constructor(private alertService: AlertService, private formBuilder: FormBuilder,
+              private authService: AuthService, private modal: NgbModal) {
+  }
+
   ngOnInit() {
     this.authService.getUserData().subscribe({
-      next : (data : Teacher) =>  {
+      next: (data: Teacher) => {
         this.teacher = data;
         this.setIntialFormValues(this.teacher);
       },
-      error : (e) => {
-       this.alertService.showErrorAlert("Error loading profile","Close",5000);
+      error: (e) => {
+        this.alertService.showErrorAlert("Error loading profile", "Close", 5000);
       }
     })
   }
@@ -49,26 +51,25 @@ export class ProfileComponent {
     const confirmPassword = control.get('repeat_password')?.value;
 
     if (password !== confirmPassword) {
-      control.get('repeat_password')?.setErrors({ passwordMismatch: true });
+      control.get('repeat_password')?.setErrors({passwordMismatch: true});
     } else {
       control.get('repeat_password')?.setErrors(null);
     }
   }
 
-  submit_clicked:boolean = false;
   submit() {
     if (this.form?.valid) {
       this.authService.updateUser(this.form.getRawValue()).subscribe({
-        next : (data: Teacher) => {
+        next: (data: Teacher) => {
           this.teacher = data;
           this.form.reset();
           this.submit_clicked = false;
           this.setIntialFormValues(this.teacher);
-          this.alertService.showSuccessAlert("Profile updated successfully","Close",3000);
+          this.alertService.showSuccessAlert("Profile updated successfully", "Close", 3000);
         },
-        error : (e) => {
-          this.submit_clicked=true;
-          this.alertService.showErrorAlert("Error updating profile","Close",5000);
+        error: (e) => {
+          this.submit_clicked = true;
+          this.alertService.showErrorAlert("Error updating profile", "Close", 5000);
         }
       })
     } else {
@@ -81,13 +82,13 @@ export class ProfileComponent {
     const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=|;:,.?/]).+$/;
 
     if (!passwordPattern.test(control.value)) {
-      return { weakPassword: true };
+      return {weakPassword: true};
     }
 
     return null;
   }
-  
-  openDeleteModal(deleteModal:any) {
+
+  openDeleteModal(deleteModal: any) {
     const modalRef = this.modal.open(deleteModal).result.then(() => {
       this.deleteAccount();
     });
@@ -95,12 +96,12 @@ export class ProfileComponent {
 
   deleteAccount() {
     this.authService.deleteUser().subscribe({
-      next : (data: any) => {
+      next: (data: any) => {
         this.authService.logoutAfterDeleteAccount();
-        this.alertService.showSuccessAlert("Account deleted successfully","Close",3000);
+        this.alertService.showSuccessAlert("Account deleted successfully", "Close", 3000);
       },
-      error : () => {
-        this.alertService.showErrorAlert("Error deleting account","Close",5000);
+      error: () => {
+        this.alertService.showErrorAlert("Error deleting account", "Close", 5000);
       }
     })
   }

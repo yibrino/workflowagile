@@ -1,6 +1,8 @@
 from django.db import models
+
 from questions.models import Question
 from user.models import Teacher
+
 
 class Exam(models.Model):
     exam_id = models.BigAutoField(primary_key=True)
@@ -9,14 +11,16 @@ class Exam(models.Model):
     description = models.TextField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     questions = models.ManyToManyField(Question, related_name='exams')
-    
+
+
 class ActiveExam(models.Model):
     active_exam_id = models.BigAutoField(primary_key=True)
     exam = models.OneToOneField(Exam, on_delete=models.CASCADE, unique=True)
     activated_at = models.DateTimeField(auto_now_add=True)
     duration = models.IntegerField()
     token = models.CharField(max_length=15)
-    
+
+
 """class PastExam(models.Model):
     past_exam_id = models.BigAutoField(primary_key=True)
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)

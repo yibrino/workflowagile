@@ -4,11 +4,11 @@
 
     <!-- Question text area in the center -->
     <div class="upload-field">
-      <input  type="file" placeholder="Browse file" (change)="onFileChange($event)"/>
+      <input (change)="onFileChange($event)" placeholder="Browse file" type="file"/>
     </div>
 
     <div class="button-container">
-      <button mat-raised-button color="accent" type="button" (click)="onSubmit()">Submit Question</button>
+      <button (click)="onSubmit()" color="accent" mat-raised-button type="button">Submit Question</button>
     </div>
   </form>
 </div>
