@@ -22,11 +22,8 @@ class QuestionViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
-        questions = self.get_queryset()
-        serializer = self.get_serializer(questions, many=True)
-        for question, data in zip(questions, serializer.data):
-            data['answers'] = AnswerSerializer(question.answer_set.all(), many=True).data
-
+        queryset = Question.objects.filter(teacher=request.user)
+        serializer = QuestionWithAnswersSerializer(queryset,many=True)
         return Response(serializer.data)
 
     @staticmethod

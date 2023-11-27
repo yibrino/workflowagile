@@ -1,5 +1,5 @@
 from exam.models import ActiveExam, Exam
-from questions.serializers import QuestionSerializer
+from questions.serializers import QuestionSerializer, QuestionWithAnswersSerializer
 from rest_framework import serializers
 
 class ExamSerializer(serializers.ModelSerializer):
@@ -13,7 +13,7 @@ class ExamSerializer(serializers.ModelSerializer):
         return active_exam != None
 
 class ExamDetailSerializer(serializers.ModelSerializer):
-    questions = QuestionSerializer(many=True, read_only=True)
+    questions = QuestionWithAnswersSerializer(many=True, read_only=True)
     class Meta:
         model = Exam
         fields = ['exam_id', 'title', 'description', 'created_at', 'questions']
