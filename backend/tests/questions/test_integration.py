@@ -16,7 +16,7 @@ class QuestionIntegrationTest(APITestCase):
             password='password1A_'
         )
         self.client.force_authenticate(user=self.user)
-
+    
     def test_list_questions(self):
         url = reverse('question-list')
         response = self.client.get(url)
@@ -53,6 +53,7 @@ class QuestionIntegrationTest(APITestCase):
 
     def test_import_json(self):
         teacher = Teacher.objects.create(first_name="John", last_name="Doe", email="john@example.com")
+
 
         data = [
             {

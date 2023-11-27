@@ -12,19 +12,19 @@
 }
 
 .score-field {
-  width: 20%;
+  width: 20%; 
   float: inline-end;
   margin-bottom: 30px;
 }
 
 .spacer {
-  width: 80%;
+  width: 80%; 
   float: right;
 }
 
 .topic-field {
   width: 48%;
-  height: 12%;
+  height:12%;
   float: inline-start;
 }
 

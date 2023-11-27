@@ -1,10 +1,9 @@
 from unittest.mock import Mock, patch
-
 import pytest
 from django.core.exceptions import ValidationError
 from mixer.backend.django import mixer
-
 from user.authenticate import CustomAuthentication
+
 from user.models import Teacher
 from user.serializers import TeacherSerializer
 
@@ -171,7 +170,6 @@ def test_create_superuser_missing_password(superuser_data):
     with pytest.raises(ValueError, match='Superusers must have a password'):
         Teacher.objects.create_superuser(**superuser_data)
 
-
 @pytest.mark.django_db
 def test_custom_authentication():
     request = Mock()
@@ -189,7 +187,6 @@ def test_custom_authentication():
             custom_auth.authenticate(request)
             get_validated_token_mock.assert_called_once_with(raw_token)
             get_user_mock.assert_called_once_with(validated_token)
-
 
 @pytest.mark.django_db
 def test_custom_authentication_no_token():

@@ -1,7 +1,7 @@
 // src/app/browse-questions/browse-questions.component.ts
 
-import {Component, OnInit} from '@angular/core';
-import {ItemService} from '../services/item.service';
+import { Component, OnInit } from '@angular/core';
+import { ItemService } from '../services/item.service';
 
 interface Answer {
   answer_id: number;
@@ -35,8 +35,7 @@ export class BrowseQuestionsComponent implements OnInit {
   questionsGroupedByTopic: QuestionGroup[] = [];
   showChoices: { [topic: string]: boolean[] } = {};
   showQuestions: boolean = false; // Set to false by default
-  constructor(private itemService: ItemService) {
-  }
+  constructor(private itemService: ItemService) {}
 
   ngOnInit() {
     this.itemService.getQuestions().subscribe((data) => {

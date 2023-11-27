@@ -1,20 +1,17 @@
-# serializers.py
 from rest_framework import serializers
 
 from .models import Question, Answer
-
-
+# serializers.py
+from rest_framework import serializers
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = '__all__'
 
-
 class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
         fields = ['answer_id', 'text', 'created_at', 'correct']
-
 
 class QuestionWithAnswersSerializer(serializers.ModelSerializer):
     answers = AnswerSerializer(many=True, read_only=True)

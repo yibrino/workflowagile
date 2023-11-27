@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {AuthService} from '../auth.service';
+import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -9,17 +9,16 @@ import {AuthService} from '../auth.service';
 })
 export class HomePageComponent {
 
-  constructor(private modalService: NgbModal, private authService: AuthService) {
-  }
+  constructor(private modalService: NgbModal, private authService: AuthService) {}
 
-  open(content: any, content1: any) {
-    this.modalService.open(content, {centered: true}).dismissed.subscribe(reason => {
+  open(content : any, content1 : any) {
+		this.modalService.open(content, { centered: true  }).dismissed.subscribe(reason => {
       if (reason == 10) {
-        this.open(content1, content);
+        this.open(content1,content);
       }
     })
-  }
-
+	}
+   
   ngOnDestroy(): void {
     this.modalService.dismissAll();
   }

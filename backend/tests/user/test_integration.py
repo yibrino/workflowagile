@@ -3,9 +3,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 from rest_framework_simplejwt.tokens import RefreshToken
-
 from user.models import Teacher
-
 
 class RegisterViewTests(APITestCase):
     def setUp(self):
@@ -86,7 +84,6 @@ class LoginViewTests(APITestCase):
         self.assertNotIn('access', response.cookies.keys())
         self.assertNotIn('refresh', response.cookies.keys())
 
-
 class LogoutViewTests(APITestCase):
     def setUp(self):
         self.user = Teacher.objects.create_user(
@@ -103,7 +100,6 @@ class LogoutViewTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual("", response.cookies['access'].value)
         self.assertIn("", response.cookies['refresh'].value)
-
 
 class CookieTokenRefreshViewTests(APITestCase):
 
@@ -138,7 +134,6 @@ class CookieTokenRefreshViewTests(APITestCase):
         response = self.client.post(self.url)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(response.json()['detail'], 'No valid refresh token found in cookie')
-
 
 class TeacherViewTest(APITestCase):
 

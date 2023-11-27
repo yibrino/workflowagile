@@ -1,26 +1,26 @@
-import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {AlertService} from './alert.service';
-import {Teacher} from './models';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { AlertService } from './alert.service';
+import { Teacher } from './models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   readonly apiUrl = 'http://localhost:8000';
-  private logging = new BehaviorSubject<boolean>(false);
-  logged = this.logging.asObservable();
 
   constructor(
     private http: HttpClient,
     private router: Router,
     private modalService: NgbModal,
     private alert: AlertService
-  ) {
-  }
+  ) {}
+
+  private logging = new BehaviorSubject<boolean>(false);
+  logged = this.logging.asObservable();
 
   setData(logged: boolean) {
     if (logged) {
@@ -81,7 +81,7 @@ export class AuthService {
 
   logout() {
     this.http
-      .post(this.apiUrl + '/logout', null, {withCredentials: true})
+      .post(this.apiUrl + '/logout', null, { withCredentials: true })
       .subscribe({
         next: (response) => {
           this.setData(false);
@@ -96,7 +96,7 @@ export class AuthService {
 
   logoutAfterDeleteAccount() {
     this.router.navigate(['/home-page']);
-    this.setData(false);
+    this.setData(false);    
   }
 
   refreshToken(): Observable<any> {

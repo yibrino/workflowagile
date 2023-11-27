@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {BrowseExamsComponent} from './browse-exams.component';
+import { BrowseExamsComponent } from './browse-exams.component';
 
 describe('BrowseExamsComponent', () => {
   let component: BrowseExamsComponent;
@@ -8,9 +8,9 @@ describe('BrowseExamsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BrowseExamsComponent]
+      declarations: [ BrowseExamsComponent ]
     })
-      .compileComponents();
+    .compileComponents();
 
     fixture = TestBed.createComponent(BrowseExamsComponent);
     component = fixture.componentInstance;

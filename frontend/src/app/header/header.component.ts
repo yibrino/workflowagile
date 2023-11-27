@@ -1,5 +1,12 @@
 // src/app/header/header.component.ts
-import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild,} from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnInit,
+  Renderer2,
+  ViewChild,
+} from '@angular/core';
 
 interface MenuItem {
   label: string;
@@ -47,14 +54,12 @@ export class HeaderComponent implements OnInit {
     },
   ];
 
-  @ViewChild('headerRef', {static: true}) headerRef!: ElementRef;
-  @ViewChild('menuRef', {static: true}) menuRef!: ElementRef;
+  @ViewChild('headerRef', { static: true }) headerRef!: ElementRef;
+  @ViewChild('menuRef', { static: true }) menuRef!: ElementRef;
 
-  constructor(private renderer: Renderer2) {
-  }
+  constructor(private renderer: Renderer2) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   @HostListener('window:scroll', [])
   onWindowScroll() {

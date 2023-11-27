@@ -73,7 +73,6 @@
   color: green;
   font-size: 16px;
 }
-
 /* src/app/browse-questions/browse-questions.component.css */
 
 .question-group {
@@ -126,7 +125,6 @@
 .choice-text {
   font-weight: bold;
 }
-
 /* src/app/browse-questions/browse-questions.component.css */
 
 .browse-button-container {

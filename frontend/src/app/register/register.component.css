@@ -56,11 +56,11 @@
   margin-top: 15px;
 }
 
-.sign-in {
+.sign-in{
   font-weight: bold;
 }
 
-.sign-in:hover {
+.sign-in:hover{
   text-decoration: underline;
   cursor: pointer;
 }

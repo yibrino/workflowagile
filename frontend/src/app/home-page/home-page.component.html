@@ -1,81 +1,73 @@
 <div class="container-fluid page">
-  <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand logo" href="#">
-      <h3>Exam</h3>
-    </a>
-
-    <button aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
-            data-target="#navbarNav" data-toggle="collapse" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <div class="navbar-nav ml-lg-2">
-        <button (click)="open(login,register)" class="btn btn-light sign-in-btn">Sign in</button>
-        <button (click)="open(register,login)" class="btn btn-dark sign-up-btn">Sign up</button>
-      </div>
-    </div>
-  </nav>
-  <div class="pg">
-    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">Online tests</h1>
-        <p class="col-md-8 fs-4">Vestibulum rhoncus sed elit sed condimentum.
-          Donec venenatis ut velit eget auctor. Aenean at enim eu nulla ullamcorper posuere ut in libero.
-          Phasellus consectetur malesuada aliquam.</p>
-        <button class="btn btn-warning btn-lg" type="button">Example button</button>
-      </div>
-    </div>
-    <div class="cnt">
-      <div class="row">
-        <div class="col-sm-6 mb-3 mb-sm-0">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Lorem ipsum dolor</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a felis quis ex pulvinar sagittis quis ut
-                urna.
-                Maecenas lacinia turpis non condimentum feugiat. Suspendisse a dolor at sapien aliquam mollis.
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-              </p>
-              <a class="btn btn-outline-dark" href="#">Go somewhere</a>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand logo" href="#">
+            <h3>Exam</h3>
+        </a>
+        <div class="row">
+            <div class="d-flex">
+                <button class="btn btn-light sign-in-btn" (click)="open(login,register)">Sign in</button>
+                <button class="btn btn-dark sign-up-btn" (click)="open(register,login)">Sign up</button>
             </div>
-          </div>
         </div>
-        <div class="col-sm-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Lorem ipsum dolor</h5>
-              <p class="card-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a felis quis ex pulvinar sagittis quis ut
-                urna.
-                Maecenas lacinia turpis non condimentum feugiat. Suspendisse a dolor at sapien aliquam mollis.
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-              </p>
-              <a class="btn btn-outline-warning" href="#">Go somewhere</a>
+    </nav>
+    <div class="pg">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Online tests</h1>
+            <p class="col-md-8 fs-4">Vestibulum rhoncus sed elit sed condimentum. 
+                Donec venenatis ut velit eget auctor. Aenean at enim eu nulla ullamcorper posuere ut in libero. 
+                Phasellus consectetur malesuada aliquam.</p>
+            <button class="btn btn-warning btn-lg" type="button">Example button</button>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="cnt">
-      </div>
-      <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-          <li class="nav-item"><a class="nav-link px-2 text-body-secondary">Home</a></li>
-          <li class="nav-item"><a class="nav-link px-2 text-body-secondary">Other</a></li>
-          <li class="nav-item"><a class="nav-link px-2 text-body-secondary">About</a></li>
-        </ul>
-        <p class="text-center text-body-secondary">© 2023 Exam, Inc</p>
-      </footer>
+        <div class="cnt">
+            <div class="row">
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Lorem ipsum dolor</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a felis quis ex pulvinar sagittis quis ut urna. 
+                        Maecenas lacinia turpis non condimentum feugiat. Suspendisse a dolor at sapien aliquam mollis. 
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                      </p>
+                      <a href="#" class="btn btn-outline-dark">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Lorem ipsum dolor</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a felis quis ex pulvinar sagittis quis ut urna. 
+                        Maecenas lacinia turpis non condimentum feugiat. Suspendisse a dolor at sapien aliquam mollis. 
+                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                      </p>
+                      <a href="#" class="btn btn-outline-warning">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cnt">
+              </div>
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+              <li class="nav-item"><a class="nav-link px-2 text-body-secondary">Home</a></li>
+              <li class="nav-item"><a class="nav-link px-2 text-body-secondary">Other</a></li>
+              <li class="nav-item"><a class="nav-link px-2 text-body-secondary">About</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2023 Exam, Inc</p>
+          </footer>
     </div>
-  </div>
+</div>
 
-  <ng-template #login class="temp" let-modal>
+<ng-template #login let-modal class="temp">
     <div (click)="modal.dismiss('Cross click')" class="exit"><i class="bi bi-x"></i></div>
     <app-login></app-login>
-  </ng-template>
+</ng-template>
 
-  <ng-template #register class="temp" let-modal>
+<ng-template #register let-modal class="temp">
     <div (click)="modal.dismiss('Cross click')" class="exit"><i class="bi bi-x"></i></div>
     <app-register></app-register>
-  </ng-template>
+</ng-template>
