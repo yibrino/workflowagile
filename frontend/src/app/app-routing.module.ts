@@ -11,6 +11,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from "./question-import/question-import.component";
 import { ProfileComponent } from './profile/profile.component';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
+import {AutoExamCreationComponent} from "./auto-exam-creation/auto-exam-creation.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'question-creation', component: QuestionCreationComponent },
       { path: 'browse-exams', component: BrowseExamsComponent },
+      { path: 'auto-exam-creation', component: AutoExamCreationComponent },
       {path: "", redirectTo:"question-creation", pathMatch:"full"},
     ]
   },
