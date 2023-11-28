@@ -32,7 +32,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 import { FormsModule } from '@angular/forms';
-import {MatExpansionModule} from '@angular/material/expansion'; 
+import {MatExpansionModule} from '@angular/material/expansion';
+import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     NotFoundComponent,
     QuestionImportComponent,
     ProfileComponent,
-    BrowseExamsComponent
+    BrowseExamsComponent,
+    AutoExamCreationComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatIconModule,
     MatTabsModule,
     FormsModule,
-     MatExpansionModule
+    MatExpansionModule,
+    MatAutocompleteModule
   ],
   providers: [
     {

@@ -1,0 +1,27 @@
+<div class="container">
+  <form [formGroup]="examForm!" (ngSubmit)="generateExam()" class="example-form">
+    <div formArrayName="rows">
+      <div *ngFor="let row of rows.controls; let i = index" [formGroupName]="i" class="row-container">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Topic" formControlName="topic" [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of dropdownOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" style="margin-left: 10px;">
+          <input matInput type="number" placeholder="Number of Questions" formControlName="num_questions">
+        </mat-form-field>
+
+        <button mat-flat-button type="button" color="warn" style="margin-left: 10px;" (click)="removeRow(i)">Remove</button>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px;">
+      <button mat-raised-button type="button" style="margin-right: 10px;" (click)="addRow()">Add Row</button>
+      <button mat-raised-button color="primary" type="submit">Generate Exam</button>
+    </div>
+  </form>
+</div>
