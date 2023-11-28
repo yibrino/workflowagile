@@ -89,6 +89,10 @@
                     <ul class="answers-list">
                       <li *ngFor="let answer of question.answers;let i = index" class="answer-item">
                         {{i+1}}. {{ answer.text }}
+                        <span [ngClass]="{'text-success': answer.correct, 'text-danger': !answer.correct}">
+                          <i *ngIf="answer.correct" class="bi bi-check"></i>
+                          <i *ngIf="!answer.correct" class="bi bi-x"></i>
+                        </span>
                       </li>
                     </ul>
                   </div>

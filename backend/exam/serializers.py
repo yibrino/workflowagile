@@ -19,6 +19,13 @@ class ExamDetailSerializer(serializers.ModelSerializer):
         fields = ['exam_id', 'title', 'description', 'created_at', 'questions']
         
 class ActiveExamSerializer(serializers.ModelSerializer):
+    duration = serializers.SerializerMethodField()
     class Meta:
         model = ActiveExam
-        fields = ['active_exam_id', 'exam', 'activated_at', 'duration', 'token']
+        fields = ['active_exam_id', 'exam', 'activated_at', 'start_date', 'end_date', 'token', 'duration']
+    
+    def get_duration(self, obj):
+        if obj.start_date and obj.end_date:
+            return (obj.end_date - obj.start_date).total_seconds()
+        else:
+            return None
