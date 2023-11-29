@@ -1,11 +1,11 @@
 <div class="container-fluid">
     <div class="button-container">
-        <button class="btn btn-outline-dark create-exam">Create exam</button>
+        <button class="btn btn-outline-dark create-exam" routerLink="/dashboard/create-exam">Create exam</button>
     </div>
     <hr>
     <div class="container-fluid">
         <mat-tab-group dynamicHeight animationDuration="800ms">
-            <mat-tab label="Saved exams">        
+            <mat-tab label="Saved exams">
                 <div class="row">
                 <div *ngFor="let exam of exams" class="col col-auto">
                     <div class="card border-dark mb-3"  (click)="openExamModal(examModal,exam.exam_id)">
@@ -15,11 +15,11 @@
                             <button *ngIf="!exam.is_active" class="btn btn-outline-success" (click)="activateExam($event)">Activate Exam</button>
                             <button *ngIf="exam.is_active" class="btn btn-outline-success" disabled (click)="activateExam($event)">   Active   </button>
                         </div>
-                    </div> 
+                    </div>
                 </div>
-            </div>  
+            </div>
         </mat-tab>
-        <mat-tab label="Active exams">        
+        <mat-tab label="Active exams">
             <div class="row">
             <div *ngFor="let exam of exams" class="col col-auto">
                 <div class="card border-dark mb-3"  (click)="openExamModal(examModal,exam.exam_id)">
@@ -29,9 +29,9 @@
                         <button *ngIf="!exam.is_active" class="btn btn-outline-success" (click)="activateExam($event)">Activate Exam</button>
                         <button *ngIf="exam.is_active" class="btn btn-outline-success" disabled (click)="activateExam($event)">   Active   </button>
                     </div>
-                </div> 
+                </div>
             </div>
-        </div>  
+        </div>
     </mat-tab>
             <mat-tab label="Past exams">
                 <div class="row">
@@ -42,7 +42,7 @@
                                 <p class="card-text">This is a description of the exam. It can contain more details and instructions to guide the students.</p>
                                 <a href="#" class="btn btn-outline-success">Activate Exam</a>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                     <div class="col col-auto">
                         <div class="card border-dark mb-3" style="max-width: 18rem;">
@@ -51,9 +51,9 @@
                                 <p class="card-text">This is a description of the exam. It can contain more details and instructions to guide the students.</p>
                                 <a href="#" class="btn btn-outline-success">Activate Exam</a>
                             </div>
-                        </div> 
+                        </div>
                     </div>
-                </div>  
+                </div>
             </mat-tab>
           </mat-tab-group>
     </div>

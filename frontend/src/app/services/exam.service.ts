@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AlertService } from '../alert.service';
 import { Exam } from '../models';
+import * as http from "http";
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,11 @@ export class ExamService {
   getExam(exam_id : number) : Observable<Exam> {
     const url = `${this.apiUrl}/exams/${exam_id}/`;
     return this.http.get<Exam>(url, {withCredentials: true});
+  }
+
+  createExam(exam: Exam): Observable<Exam> {
+    const url = `${this.apiUrl}/exams/`
+    return this.http.post<Exam>(url, exam, {withCredentials: true})
   }
 
 }

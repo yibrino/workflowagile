@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="creation-container">
+    <div class="questions-container container">
+      <div *ngIf="questions">
+        <div class="container" *ngFor="let question of questions">
+          <div class="question included-{{checkIfIncluded(question)}}" (click)="onQuestionClickHandler(question)"><b>({{question.score}}) </b>{{question.text}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="exam-container container">
+      <form [formGroup]="examForm">
+        <mat-form-field class="title-field">
+          <mat-label for="title">Input Field:</mat-label>
+          <input matInput="" type="text" id="title" formControlName="title">
+          <mat-error *ngIf="examForm.get('title')?.invalid && examForm.get('title')?.touched">
+            Question text is required.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="description-field">
+          <mat-label for="description">Input Area:</mat-label>
+          <textarea matInput="" id="description" formControlName="description"></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="accent" type="button" (click)="submitExam()">Submit Question</button>
+      </form>
+
+      <div>Exampoints: {{calculatedScore}}</div>
+    </div>
+  </div>
+</div>
