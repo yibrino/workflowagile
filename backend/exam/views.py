@@ -37,15 +37,21 @@ class ExamViewSet(viewsets.ViewSet):
     def create_automatically(self, request):
         topics_questions = request.data["items"]
         questions = []
-        for (topic, num_questions) in topics_questions:
-            question_of_topic = Question.objects.all().filter(latest_version=True, topic=topic) \
+        for dictionary in topics_questions:
+            topic = dictionary['topic']
+            num_questions = dictionary['num_questions']
+            questions_of_topic = Question.objects.all().filter(latest_version=True, topic=topic) \
                                     .order_by('?')[:num_questions]
-            questions.extend(question_of_topic)
-        serializer = ExamSerializer(questions=questions)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+            for question in questions_of_topic:
+                questions.append(question.pk)
+        exam_serializer = ExamSerializer(
+            data={'teacher': request.user.pk, 'title': 'ciao', 'description': 'ciao',
+                  'questions': questions
+                  }
+        )
+        exam_serializer.is_valid(raise_exception=True)
+        exam_serializer.save()
+        return Response(status=201)
 
     """def update(self, request, pk=None):
         queryset = Exam.objects.get(pk=pk)
