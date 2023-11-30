@@ -38,6 +38,7 @@ export class AutoExamCreationComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.items = new Map<string, number>();
     this.questions_service.getTopics().subscribe(
       (data: String[]) => this.dropdownOptions = data
     );
@@ -62,14 +63,17 @@ export class AutoExamCreationComponent implements OnInit {
     if (this.examForm?.valid) {
       this.items?.clear();
 
-      const formRows = this.rows;
+      const formRows = this.rows.controls as FormGroup[];
       formRows.forEach((row: any) => {
         const topic = row.get('topic').value;
-        const number = +row.get('number').value;
+        const number = row.get('num_questions').value;
 
         this.items?.set(topic, number);
       });
-      this.auto_creation_service.createExam(this.items!!);
+      if (this.items) {
+        this.auto_creation_service.createExam(this.items);
+      }
+      this.examForm.reset();
     } else {
       console.error('Form is invalid');
     }

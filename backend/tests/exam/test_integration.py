@@ -1,11 +1,11 @@
-from django.contrib.auth.models import User
-from django.test import TestCase
 from django.urls import reverse
+from rest_framework import status
+from rest_framework.test import APITestCase
+
 from exam.models import Exam
 from exam.serializers import ExamDetailSerializer, ExamSerializer
-from rest_framework.test import APITestCase
-from rest_framework import status
 from user.models import Teacher
+
 
 class ExamViewSetAPITestCase(APITestCase):
     def setUp(self):
@@ -18,7 +18,6 @@ class ExamViewSetAPITestCase(APITestCase):
         self.client.force_authenticate(user=self.user)
         self.exam1 = Exam.objects.create(teacher=self.user, title='Exam 1', description='Description 1')
         self.exam2 = Exam.objects.create(teacher=self.user, title='Exam 2', description='Description 2')
-
 
     def test_list_exams(self):
         url = reverse('exam-list')

@@ -40,8 +40,10 @@ class ExamViewSet(viewsets.ViewSet):
         for dictionary in topics_questions:
             topic = dictionary['topic']
             num_questions = dictionary['num_questions']
-            questions_of_topic = Question.objects.all().filter(latest_version=True, topic=topic) \
-                                    .order_by('?')[:num_questions]
+            questions_of_topic = Question.objects.all().filter(
+                    latest_version=True, topic=topic
+                )\
+                .order_by('?')[:num_questions]
             for question in questions_of_topic:
                 questions.append(question.pk)
         exam_serializer = ExamSerializer(

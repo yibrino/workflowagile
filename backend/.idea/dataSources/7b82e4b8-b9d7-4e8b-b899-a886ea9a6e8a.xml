@@ -11,9 +11,9 @@
 13480||10|c|G
 13480||10|C|G
 13480||10|T|G</Grants>
-      <IntrospectionStateNumber>558</IntrospectionStateNumber>
+      <IntrospectionStateNumber>566</IntrospectionStateNumber>
       <ServerVersion>12.16</ServerVersion>
-      <StartupTime>1701105150</StartupTime>
+      <StartupTime>1701373393</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -1409,7 +1409,7 @@ false posixrules
 13181||10|C|G
 13181||-9223372036854775808|U|G
 13181||10|U|G</Grants>
-      <IntrospectionStateNumber>558</IntrospectionStateNumber>
+      <IntrospectionStateNumber>566</IntrospectionStateNumber>
       <ObjectId>16384</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -1418,13 +1418,34 @@ false posixrules
       <ObjectId>13481</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
-    <role id="4" parent="1" name="pg_signal_backend">
-      <ObjectId>4200</ObjectId>
+    <role id="4" parent="1" name="pg_execute_server_program">
+      <ObjectId>4571</ObjectId>
     </role>
-    <role id="5" parent="1" name="pg_read_server_files">
+    <role id="5" parent="1" name="pg_monitor">
+      <ObjectId>3373</ObjectId>
+      <RoleGrants>3374
+3375
+3377</RoleGrants>
+    </role>
+    <role id="6" parent="1" name="pg_read_all_settings">
+      <ObjectId>3374</ObjectId>
+    </role>
+    <role id="7" parent="1" name="pg_read_all_stats">
+      <ObjectId>3375</ObjectId>
+    </role>
+    <role id="8" parent="1" name="pg_read_server_files">
       <ObjectId>4569</ObjectId>
     </role>
-    <role id="6" parent="1" name="postgres">
+    <role id="9" parent="1" name="pg_signal_backend">
+      <ObjectId>4200</ObjectId>
+    </role>
+    <role id="10" parent="1" name="pg_stat_scan_tables">
+      <ObjectId>3377</ObjectId>
+    </role>
+    <role id="11" parent="1" name="pg_write_server_files">
+      <ObjectId>4570</ObjectId>
+    </role>
+    <role id="12" parent="1" name="postgres">
       <BypassRls>1</BypassRls>
       <CanLogin>1</CanLogin>
       <CreateDb>1</CreateDb>
@@ -1432,27 +1453,6 @@ false posixrules
       <ObjectId>10</ObjectId>
       <Replication>1</Replication>
       <SuperRole>1</SuperRole>
-    </role>
-    <role id="7" parent="1" name="pg_write_server_files">
-      <ObjectId>4570</ObjectId>
-    </role>
-    <role id="8" parent="1" name="pg_execute_server_program">
-      <ObjectId>4571</ObjectId>
-    </role>
-    <role id="9" parent="1" name="pg_read_all_stats">
-      <ObjectId>3375</ObjectId>
-    </role>
-    <role id="10" parent="1" name="pg_monitor">
-      <ObjectId>3373</ObjectId>
-      <RoleGrants>3374
-3375
-3377</RoleGrants>
-    </role>
-    <role id="11" parent="1" name="pg_read_all_settings">
-      <ObjectId>3374</ObjectId>
-    </role>
-    <role id="12" parent="1" name="pg_stat_scan_tables">
-      <ObjectId>3377</ObjectId>
     </role>
     <tablespace id="13" parent="1" name="pg_default">
       <ObjectId>1663</ObjectId>
@@ -4632,9 +4632,9 @@ false posixrules
     <schema id="245" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>558</IntrospectionStateNumber>
-      <IntrospectionTimestamp>2023-11-27.18:53:12.543</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-11-27.17:53:13</LocalIntrospectionTimestamp>
+      <IntrospectionStateNumber>566</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2023-11-30.21:48:43.138</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-11-30.20:48:44</LocalIntrospectionTimestamp>
       <ObjectId>2200</ObjectId>
       <StateNumber>276</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4682,7 +4682,7 @@ false posixrules
     <sequence id="251" parent="245" name="django_migrations_id_seq">
       <DasType>bigint|0s</DasType>
       <ObjectId>16385</ObjectId>
-      <SequenceIdentity>1(38)</SequenceIdentity>
+      <SequenceIdentity>1(37)</SequenceIdentity>
       <StartValue>1</StartValue>
       <StateNumber>488</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4692,29 +4692,29 @@ false posixrules
       <ObjectId>16579</ObjectId>
       <SequenceIdentity>1(1)</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="253" parent="245" name="exam_exam_exam_id_seq">
       <DasType>bigint|0s</DasType>
       <ObjectId>16562</ObjectId>
-      <SequenceIdentity>1(1)</SequenceIdentity>
+      <SequenceIdentity>1(2)</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="254" parent="245" name="exam_exam_questions_id_seq">
       <DasType>bigint|0s</DasType>
       <ObjectId>16572</ObjectId>
-      <SequenceIdentity>1(1)</SequenceIdentity>
+      <SequenceIdentity>1(2)</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="255" parent="245" name="questions_answer_answer_id_seq">
       <DasType>integer|0s</DasType>
       <ObjectId>16538</ObjectId>
-      <SequenceIdentity>1(1)</SequenceIdentity>
+      <SequenceIdentity>1(3)</SequenceIdentity>
       <StartValue>1</StartValue>
       <StateNumber>510</StateNumber>
       <OwnerName>postgres</OwnerName>
@@ -4722,25 +4722,25 @@ false posixrules
     <sequence id="256" parent="245" name="questions_question_question_id_seq">
       <DasType>integer|0s</DasType>
       <ObjectId>16528</ObjectId>
-      <SequenceIdentity>1(1)</SequenceIdentity>
+      <SequenceIdentity>1(2)</SequenceIdentity>
       <StartValue>1</StartValue>
       <StateNumber>510</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="257" parent="245" name="token_blacklist_blacklistedtoken_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>16634</ObjectId>
-      <SequenceIdentity>1(1)</SequenceIdentity>
+      <ObjectId>16623</ObjectId>
+      <SequenceIdentity>1(2)</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>528</StateNumber>
+      <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="258" parent="245" name="token_blacklist_outstandingtoken_id_seq">
       <DasType>bigint|0s</DasType>
-      <ObjectId>16641</ObjectId>
-      <SequenceIdentity>1(3)</SequenceIdentity>
+      <ObjectId>16630</ObjectId>
+      <SequenceIdentity>1(6)</SequenceIdentity>
       <StartValue>1</StartValue>
-      <StateNumber>528</StateNumber>
+      <StateNumber>527</StateNumber>
       <OwnerName>postgres</OwnerName>
     </sequence>
     <sequence id="259" parent="245" name="user_teacher_groups_id_seq">
@@ -4804,26 +4804,26 @@ false posixrules
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="268" parent="245" name="django_session">
-      <ObjectId>16624</ObjectId>
-      <StateNumber>518</StateNumber>
+      <ObjectId>16613</ObjectId>
+      <StateNumber>517</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="269" parent="245" name="exam_activeexam">
       <ObjectId>16581</ObjectId>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="270" parent="245" name="exam_exam">
       <ObjectId>16564</ObjectId>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="271" parent="245" name="exam_exam_questions">
       <ObjectId>16574</ObjectId>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -4840,14 +4840,14 @@ false posixrules
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="274" parent="245" name="token_blacklist_blacklistedtoken">
-      <ObjectId>16636</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16625</ObjectId>
+      <StateNumber>527</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
     <table id="275" parent="245" name="token_blacklist_outstandingtoken">
-      <ObjectId>16643</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16632</ObjectId>
+      <StateNumber>527</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>postgres</OwnerName>
     </table>
@@ -5308,29 +5308,29 @@ pg_catalog</CollationParentNames>
       <DasType>varchar(40)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>518</StateNumber>
+      <StateNumber>517</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="336" parent="268" name="session_data">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>518</StateNumber>
+      <StateNumber>517</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="337" parent="268" name="expire_date">
       <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>518</StateNumber>
+      <StateNumber>517</StateNumber>
       <TypeId>1184</TypeId>
     </column>
     <index id="338" parent="268" name="django_session_pkey">
       <ColNames>session_key</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16630</ObjectId>
+      <ObjectId>16619</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>518</StateNumber>
+      <StateNumber>517</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
@@ -5339,8 +5339,8 @@ pg_catalog</CollationParentNames>
     </index>
     <index id="339" parent="268" name="django_session_session_key_c0390e0f_like">
       <ColNames>session_key</ColNames>
-      <ObjectId>16632</ObjectId>
-      <StateNumber>518</StateNumber>
+      <ObjectId>16621</ObjectId>
+      <StateNumber>517</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -5351,23 +5351,23 @@ pg_catalog</CollationParentNames>
     </index>
     <index id="340" parent="268" name="django_session_expire_date_a5c62663">
       <ColNames>expire_date</ColNames>
-      <ObjectId>16633</ObjectId>
-      <StateNumber>518</StateNumber>
+      <ObjectId>16622</ObjectId>
+      <StateNumber>517</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="341" parent="268" name="django_session_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16631</ObjectId>
+      <ObjectId>16620</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>518</StateNumber>
-      <UnderlyingIndexId>16630</UnderlyingIndexId>
+      <StateNumber>517</StateNumber>
+      <UnderlyingIndexId>16619</UnderlyingIndexId>
     </key>
     <column id="342" parent="269" name="active_exam_id">
       <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <SequenceId>16579</SequenceId>
       <TypeId>20</TypeId>
     </column>
@@ -5375,59 +5375,60 @@ pg_catalog</CollationParentNames>
       <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>1184</TypeId>
     </column>
-    <column id="344" parent="269" name="duration">
-      <DasType>integer|0s</DasType>
+    <column id="344" parent="269" name="start_date">
+      <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>514</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>515</StateNumber>
+      <TypeId>1184</TypeId>
     </column>
-    <column id="345" parent="269" name="token">
-      <DasType>varchar(15)|0s</DasType>
+    <column id="345" parent="269" name="end_date">
+      <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>514</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>515</StateNumber>
+      <TypeId>1184</TypeId>
     </column>
-    <column id="346" parent="269" name="exam_id">
-      <DasType>bigint|0s</DasType>
+    <column id="346" parent="269" name="token">
+      <DasType>varchar(15)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="347" parent="269" name="exam_id">
+      <DasType>bigint|0s</DasType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>515</StateNumber>
       <TypeId>20</TypeId>
     </column>
-    <foreign-key id="347" parent="269" name="exam_activeexam_exam_id_fc64a65e_fk_exam_exam_exam_id">
+    <foreign-key id="348" parent="269" name="exam_activeexam_exam_id_fc64a65e_fk_exam_exam_exam_id">
       <ColNames>exam_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>16619</ObjectId>
-      <StateNumber>517</StateNumber>
+      <ObjectId>16608</ObjectId>
+      <StateNumber>515</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16564</RefTableId>
     </foreign-key>
-    <index id="348" parent="269" name="exam_activeexam_pkey">
+    <index id="349" parent="269" name="exam_activeexam_pkey">
       <ColNames>active_exam_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16584</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="349" parent="269" name="token_blacklist_outstandingtoken_jti_hex_d9bdf6f7_uniq">
-      <ColNames>activated_at</ColNames>
-      <ObjectId>16604</ObjectId>
-      <StateNumber>524</StateNumber>
-      <Unique>1</Unique>
-      <AccessMethodId>403</AccessMethodId>
-    </index>
-    <index id="350" parent="269" name="exam_activeexam_exam_id_fc64a65e_uniq">
+    <index id="350" parent="269" name="exam_activeexam_exam_id_key">
       <ColNames>exam_id</ColNames>
-      <ObjectId>16612</ObjectId>
-      <StateNumber>516</StateNumber>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16586</ObjectId>
+      <StateNumber>515</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
@@ -5435,20 +5436,21 @@ pg_catalog</CollationParentNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16585</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <UnderlyingIndexId>16584</UnderlyingIndexId>
     </key>
-    <key id="352" parent="269" name="exam_activeexam_exam_id_fc64a65e_uniq">
-      <ObjectId>16613</ObjectId>
-      <StateNumber>516</StateNumber>
-      <UnderlyingIndexId>16612</UnderlyingIndexId>
+    <key id="352" parent="269" name="exam_activeexam_exam_id_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16587</ObjectId>
+      <StateNumber>515</StateNumber>
+      <UnderlyingIndexId>16586</UnderlyingIndexId>
     </key>
     <column id="353" parent="270" name="exam_id">
       <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <SequenceId>16562</SequenceId>
       <TypeId>20</TypeId>
     </column>
@@ -5456,36 +5458,36 @@ pg_catalog</CollationParentNames>
       <DasType>varchar(20)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="355" parent="270" name="description">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="356" parent="270" name="created_at">
       <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>1184</TypeId>
     </column>
     <column id="357" parent="270" name="teacher_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <foreign-key id="358" parent="270" name="exam_exam_teacher_id_af58fafd_fk_user_teacher_id">
       <ColNames>teacher_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>16586</ObjectId>
-      <StateNumber>514</StateNumber>
+      <ObjectId>16588</ObjectId>
+      <StateNumber>515</StateNumber>
       <RefKeyColPositions>4</RefKeyColPositions>
       <RefTableId>16455</RefTableId>
     </foreign-key>
@@ -5494,21 +5496,21 @@ pg_catalog</CollationParentNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16570</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="360" parent="270" name="exam_exam_teacher_id_af58fafd">
       <ColNames>teacher_id</ColNames>
-      <ObjectId>16591</ObjectId>
-      <StateNumber>514</StateNumber>
+      <ObjectId>16593</ObjectId>
+      <StateNumber>515</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="361" parent="270" name="exam_exam_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16571</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <UnderlyingIndexId>16570</UnderlyingIndexId>
     </key>
     <column id="362" parent="271" name="id">
@@ -5516,7 +5518,7 @@ pg_catalog</CollationParentNames>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <SequenceId>16572</SequenceId>
       <TypeId>20</TypeId>
     </column>
@@ -5524,22 +5526,22 @@ pg_catalog</CollationParentNames>
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="364" parent="271" name="question_id">
       <DasType>integer|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="365" parent="271" name="exam_exam_questions_exam_id_74f97ebb_fk_exam_exam_exam_id">
       <ColNames>exam_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>16594</ObjectId>
-      <StateNumber>514</StateNumber>
+      <ObjectId>16596</ObjectId>
+      <StateNumber>515</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16564</RefTableId>
     </foreign-key>
@@ -5547,8 +5549,8 @@ pg_catalog</CollationParentNames>
       <ColNames>question_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>16599</ObjectId>
-      <StateNumber>514</StateNumber>
+      <ObjectId>16601</ObjectId>
+      <StateNumber>515</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
       <RefTableId>16530</RefTableId>
     </foreign-key>
@@ -5557,40 +5559,41 @@ pg_catalog</CollationParentNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16577</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="368" parent="271" name="exam_exam_questions_exam_id_question_id_fb2c5892_uniq">
       <ColNames>exam_id
 question_id</ColNames>
-      <ObjectId>16592</ObjectId>
-      <StateNumber>514</StateNumber>
+      <ObjectId>16594</ObjectId>
+      <StateNumber>515</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="369" parent="271" name="exam_exam_questions_question_id_cc6e86f0">
-      <ColNames>question_id</ColNames>
-      <ObjectId>16605</ObjectId>
-      <StateNumber>514</StateNumber>
+    <index id="369" parent="271" name="exam_exam_questions_exam_id_74f97ebb">
+      <ColNames>exam_id</ColNames>
+      <ObjectId>16606</ObjectId>
+      <StateNumber>515</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <index id="370" parent="271" name="exam_exam_questions_exam_id_74f97ebb">
-      <ObjectId>16604</ObjectId>
-      <StateNumber>514</StateNumber>
+    <index id="370" parent="271" name="exam_exam_questions_question_id_cc6e86f0">
+      <ColNames>question_id</ColNames>
+      <ObjectId>16607</ObjectId>
+      <StateNumber>515</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="371" parent="271" name="exam_exam_questions_pkey">
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16578</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>514</StateNumber>
+      <StateNumber>515</StateNumber>
       <UnderlyingIndexId>16577</UnderlyingIndexId>
     </key>
     <key id="372" parent="271" name="exam_exam_questions_exam_id_question_id_fb2c5892_uniq">
-      <ObjectId>16593</ObjectId>
-      <StateNumber>514</StateNumber>
-      <UnderlyingIndexId>16592</UnderlyingIndexId>
+      <ObjectId>16595</ObjectId>
+      <StateNumber>515</StateNumber>
+      <UnderlyingIndexId>16594</UnderlyingIndexId>
     </key>
     <column id="373" parent="272" name="answer_id">
       <DasType>integer|0s</DasType>
@@ -5754,127 +5757,127 @@ question_id</ColNames>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>528</StateNumber>
-      <SequenceId>16634</SequenceId>
+      <StateNumber>527</StateNumber>
+      <SequenceId>16623</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="395" parent="274" name="blacklisted_at">
       <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
-      <StateNumber>520</StateNumber>
+      <StateNumber>519</StateNumber>
       <TypeId>1184</TypeId>
     </column>
     <column id="396" parent="274" name="token_id">
       <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>528</StateNumber>
+      <StateNumber>527</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <foreign-key id="397" parent="274" name="token_blacklist_blacklistedtoken_token_id_3cc7fe56_fk">
       <ColNames>token_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>16704</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16693</ObjectId>
+      <StateNumber>527</StateNumber>
       <RefKeyColPositions>1</RefKeyColPositions>
-      <RefTableId>16643</RefTableId>
+      <RefTableId>16632</RefTableId>
     </foreign-key>
     <index id="398" parent="274" name="token_blacklist_blacklistedtoken_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16675</ObjectId>
+      <ObjectId>16664</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>528</StateNumber>
+      <StateNumber>527</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="399" parent="274" name="token_blacklist_blacklistedtoken_token_id_key">
       <ColNames>token_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16697</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16686</ObjectId>
+      <StateNumber>527</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <key id="400" parent="274" name="token_blacklist_blacklistedtoken_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16676</ObjectId>
+      <ObjectId>16665</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>528</StateNumber>
-      <UnderlyingIndexId>16675</UnderlyingIndexId>
+      <StateNumber>527</StateNumber>
+      <UnderlyingIndexId>16664</UnderlyingIndexId>
     </key>
     <key id="401" parent="274" name="token_blacklist_blacklistedtoken_token_id_key">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16698</ObjectId>
-      <StateNumber>528</StateNumber>
-      <UnderlyingIndexId>16697</UnderlyingIndexId>
+      <ObjectId>16687</ObjectId>
+      <StateNumber>527</StateNumber>
+      <UnderlyingIndexId>16686</UnderlyingIndexId>
     </key>
     <column id="402" parent="275" name="id">
       <DasType>bigint|0s</DasType>
       <IdentityKind>by-default</IdentityKind>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <StateNumber>528</StateNumber>
-      <SequenceId>16641</SequenceId>
+      <StateNumber>527</StateNumber>
+      <SequenceId>16630</SequenceId>
       <TypeId>20</TypeId>
     </column>
     <column id="403" parent="275" name="token">
       <DasType>text|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
-      <StateNumber>520</StateNumber>
+      <StateNumber>519</StateNumber>
       <TypeId>25</TypeId>
     </column>
     <column id="404" parent="275" name="created_at">
       <DasType>timestamp with time zone|0s</DasType>
       <Position>4</Position>
-      <StateNumber>527</StateNumber>
+      <StateNumber>526</StateNumber>
       <TypeId>1184</TypeId>
     </column>
     <column id="405" parent="275" name="expires_at">
       <DasType>timestamp with time zone|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
-      <StateNumber>520</StateNumber>
+      <StateNumber>519</StateNumber>
       <TypeId>1184</TypeId>
     </column>
     <column id="406" parent="275" name="user_id">
       <DasType>bigint|0s</DasType>
       <Position>6</Position>
-      <StateNumber>527</StateNumber>
+      <StateNumber>526</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="407" parent="275" name="jti">
       <DasType>varchar(255)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>7</Position>
-      <StateNumber>526</StateNumber>
+      <StateNumber>525</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="408" parent="275" name="token_blacklist_outs_user_id_83bc629a_fk_user_teac">
       <ColNames>user_id</ColNames>
       <Deferrable>1</Deferrable>
       <InitiallyDeferred>1</InitiallyDeferred>
-      <ObjectId>16669</ObjectId>
-      <StateNumber>527</StateNumber>
+      <ObjectId>16658</ObjectId>
+      <StateNumber>526</StateNumber>
       <RefKeyColPositions>4</RefKeyColPositions>
       <RefTableId>16455</RefTableId>
     </foreign-key>
     <index id="409" parent="275" name="token_blacklist_outstandingtoken_pkey">
       <ColNames>id</ColNames>
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16684</ObjectId>
+      <ObjectId>16673</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>528</StateNumber>
+      <StateNumber>527</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="410" parent="275" name="token_blacklist_outstandingtoken_jti_hex_d9bdf6f7_uniq">
       <ColNames>jti</ColNames>
-      <ObjectId>16666</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16655</ObjectId>
+      <StateNumber>527</StateNumber>
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
       <CollationNames>default</CollationNames>
@@ -5883,14 +5886,14 @@ question_id</ColNames>
     </index>
     <index id="411" parent="275" name="token_blacklist_outstandingtoken_user_id_83bc629a">
       <ColNames>user_id</ColNames>
-      <ObjectId>16665</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16654</ObjectId>
+      <StateNumber>527</StateNumber>
       <AccessMethodId>403</AccessMethodId>
     </index>
     <index id="412" parent="275" name="token_blacklist_outstandingtoken_jti_hex_d9bdf6f7_like">
       <ColNames>jti</ColNames>
-      <ObjectId>16668</ObjectId>
-      <StateNumber>528</StateNumber>
+      <ObjectId>16657</ObjectId>
+      <StateNumber>527</StateNumber>
       <AccessMethodId>403</AccessMethodId>
       <ClassNames>varchar_pattern_ops</ClassNames>
       <ClassIds>4218</ClassIds>
@@ -5901,15 +5904,15 @@ question_id</ColNames>
     </index>
     <key id="413" parent="275" name="token_blacklist_outstandingtoken_pkey">
       <NameSurrogate>1</NameSurrogate>
-      <ObjectId>16685</ObjectId>
+      <ObjectId>16674</ObjectId>
       <Primary>1</Primary>
-      <StateNumber>528</StateNumber>
-      <UnderlyingIndexId>16684</UnderlyingIndexId>
+      <StateNumber>527</StateNumber>
+      <UnderlyingIndexId>16673</UnderlyingIndexId>
     </key>
     <key id="414" parent="275" name="token_blacklist_outstandingtoken_jti_hex_d9bdf6f7_uniq">
-      <ObjectId>16667</ObjectId>
-      <StateNumber>524</StateNumber>
-      <UnderlyingIndexId>16666</UnderlyingIndexId>
+      <ObjectId>16656</ObjectId>
+      <StateNumber>523</StateNumber>
+      <UnderlyingIndexId>16655</UnderlyingIndexId>
     </key>
     <column id="415" parent="276" name="password">
       <DasType>varchar(128)|0s</DasType>

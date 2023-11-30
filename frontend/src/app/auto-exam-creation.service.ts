@@ -6,12 +6,15 @@ import { Injectable } from '@angular/core';
 })
 export class AutoExamCreationService {
 
-  readonly url: string = 'http://localhost:8080/api/auto-exam-creation';
-  
+  readonly url: string = 'http://localhost:8000/api/exams/create-automatically/';
+
   constructor(private http: HttpClient) { }
 
   createExam(items: Map<string, number>) {
-    this.http.post(this.url, items, {withCredentials: true});
+    const requestData = {
+      items: Array.from(items.entries()).map(([topic, num_questions]) => ({ topic, num_questions }))
+    };
+    this.http.post(this.url, requestData, {withCredentials: true}).subscribe((error) => console.log(error));
   }
-  
+
 }

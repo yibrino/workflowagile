@@ -1,7 +1,4 @@
 import pytest
-from django.urls import reverse
-from rest_framework import status
-from rest_framework.test import APITestCase
 
 from questions.models import Question, Answer
 from user.models import Teacher
@@ -34,6 +31,7 @@ def test_answer_model():
         correct=True
     )
     assert str(answer), answer.text
+
 
 """
 class QuestionViewSetTest(APITestCase):

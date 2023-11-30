@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
 from .views import QuestionViewSet
 
 router = DefaultRouter()
@@ -11,5 +12,6 @@ urlpatterns = [
     path('question/<int:pk>', QuestionViewSet.as_view({'get': 'retrieve'}), name='question-retrieve'),
     path('questions/create', QuestionViewSet.as_view({'post': 'create'}), name='question-create'),
     path('questions/', QuestionViewSet.as_view({'get': 'list'}), name='question-list'),
-    path('questions/import', QuestionViewSet.as_view({'post': 'import_json'}), name='import-json'),  # Aggiunta questa riga
+    path('questions/import', QuestionViewSet.as_view({'post': 'import_json'}), name='import-json'),
+    # Aggiunta questa riga
 ]
