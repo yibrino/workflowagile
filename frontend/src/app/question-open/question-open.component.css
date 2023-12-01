@@ -13,7 +13,7 @@
 
 .score-field {
   width: 20%;
-  float: inline-end;
+  float: right;
   margin-bottom: 30px;
 }
 
@@ -25,7 +25,7 @@
 .topic-field {
   width: 48%;
   height:12%;
-  float: inline-start;
+  float: initial;
 }
 
 .question-text-field {
