@@ -1,3 +1,4 @@
+import secrets
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -5,7 +6,7 @@ from rest_framework.response import Response
 
 from questions.models import Question
 from .models import ActiveExam, Exam
-from .serializers import ActiveExamSerializer, ExamSerializer, ExamDetailSerializer
+from .serializers import ActiveExamDetailSerializer, ActiveExamSerializer, ExamSerializer, ExamDetailSerializer
 
 
 class ExamViewSet(viewsets.ViewSet):
@@ -76,8 +77,15 @@ class ExamViewSet(viewsets.ViewSet):
         
         """
 
-
 class ActiveExamViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = ActiveExam.objects.all()
-    serializer_class = ActiveExamSerializer
+    serializer_class = ActiveExamDetailSerializer
+    
+    def create(self, request, *args, **kwargs):
+        self.serializer_class = ActiveExamSerializer
+        token = secrets.token_hex(6)
+        request.data["token"] = token[:6]
+        print(request.data)
+        response = super().create(request, *args, **kwargs)
+        return response
