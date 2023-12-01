@@ -6,3 +6,4 @@ router = DefaultRouter()
 router.register(r'exams', ExamViewSet, basename='exam')
 router.register(r'active-exam', ActiveExamViewSet, basename='active_exam')
 urlpatterns = router.urls
+
