@@ -13,3 +13,12 @@ export interface Exam {
     is_active: boolean;
     questions: Question[];
 }
+
+export interface ActiveExam {
+  active_exam_id : number;
+  exam: Exam;
+  start_date: Date;
+  end_date: Date;
+  token: string;
+  duration: string;
+  }
