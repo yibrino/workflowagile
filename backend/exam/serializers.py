@@ -26,11 +26,12 @@ class ActiveExamSerializer(serializers.ModelSerializer):
     class Meta:
         model = ActiveExam
         fields = ['active_exam_id', 'exam', 'start_date', 'end_date', 'token', 'duration']
-        def get_duration(self, obj):
-            if obj.start_date and obj.end_date:
-                return (obj.end_date - obj.start_date).total_seconds()/60
-            else:
-                return None
+    
+    def get_duration(self, obj):
+        if obj.start_date and obj.end_date:
+            return (obj.end_date - obj.start_date).total_seconds()/60
+        else:
+            return None
 
 
 class ActiveExamDetailSerializer(serializers.ModelSerializer):
@@ -41,8 +42,8 @@ class ActiveExamDetailSerializer(serializers.ModelSerializer):
         model = ActiveExam
         fields = ['active_exam_id', 'exam', 'start_date', 'end_date', 'token', 'duration']
         
-        def get_duration(self, obj):
-            if obj.start_date and obj.end_date:
-                return (obj.end_date - obj.start_date).total_seconds()//60
-            else:
-                return None
+    def get_duration(self, obj):
+        if obj.start_date and obj.end_date:
+            return (obj.end_date - obj.start_date).total_seconds()//60
+        else:
+            return None

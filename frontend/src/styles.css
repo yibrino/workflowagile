@@ -3,6 +3,8 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~bootstrap-icons/font/bootstrap-icons.css";
 
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 html, body { height: 100%; }
 /*body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }*/
 
@@ -14,3 +16,7 @@ html, body { height: 100%; }
     --mat-mdc-snack-bar-button-color: white;
     --mdc-snackbar-supporting-text-color: white;
   }
+
+.cdk-overlay-container{
+  z-index: 1800 !important;
+}

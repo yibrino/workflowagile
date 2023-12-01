@@ -35,6 +35,9 @@ import { FormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component'; 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
 
 @NgModule({
   declarations: [
@@ -80,7 +83,11 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatTabsModule,
     FormsModule,
     MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
+    ClipboardModule
   ],
   providers: [
     {
