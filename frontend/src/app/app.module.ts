@@ -35,6 +35,7 @@ import { FormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component'; 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { QuestionOpenComponent } from './question-open/question-open.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     QuestionImportComponent,
     ProfileComponent,
     BrowseExamsComponent,
-    AutoExamCreationComponent
+    AutoExamCreationComponent,
+    QuestionOpenComponent
   ],
   imports: [
     BrowserModule,
