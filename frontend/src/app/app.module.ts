@@ -33,9 +33,10 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 import { FormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component'; 
+import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { QuestionOpenComponent } from './question-open/question-open.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { QuestionOpenComponent } from './question-open/question-open.component';
     MatTabsModule,
     FormsModule,
     MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatMenuModule
   ],
   providers: [
     {
