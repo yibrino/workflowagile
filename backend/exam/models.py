@@ -14,6 +14,6 @@ class Exam(models.Model):
 class ActiveExam(models.Model):
     active_exam_id = models.BigAutoField(primary_key=True)
     exam = models.OneToOneField(Exam, on_delete=models.CASCADE, unique=True)
-    start_date = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     token = models.CharField(max_length=6,unique=True)

@@ -37,6 +37,7 @@ import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 
 
 @NgModule({
@@ -87,7 +88,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
-    ClipboardModule
+    ClipboardModule,
+    MatSlideToggleModule
   ],
   providers: [
     {

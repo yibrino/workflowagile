@@ -8,20 +8,17 @@
 }
 
 .card {
-min-height: 200px;
-cursor: pointer;
-width: 350px;
-@media (max-width: 600px) {
-  width: 300px;
-}
-}
-
-.card {
-border: none;
-border-radius: 12px;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.253);
-overflow: hidden;
-transition: transform 0.3s;
+  min-height: 200px;
+  cursor: pointer;
+  width: 350px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.253);
+  overflow: hidden;
+  transition: transform 0.3s;
+  @media (max-width: 600px) {
+    width: 300px;
+  }
 }
 
 .card:hover {
@@ -48,7 +45,7 @@ transition: transform 0.3s;
   -webkit-box-orient: vertical;
 }
 
-.row {
+.cards-container {
   margin-top: 50px;
   margin-left: 5px;
 }
@@ -62,17 +59,18 @@ transition: transform 0.3s;
   float: right;
 }
 
-
+.active-btn {
+  float: right;
+  width: 100px;
+  font-weight: bold;
+  border: none;
+  font-size: medium;
+}
 
 .exam-modal-container {
 padding: 20px 20px 10px 20px;
 width: 100%;
 min-height: 45vh;
-}
-
-
-.list-group {
-border: none;
 }
 
 .list-group-item {
@@ -171,6 +169,7 @@ list-style-type: none;
 .list-group {
 max-height: 400px; /* Set a maximum height to enable scrolling */
 overflow-y: auto; 
+border: none;
 }
 
 .btn-container {
@@ -194,7 +193,7 @@ margin: 15px 0 15px 15px;
 }
 
 .token-btn {
-margin-left: 25px;
+  float: right;
 }
 
 .token-btn:active {
@@ -203,4 +202,11 @@ transform: scale(0.98);
 
 .time-left {
 margin-top: 4px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-top: -10px;
 }

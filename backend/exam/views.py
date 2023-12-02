@@ -1,13 +1,13 @@
 import secrets
+from django.utils import timezone
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
 from questions.models import Question
 from .models import ActiveExam, Exam
-from .serializers import ActiveExamDetailSerializer, ActiveExamSerializer, ExamSerializer, ExamDetailSerializer
-
+from .serializers import ActiveExamDetailSerializer, ActiveExamSerializer, ActiveExamToStudentsSerializer, ExamSerializer, ExamDetailSerializer
+from django.core.cache import cache
 
 class ExamViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
@@ -85,7 +85,36 @@ class ActiveExamViewSet(viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         self.serializer_class = ActiveExamSerializer
         token = secrets.token_hex(6)
-        request.data["token"] = token[:6]
-        print(request.data)
+        token = token[:6]
+        request.data["token"] = token
+        current_time = timezone.now()
+        request.data["start_date"] = current_time
+        if not request.data.get("end_date"):
+            request.data["end_date"]=current_time
         response = super().create(request, *args, **kwargs)
-        return response
+        queryset = ActiveExam.objects.filter(active_exam_id=response.data["active_exam_id"]).first()
+        serializer = ActiveExamToStudentsSerializer(queryset)
+        duration = serializer.data["duration"]
+        timeout = duration if duration > 0 else None
+        cache.set(token, serializer.data, timeout=timeout)
+        return Response(status=201)
+    
+    @action(detail=False, methods=['get'])
+    def get_exam(self, request):
+        token = request.query_params.get('token').strip()
+        if token:
+            cached_exam_data = cache.get(token)
+            if cached_exam_data:
+                return Response(cached_exam_data)
+            else:
+                exam = ActiveExam.objects.filter(token=token).first()
+                if exam:
+                    exam_serializer = ActiveExamToStudentsSerializer(exam)
+                    duration = exam_serializer.data["duration"]
+                    timeout = duration if duration > 0 else None
+                    cache.set(token, exam_serializer.data, timeout=timeout)   
+                    return Response(exam_serializer.data)  
+            return Response({'detail': 'Exam not found'}, status=404)
+        else:
+            return Response({'detail': 'Token parameter is missing'}, status=400)
+
