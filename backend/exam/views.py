@@ -8,6 +8,7 @@ from questions.models import Question
 from .models import ActiveExam, Exam
 from .serializers import ActiveExamDetailSerializer, ActiveExamSerializer, ActiveExamToStudentsSerializer, ExamSerializer, ExamDetailSerializer
 from django.core.cache import cache
+from django.db.models import Q, F
 
 class ExamViewSet(viewsets.ViewSet):
     permission_classes = [IsAuthenticated]
@@ -79,7 +80,7 @@ class ExamViewSet(viewsets.ViewSet):
 
 class ActiveExamViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
-    queryset = ActiveExam.objects.all()
+    queryset = ActiveExam.objects.filter()
     serializer_class = ActiveExamDetailSerializer
     
     def create(self, request, *args, **kwargs):
@@ -98,6 +99,9 @@ class ActiveExamViewSet(viewsets.ModelViewSet):
         timeout = duration if duration > 0 else None
         cache.set(token, serializer.data, timeout=timeout)
         return Response(status=201)
+    
+    def get_queryset(self):
+        return ActiveExam.objects.filter(Q(end_date__gt=timezone.now()) | Q(end_date__exact=F('start_date')))
     
     @action(detail=False, methods=['get'])
     def get_exam(self, request):

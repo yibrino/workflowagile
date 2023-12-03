@@ -17,8 +17,8 @@ export interface Exam {
 export interface ActiveExam {
   active_exam_id : number;
   exam: Exam;
-  start_date: Date;
-  end_date: Date;
+  start_date: string;
+  end_date: string;
   token: string;
   duration: string;
   }

@@ -8,7 +8,8 @@
 }
 
 .card {
-  min-height: 200px;
+  min-height: 205px;
+  max-height: 205px;
   cursor: pointer;
   width: 350px;
   border: none;
@@ -88,16 +89,23 @@ background-color: #e2e6ea;
 }
 
 .question-text {
-display: inline-block;
-width: 70%;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
+  display: inline-block;
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: larger;
+}
+
+.question-text-clicked {
+  display: inline-block;
+  width: 85%;
+  font-size: larger;
 }
 
 .tag {
 display: inline-block;
-width: 30%;
+width: 15%;
 text-align: right;
 color: #6c757d;
 overflow: hidden;
@@ -160,6 +168,7 @@ font-size:x-large;
 .answer-item {
 margin-bottom: 2px;
 font-style: italic;
+font-size: 16px;
 }
 
 .answers-list {
@@ -201,7 +210,8 @@ transform: scale(0.98);
 }
 
 .time-left {
-margin-top: 4px;
+  margin-top: 7px;
+  font-weight: 400;
 }
 
 .error-message {
