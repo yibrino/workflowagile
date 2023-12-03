@@ -11,6 +11,9 @@ class ExamSerializer(serializers.ModelSerializer):
     
     def get_is_active(self, obj):
         active_exam = ActiveExam.objects.filter(exam=obj).first()
+        if active_exam and active_exam.end_date<timezone.now() and active_exam.end_date!=active_exam.start_date:
+            ActiveExam.delete(active_exam)
+            return False
         return active_exam and (active_exam.end_date>timezone.now() or active_exam.end_date==active_exam.start_date)
 
 class ExamDetailSerializer(serializers.ModelSerializer):

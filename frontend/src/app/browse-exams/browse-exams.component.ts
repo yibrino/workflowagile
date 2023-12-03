@@ -18,6 +18,7 @@ export class BrowseExamsComponent {
 
   exams: Exam[] = []
   selected_exam?: Exam;
+  selectedActiveExam?: ActiveExam;
   /*
   startDateControl = new FormControl(new Date());
   endDateControl = new FormControl(new Date());
@@ -48,6 +49,11 @@ export class BrowseExamsComponent {
       this.selected_exam = exam;
       this.modalService.open(content, { scrollable: true, size: 'lg' })
     })
+  }
+
+  openActiveExamModal(content: any, activeExam : ActiveExam) {
+    this.selectedActiveExam = activeExam;
+    this.modalService.open(content, { scrollable: true, size: 'lg' })
   }
 
   activateExam(event : Event,content : any, exam_id : number) {
@@ -172,4 +178,13 @@ export class BrowseExamsComponent {
       exam.duration = hours > 0 ? `${hours}h ${minutes}m` : `${minutes}m ${seconds}s`;
     }
   }
+
+  students = [
+    { id: 123456, firstName: 'Firstname1', lastName: 'Lastname1', email: 'student1@example.com' },
+    { id: 654321, firstName: 'Lastname1', lastName: 'Lastname2', email: 'student2@example.com' },
+    { id: 123456, firstName: 'Firstname1', lastName: 'Lastname1', email: 'student1@example.com' },
+    { id: 654321, firstName: 'Lastname1', lastName: 'Lastname2', email: 'student2@example.com' },
+    { id: 123456, firstName: 'Firstname1', lastName: 'Lastname1', email: 'student1@example.com' },
+    { id: 654321, firstName: 'Lastname1', lastName: 'Lastname2', email: 'student2@example.com' },
+  ];
 }
