@@ -6,18 +6,30 @@
 
     <div class="button-container">
 
-      <button mat-button id="NewExam-Button" class="center-icon" routerLink="/question-import">
+      <button mat-button id="importQuestion-Button" class="center-icon" routerLink="/question-import">
         <span class="material-icons" >edit</span>
         Import Questions
       </button>
 
-      <button mat-button id="NewExam-Button" class="center-icon" routerLink="question-creation">
+      <button mat-button [matMenuTriggerFor]="menu" id="NewQuestion-Button" class="center-icon">
         <span class="material-icons" >edit</span>
-        New Question
+        New Question</button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item routerLink="question-creation">Multiple Choice</button>
+        <button mat-menu-item routerLink="question-open">Open</button>
+      </mat-menu>
+
+      <button mat-button id="NewExam-Button" class="center-icon" routerLink="auto-exam-creation">
+        <span class="material-icons" >edit</span>
+        New Exam
       </button>
-      <button mat-button id="ExamList-Button" class="center-icon" routerLink="/questions-list">
+
+      <button mat-button id="QuestionsList-Button" class="center-icon" routerLink="/questions-list">
         <span class="material-icons">list</span>
         Question list</button>
+        <button mat-button id="ExamsList-Button" class="center-icon" routerLink="browse-exams">
+          <span class="material-icons">list</span>
+          My Exams</button>
       <button mat-button id="Profile-Button" class="center-icon" routerLink="profile">
         <span class="material-icons">person</span>
         Profile</button>

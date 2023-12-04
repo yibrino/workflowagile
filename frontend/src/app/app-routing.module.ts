@@ -10,6 +10,10 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from "./question-import/question-import.component";
 import { ProfileComponent } from './profile/profile.component';
+import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
+import {AutoExamCreationComponent} from "./auto-exam-creation/auto-exam-creation.component";
+import { CreateExamComponent } from "./create-exam/create-exam.component";
+import {QuestionOpenComponent} from "./question-open/question-open.component";
 
 const routes: Routes = [
   {
@@ -20,6 +24,10 @@ const routes: Routes = [
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'question-creation', component: QuestionCreationComponent },
+      { path: 'browse-exams', component: BrowseExamsComponent },
+      { path: 'auto-exam-creation', component: AutoExamCreationComponent },
+      { path: 'create-exam', component: CreateExamComponent },
+      { path: 'question-open', component: QuestionOpenComponent },
       {path: "", redirectTo:"question-creation", pathMatch:"full"},
     ]
   },

@@ -18,10 +18,10 @@ export class RegisterComponent {
 
   ngOnInit() : void {
     this.form = this.formBuilder.group({
-      first_name : ['',[ Validators.required, Validators.minLength(3)]],
-      last_name : ['', [Validators.required, Validators.minLength(3)]],
+      first_name : ['',[ Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      last_name : ['', [Validators.required, Validators.minLength(3),  Validators.maxLength(20)]],
       email : ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8), this.passwordStrengthValidator]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(16), this.passwordStrengthValidator]],
       repeat_password: ['', Validators.required],
     }, { validator: this.passwordMatchValidator } as FormControlOptions);
   }
@@ -58,7 +58,7 @@ export class RegisterComponent {
 
   passwordStrengthValidator(control: AbstractControl) {
     // Password pattern: at least one uppercase letter, one lowercase letter, and one number
-    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=|;:,.?/]).+$/;
 
     if (!passwordPattern.test(control.value)) {
       return { weakPassword: true };

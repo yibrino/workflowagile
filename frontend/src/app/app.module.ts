@@ -29,6 +29,15 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from './question-import/question-import.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
+import { FormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { CreateExamComponent } from './create-exam/create-exam.component';
+import { QuestionOpenComponent } from './question-open/question-open.component';
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -46,6 +55,11 @@ import { ProfileComponent } from './profile/profile.component';
     NotFoundComponent,
     QuestionImportComponent,
     ProfileComponent,
+    BrowseExamsComponent,
+    AutoExamCreationComponent,
+    CreateExamComponent,
+    AutoExamCreationComponent,
+    QuestionOpenComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +83,11 @@ import { ProfileComponent } from './profile/profile.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatTabsModule,
+    FormsModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
+    MatMenuModule
   ],
   providers: [
     {

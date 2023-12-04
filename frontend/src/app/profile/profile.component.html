@@ -15,8 +15,8 @@
         <div class="form-group col-sm-12 col-md-6">
           <label for="last_name">Last name:</label>
           <input formControlName="last_name" type="text" class="form-control">
-          <div class="error" *ngIf="form?.get('last_name')?.errors?.['required'] && submit_clicked">First name is required.</div>
-          <div class="error" *ngIf="(form?.get('last_name')?.errors?.['minlength'] || form?.get('last_name')?.errors?.['maxlength']) && form?.get('first_name')?.dirty">Last name must be at least 3 and at most 20 characters long.</div>
+          <div class="error" *ngIf="form?.get('last_name')?.errors?.['required'] && submit_clicked">Last name is required.</div>
+          <div class="error" *ngIf="(form?.get('last_name')?.errors?.['minlength'] || form?.get('last_name')?.errors?.['maxlength']) && form?.get('last_name')?.dirty">Last name must be at least 3 and at most 20 characters long.</div>
         </div>
       </div>
       <div class="form-group">
