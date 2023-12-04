@@ -26,7 +26,7 @@ export class ExamService {
   }
 
   createExam(exam: Exam): Observable<Exam> {
-    const url = `${this.apiUrl}/exams/`
+    const url = `${this.apiUrl}/exams/create`
     return this.http.post<Exam>(url, exam, {withCredentials: true})
   }
 

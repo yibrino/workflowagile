@@ -57,9 +57,9 @@ import {MatMenuModule} from "@angular/material/menu";
     ProfileComponent,
     BrowseExamsComponent,
     AutoExamCreationComponent,
-    CreateExamComponent
+    CreateExamComponent,
     AutoExamCreationComponent,
-    QuestionOpenComponent
+    QuestionOpenComponent,
   ],
   imports: [
     BrowserModule,
