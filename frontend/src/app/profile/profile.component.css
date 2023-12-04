@@ -1,0 +1,40 @@
+
+
+.profile-info {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    font-weight: bold;
+  }
+
+  .form-control {
+    border-radius: 4px;
+  }
+
+  .form-control:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(182, 184, 186, 0.8);
+  }
+
+  .container-fluid {
+    width: 100%;
+  }
+
+  .save {
+    float: right;
+  }
+
+  .space {
+    height: 40px;
+  }
+
+  .error {
+    color: red;
+    font-size: medium;
+  }

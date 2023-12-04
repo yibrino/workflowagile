@@ -1,0 +1,78 @@
+
+<div class="container-fluid">
+    <div class="profile-info">
+      <h2>{{teacher?.first_name}} {{teacher?.last_name}}</h2>
+      <p>Email: {{teacher?.email}}</p>
+    </div>
+    <form [formGroup]="form!" (submit)="submit()">
+      <div class="row">
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="first_name">First name:</label>
+          <input formControlName="first_name" type="text" class="form-control">
+          <div class="error" *ngIf="form?.get('first_name')?.errors?.['required'] && submit_clicked">First name is required.</div>
+          <div class="error" *ngIf="(form?.get('first_name')?.errors?.['minlength'] || form?.get('first_name')?.errors?.['maxlength']) && form?.get('first_name')?.dirty">First name must be at least 3 and at most 20 characters long.</div>
+        </div>
+        <div class="form-group col-sm-12 col-md-6">
+          <label for="last_name">Last name:</label>
+          <input formControlName="last_name" type="text" class="form-control">
+          <div class="error" *ngIf="form?.get('last_name')?.errors?.['required'] && submit_clicked">Last name is required.</div>
+          <div class="error" *ngIf="(form?.get('last_name')?.errors?.['minlength'] || form?.get('last_name')?.errors?.['maxlength']) && form?.get('last_name')?.dirty">Last name must be at least 3 and at most 20 characters long.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input formControlName="email" type="email" class="form-control" id="email" placeholder="Enter your email">
+        <div *ngIf="form?.get('email')?.errors?.['email'] && (form?.get('email')?.dirty || form?.get('email')?.touched)" class="error-message">
+          <div class="error" *ngIf="form?.get('email')?.errors?.['email']">Please enter a valid email address.</div>
+        </div>
+        <div class="error" *ngIf="form?.get('email')?.errors?.['required'] && submit_clicked">Email is required.</div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter new password">
+        <div class="error" *ngIf="form?.get('password')?.errors?.['required'] && submit_clicked">Password is required.</div>
+        <div class="error" *ngIf="(form?.get('password')?.errors?.['minlength'] || form?.get('password')?.errors?.['maxlength']) && form?.get('password')?.dirty">Password must be at least 8 and at most 16 characters long.</div>
+        <div class="error" *ngIf="form?.get('password')?.errors?.['weakPassword'] && form?.get('password')?.dirty">Password must contain at least one uppercase letter, one lowercase letter, one number and a special character.</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password:</label>
+        <input formControlName="repeat_password" type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+        <div *ngIf="form?.get('repeat_password')?.invalid && (form?.get('repeat_password')?.dirty || form?.get('repeat_password')?.touched)" class="error-message">
+          <div class="error" *ngIf="form?.get('repeat_password')?.errors?.['required']">Confirmation password is required.</div>
+          <div class="error" *ngIf="form?.get('repeat_password')?.errors?.['passwordMismatch']">Passwords do not match.</div>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-outline-dark save">Save Changes</button>
+    </form>
+    <div class="space">
+    </div>
+    <hr>
+    <button class="btn btn-outline-danger" (click)="openDeleteModal(confirmModal)">Delete Account</button>
+  </div>
+
+<ng-template #confirmModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-describedby="modal-title"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <strong>Are you sure you want to delete your profile?</strong>
+    </p>
+    <p>
+      All information associated to this user profile will be permanently deleted.<br><br>
+      <strong class="text-danger">This operation cannot be undone.</strong>
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" class="btn btn-danger" (click)="modal.close('Ok click')">Ok</button>
+  </div>
+</ng-template>

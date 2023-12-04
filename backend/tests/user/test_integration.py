@@ -134,3 +134,50 @@ class CookieTokenRefreshViewTests(APITestCase):
         response = self.client.post(self.url)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(response.json()['detail'], 'No valid refresh token found in cookie')
+
+class TeacherViewTest(APITestCase):
+
+    def setUp(self):
+        self.user = Teacher.objects.create_user(
+            first_name='Firstname',
+            last_name='Lastname',
+            email='test@example.com',
+            password='password1A_'
+        )
+        self.client.force_authenticate(user=self.user)
+        self.url = reverse('get_teacher')
+
+    def test_get_teacher(self):
+        # Test GET request to the endpoint
+        response = self.client.get(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_patch_teacher(self):
+        # Test PATCH request to the endpoint
+        data = {
+            "email": "new_email@example.com",
+            "password": "password1B_",
+            "repeat_password": "password1B_",
+            "first_name": "NewFirstName",
+            "last_name": "NewLastName",
+        }
+        response = self.client.patch(self.url, data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_patch_teacher_different_repeat_password(self):
+        # Test PATCH request to the endpoint
+        data = {
+            "email": "new_email@example.com",
+            "password": "password1B_",
+            "repeat_password": "password1C_",
+            "first_name": "NewFirstName",
+            "last_name": "NewLastName",
+        }
+        response = self.client.patch(self.url, data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        self.assertIn("Passwords don't match", response.json()['Error'])
+
+    def test_delete_teacher(self):
+        # Test DELETE request to the endpoint
+        response = self.client.delete(self.url)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

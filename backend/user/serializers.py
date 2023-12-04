@@ -24,6 +24,15 @@ class TeacherSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Password must contain at least one special character.")
         return value
 
+    def update(self, instance, validated_data):
+        password = validated_data.pop("password",None)
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        return instance
+
 
 class CookieTokenRefreshSerializer(TokenRefreshSerializer):
     refresh = None

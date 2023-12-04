@@ -28,6 +28,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuestionImportComponent } from './question-import/question-import.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
+import { FormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+
 
 @NgModule({
   declarations: [
@@ -44,6 +55,9 @@ import { QuestionImportComponent } from './question-import/question-import.compo
     HomePageComponent,
     NotFoundComponent,
     QuestionImportComponent,
+    ProfileComponent,
+    BrowseExamsComponent,
+    AutoExamCreationComponent
   ],
   imports: [
     BrowserModule,
@@ -67,6 +81,15 @@ import { QuestionImportComponent } from './question-import/question-import.compo
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
+    MatTabsModule,
+    FormsModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    NgxMatTimepickerModule,
+    ClipboardModule,
+    MatSlideToggleModule
   ],
   providers: [
     {

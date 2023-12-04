@@ -6,13 +6,13 @@
         <label for="first_name">First name:</label>
         <input formControlName="first_name" type="text" class="form-control" id="first_name" placeholder="Enter your first name">
         <div class="error" *ngIf="form?.get('first_name')?.errors?.['required'] && submit_clicked">First name is required.</div>
-        <div class="error" *ngIf="form?.get('first_name')?.errors?.['minlength'] && form?.get('first_name')?.dirty">First name must be at least 3 characters long.</div>
+        <div class="error" *ngIf="(form?.get('first_name')?.errors?.['minlength'] || form?.get('first_name')?.errors?.['maxlength']) && form?.get('first_name')?.dirty">First name must be at least 3 and at most 20 characters long.</div>
       </div>
       <div class="form-group">
           <label for="last_name">Last name:</label>
           <input formControlName="last_name" type="text" class="form-control" id="last_name" placeholder="Enter your last name">
           <div class="error" *ngIf="form?.get('last_name')?.errors?.['required'] && submit_clicked">Last name is required.</div>
-          <div class="error" *ngIf="form?.get('last_name')?.errors?.['minlength'] && form?.get('last_name')?.dirty">Last name must be at least 3 characters long.</div>
+          <div class="error" *ngIf="(form?.get('last_name')?.errors?.['minlength'] || form?.get('last_name')?.errors?.['maxlength']) && form?.get('last_name')?.dirty">Last name must be at least 3 and at most 20 characters long.</div>
         </div>
       <div class="form-group">
         <label for="email">Email:</label>
@@ -26,8 +26,8 @@
         <label for="password">Password:</label>
         <input formControlName="password" type="password" class="form-control" id="password" placeholder="Enter your password">
         <div class="error" *ngIf="form?.get('password')?.errors?.['required'] && submit_clicked">Password is required.</div>
-        <div class="error" *ngIf="form?.get('password')?.errors?.['minlength'] && form?.get('password')?.dirty">Password must be at least 8 characters long.</div>
-        <div class="error" *ngIf="form?.get('password')?.errors?.['weakPassword'] && form?.get('password')?.dirty">Password must contain at least one uppercase letter, one lowercase letter, and one number.</div>
+        <div class="error" *ngIf="(form?.get('password')?.errors?.['minlength'] || form?.get('password')?.errors?.['maxlength']) && form?.get('password')?.dirty">Password must be at least 8 and at most 16 characters long.</div>
+        <div class="error" *ngIf="form?.get('password')?.errors?.['weakPassword'] && form?.get('password')?.dirty">Password must contain at least one uppercase letter, one lowercase letter, one number and a special character.</div>
       </div>
 
       <div class="form-group">
