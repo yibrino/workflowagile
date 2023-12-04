@@ -136,7 +136,7 @@ export class BrowseQuestionsComponent implements OnInit {
 
   exportToCSV() {
     let csvData =
-      '"ID";"Topic";"Text";"Score";"MultipleChoiceOptions";"MultipleChoiceAnswers"\n';
+      'ID';'Topic';'Text';'Score';'MultipleChoiceOptions';'MultipleChoiceAnswers\n';
 
     this.questionsGroupedByTopic.forEach((group) => {
       group.questions.forEach((question) => {
