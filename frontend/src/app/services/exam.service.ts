@@ -34,4 +34,9 @@ export class ExamService {
       });
   }
 
+  removeActiveExam(exam_id : number) : Observable<any> {
+    const url = `${this.apiUrl}/active-exam/${exam_id}/`;
+    return this.http.delete<any>(url, {withCredentials: true});
+  }
+
 }

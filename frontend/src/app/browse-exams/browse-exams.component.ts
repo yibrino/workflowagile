@@ -45,10 +45,16 @@ export class BrowseExamsComponent {
   }
 
   openExamModal(content: any, exam_id: number) {
-    this.loadExam(exam_id).subscribe((exam:Exam) => {
-      this.selected_exam = exam;
-      this.modalService.open(content, { scrollable: true, size: 'lg' })
-    })
+    this.loadExam(exam_id).subscribe({
+        next: (exam:Exam) => {
+          this.selected_exam = exam;
+        this.modalService.open(content, { scrollable: true, size: 'lg' })
+        },
+        error: () => {
+          this.alert.showErrorAlert('An unexpected error occurred.', 'Close', 5000);
+        }
+      }
+    )
   }
 
   openActiveExamModal(content: any, activeExam : ActiveExam) {
@@ -58,9 +64,14 @@ export class BrowseExamsComponent {
 
   activateExam(event : Event,content : any, exam_id : number) {
     event.stopPropagation();
-    this.loadExam(exam_id).subscribe((exam:Exam) => {
-      this.selected_exam = exam;
-      this.modalService.open(content, { scrollable: true, size: 'md', centered : true })
+    this.loadExam(exam_id).subscribe({
+      next: (exam:Exam) => {
+        this.selected_exam = exam;
+        this.modalService.open(content, { scrollable: true, size: 'md', centered : true })
+      },
+      error: () => {
+        this.alert.showErrorAlert('An unexpected error occurred.', 'Close', 5000);
+      }
     })
   }
 
@@ -77,13 +88,18 @@ export class BrowseExamsComponent {
   runExam(exam_id : number) {
     if (this.isValidDate || !this.isDeadlineSet) {
       let end_date = this.isDeadlineSet ? this.date.toISOString() : undefined;
-      this.examService.startExam(exam_id,end_date!).subscribe(data => {
-        let exam = this.exams.find(exam => exam.exam_id === exam_id);
-        if (exam) {
-          exam.is_active=true;
+      this.examService.startExam(exam_id,end_date!).subscribe({
+        next: () => {
+          let exam = this.exams.find(exam => exam.exam_id === exam_id);
+          if (exam) {
+            exam.is_active=true;
+          }
+          this.alert.showSuccessAlert('Exam started successfully.', 'Close', 3000);
+          this.modalService.dismissAll();
+        },
+        error: () => {
+          this.alert.showErrorAlert('An unexpected error occurred.', 'Close', 5000);
         }
-        this.alert.showSuccessAlert('Exam started successfully.', 'Close', 3000);
-        this.modalService.dismissAll();
       })
     }
   }
@@ -98,21 +114,38 @@ export class BrowseExamsComponent {
   }
 
   loadExams() {
-    this.examService.getExams().subscribe((exams:Exam[]) => {
-      this.exams = exams;
+    this.examService.getExams().subscribe({
+      next: (exams:Exam[]) => {
+        this.exams = exams;
+      }
     })
   }
 
   loadActiveExams() {
-    this.examService.getActiveExams().subscribe((exams:ActiveExam[]) => {
-      this.activeExams = exams;
-      /*this.activeExams.forEach(exam => {
-        if (parseInt(exam.duration)>0) {
-          exam.duration = this.calculateTimeLeft(exam.end_date);
-        }
-      });*/
-      this.setupTimers();
+    this.examService.getActiveExams().subscribe({
+      next: (activeExams:ActiveExam[]) => {
+        this.activeExams = activeExams;
+        this.setupTimers();
+      }
     })
+  }
+
+  stopExam(exam_id : number) {
+    this.examService.removeActiveExam(exam_id).subscribe({
+      next: value => {
+        let deleted = this.activeExams.splice(this.activeExams.findIndex(activeExam => activeExam.active_exam_id === exam_id), 1);
+        let exam = this.exams.find(exam => exam.exam_id === deleted[0].exam.exam_id);
+        if (exam) {
+          exam.is_active=false;
+        }
+        this.alert.showSuccessAlert('Exam stopped successfully.', 'Close', 3000);
+        this.modalService.dismissAll();
+      },
+      error: err => {
+        this.alert.showErrorAlert('An unexpected error occurred.', 'Close', 5000);
+      },
+    })
+    
   }
 
   onTabChange(index: number): void {

@@ -16,6 +16,7 @@ class Teacher(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(verbose_name=_('Email Address'), unique=True, blank=False)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -23,7 +24,7 @@ class Teacher(AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
 
     def save(self, *args, **kwargs):
-        self.is_active = True
+        #self.is_active = True
         super().save(*args, **kwargs)
 
     class Meta:

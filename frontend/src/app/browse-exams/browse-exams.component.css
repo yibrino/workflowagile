@@ -94,13 +94,11 @@ background-color: #e2e6ea;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: larger;
 }
 
 .question-text-clicked {
   display: inline-block;
   width: 85%;
-  font-size: larger;
 }
 
 .tag {
@@ -165,10 +163,17 @@ font-weight: 400;
 font-size:x-large;
 }
 
+.active-exit i {
+  float: right;
+  cursor: pointer;
+  margin-right: 0;
+  font-weight: 400;
+  font-size:x-large;
+  }
+
 .answer-item {
 margin-bottom: 2px;
 font-style: italic;
-font-size: 16px;
 }
 
 .answers-list {
@@ -222,7 +227,17 @@ transform: scale(0.98);
 }
 
 .token-btn-i {
+  margin-left: -5px;
+  margin-top: -2px;
   height: auto;
+  background-color: transparent;
+  border: none;
+}
+
+.token-btn-i:hover {
+  transform: scale(0.985);
+  background-color: transparent;
+  border: none;
 }
 
 .token-btn-i:active {
@@ -245,6 +260,10 @@ transform: scale(0.98);
 .stop-col {
   align-items: end;
   text-align: right;
+}
+
+.stop-exam-btn {
+  margin-top: -15px;
 }
 
 .stats-row {
@@ -270,7 +289,6 @@ th {
   background-color: #bebebe;
   color: #ffffff;
   text-align: left;
-  width:180px;
 }
 
 tbody tr:hover {
@@ -288,6 +306,8 @@ tbody tr:hover {
 
 .active-exam-container {
   min-height: 20vh;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .fixed-header tbody {
@@ -299,6 +319,15 @@ tbody tr:hover {
 .fixed-header tr {
   display: block;
 }
+
+.custom-tr {
+  background-color: #bebebe;
+}
+
+.fixed-header tr th {
+  width: 176px;
+}
+
 .fixed-header th,
 .fixed-header td {
   padding: 12px;
