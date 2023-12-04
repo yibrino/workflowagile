@@ -42,7 +42,6 @@ export class CreateExamComponent implements OnInit {
     } else {
       this.addQuestionToExam(question)
     }
-    console.log(this.pickedQuestions)
   }
 
   private addQuestionToExam(question: Question) {
@@ -63,7 +62,11 @@ export class CreateExamComponent implements OnInit {
   }
 
   submitExam() {
-    if (this.examForm.valid && this.pickedQuestions.length > 0) {
+    if (this.pickedQuestions.length < 1) {
+      this.alertService.showErrorAlert('No question selected!', 'CLOSE', 5000)
+      return
+    }
+    if (this.examForm.valid) {
       const exam: Exam = this.examForm.value
       exam.questions = this.pickedQuestions
       console.log(exam)
