@@ -204,7 +204,7 @@ export class BrowseQuestionsComponent implements OnInit {
             topic: question.topic,
             answers: question.answers.map((answer) => ({
               text: answer.text,
-              correct: answer.correct,
+              isCorrect: answer.correct,
             })),
           };
 
