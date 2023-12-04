@@ -5,9 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c790ef8-1a20-40e7-9832-c7c2097b6459" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a/storage_v2/_src_/database/exam_net.fWl1cw/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7b82e4b8-b9d7-4e8b-b899-a886ea9a6e8a/storage_v2/_src_/database/exam_net.fWl1cw/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exam/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exam/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exam/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/exam/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0002_question_topic.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0002_question_topic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0003_answer_latest_version_question_latest_version.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0003_answer_latest_version_question_latest_version.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/migrations/0004_alter_answer_question.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/migrations/0004_alter_answer_question.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/utils/xslxtojson.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/utils/xslxtojson.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/questions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/questions/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/exam/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/exam/test_integration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/exam/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/exam/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/questions/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/questions/test_integration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/questions/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/questions/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/user/test_integration.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/user/test_integration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/user/test_unit.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/user/test_unit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/migrations/0002_alter_teacher_date_joined.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/migrations/0002_alter_teacher_date_joined.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/auto-exam-creation.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/auto-exam-creation.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +213,7 @@
       <workItem from="1701175554185" duration="284000" />
       <workItem from="1701200597941" duration="637000" />
       <workItem from="1701276160241" duration="4371000" />
+      <workItem from="1701374972491" duration="2778000" />
     </task>
     <servers />
   </component>

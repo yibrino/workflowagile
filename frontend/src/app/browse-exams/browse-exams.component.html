@@ -136,7 +136,7 @@
       <div class="col col-6 exam-key-col">
         <p class="exam-key-text">Exam key:  </p>
         <span>
-          <b>{{selectedActiveExam!.token}}</b>
+          <span class="token-active">{{selectedActiveExam!.token}}</span>
           <button class="btn btn-warning token-btn-i" (click)="copyToClipboard($event)" [cdkCopyToClipboard]='selectedActiveExam!.token'><i class="bi bi-files copy-icon"></i>
         </button>
       </span>

@@ -1,16 +1,16 @@
 from django.conf import settings
 from django.http import HttpResponse, JsonResponse
+from rest_framework import response
 from rest_framework import status
 from rest_framework.exceptions import AuthenticationFailed
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenRefreshView
-from rest_framework import response
-from rest_framework.permissions import IsAuthenticated
 
 from user.models import Teacher
 from user.serializers import CookieTokenRefreshSerializer, TeacherSerializer
-from django.contrib.auth import logout, login, authenticate
+
 
 class RegisterView(APIView):
     def post(self, request):
@@ -79,15 +79,18 @@ class LoginView(APIView):
             samesite=settings.SIMPLE_JWT['AUTH_COOKIE_SAMESITE']
         )
         return res
-    
+
+
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
-    def post(self,request):
+
+    def post(self, request):
         return _do_logout(request)
+
 
 def _do_logout(request):
     refreshToken = request.COOKIES.get(
-    settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
+        settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
     token = RefreshToken(refreshToken)
     token.blacklist()
 
@@ -95,6 +98,7 @@ def _do_logout(request):
     res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE'])
     res.delete_cookie(settings.SIMPLE_JWT['AUTH_COOKIE_REFRESH'])
     return res
+
 
 class CookieTokenRefreshView(TokenRefreshView):
     serializer_class = CookieTokenRefreshSerializer
@@ -121,16 +125,17 @@ class CookieTokenRefreshView(TokenRefreshView):
         return JsonResponse({'detail': 'No valid refresh token found in cookie'}, safe=False,
                             status=status.HTTP_400_BAD_REQUEST)
 
+
 class TeacherView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self,request):
+    def get(self, request):
         teacher = Teacher.objects.get(email=request.user)
         serializer = TeacherSerializer(teacher)
         filtered_data = {key: serializer.data[key] for key in ['email', 'first_name', 'last_name']}
         return response.Response(filtered_data)
 
-    def patch(self,request):
+    def patch(self, request):
         user = Teacher.objects.get(email=request.user)
         email = request.data["email"]
         password = request.data["password"]
@@ -139,13 +144,14 @@ class TeacherView(APIView):
         last_name = request.data["last_name"]
         if password != password1:
             return JsonResponse({"Error": "Passwords don't match"}, safe=False, status=status.HTTP_400_BAD_REQUEST)
-        serializer = TeacherSerializer(user, data={"first_name":first_name,"last_name":last_name,"email":email,"password":password},partial=True)
+        serializer = TeacherSerializer(user, data={"first_name": first_name, "last_name": last_name, "email": email,
+                                                   "password": password}, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         teacher = Teacher.objects.get(email=email)
         serializer = TeacherSerializer(teacher)
         filtered_data = {key: serializer.data[key] for key in ['email', 'first_name', 'last_name']}
-        return JsonResponse(filtered_data,safe=False)
+        return JsonResponse(filtered_data, safe=False)
 
     def delete(self,request):
         #user = Teacher.objects.get(email=request.user)

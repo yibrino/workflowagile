@@ -1,6 +1,13 @@
 <div class="container">
+  <h2>Create the exam automatically</h2>
   <form [formGroup]="examForm!" (ngSubmit)="generateExam()" class="example-form">
-    <div formArrayName="rows">
+    <mat-form-field class="row">
+      <input matInput placeholder="Title" formControlName="title">
+    </mat-form-field>
+    <mat-form-field class="row">
+      <textarea matInput placeholder="Description" formControlName="description"></textarea>
+    </mat-form-field>
+    <div formArrayName="rows" class="rows">
       <div *ngFor="let row of rows.controls; let i = index" [formGroupName]="i" class="row-container">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Topic" formControlName="topic" [matAutocomplete]="auto">
@@ -11,7 +18,7 @@
           </mat-autocomplete>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" style="margin-left: 10px;">
+        <mat-form-field class="example-full-width" class="number-of-questions">
           <input matInput type="number" placeholder="Number of Questions" formControlName="num_questions">
         </mat-form-field>
 

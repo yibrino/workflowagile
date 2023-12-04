@@ -37,17 +37,21 @@ class ExamViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'], url_path='create-automatically')
     def create_automatically(self, request):
-        topics_questions = request.data["items"]
+        title = request.data["title"]
+        description = request.data["description"]
+        topics_questions = request.data["requestData"]["items"]
         questions = []
         for dictionary in topics_questions:
             topic = dictionary['topic']
             num_questions = dictionary['num_questions']
-            questions_of_topic = Question.objects.all().filter(latest_version=True, topic=topic) \
-                                    .order_by('?')[:num_questions]
+            questions_of_topic = Question.objects.all().filter(
+                    latest_version=True, topic=topic
+                )\
+                .order_by('?')[:num_questions]
             for question in questions_of_topic:
                 questions.append(question.pk)
         exam_serializer = ExamSerializer(
-            data={'teacher': request.user.pk, 'title': 'ciao', 'description': 'ciao',
+            data={'teacher': request.user.pk, 'title': title, 'description': description,
                   'questions': questions
                   }
         )

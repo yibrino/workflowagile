@@ -11,10 +11,13 @@
         Import Questions
       </button>
 
-      <button mat-button id="NewQuestion-Button" class="center-icon" routerLink="question-creation">
+      <button mat-button [matMenuTriggerFor]="menu" id="NewQuestion-Button" class="center-icon">
         <span class="material-icons" >edit</span>
-        New Question
-      </button>
+        New Question</button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item routerLink="question-creation">Multiple Choice</button>
+        <button mat-menu-item routerLink="question-open">Open</button>
+      </mat-menu>
 
       <button mat-button id="NewExam-Button" class="center-icon" routerLink="auto-exam-creation">
         <span class="material-icons" >edit</span>

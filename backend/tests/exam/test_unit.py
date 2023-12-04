@@ -7,10 +7,13 @@ from django.utils import timezone
 from questions.models import Answer, Question
 from user.models import Teacher
 
+
 @pytest.fixture
 def create_teacher():
-    teacher = Teacher.objects.create(first_name="Firstname", last_name="Lastname", email="e@example.com", password='password1A_')
+    teacher = Teacher.objects.create(first_name="Firstname", last_name="Lastname", email="e@example.com",
+                                     password='password1A_')
     return teacher
+
 
 @pytest.fixture
 def create_questions(create_teacher):
@@ -22,11 +25,12 @@ def create_questions(create_teacher):
         topic="Geography"
     )
     question2 = Question.objects.create(
-        teacher=created_teacher,text='What is your favorite color?',
+        teacher=created_teacher, text='What is your favorite color?',
         score=8,
         topic="Colors"
     )
     return [question1, question2]
+
 
 @pytest.mark.django_db
 def test_exam_model(create_teacher, create_questions):

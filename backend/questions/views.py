@@ -1,19 +1,14 @@
 # views.py
-import json
 
-from rest_framework import viewsets
-from rest_framework.response import Response
-from .models import Question
-from .serializers import QuestionWithAnswersSerializer
-from .serializers import AnswerSerializer
 from django.db.models import Count
 from django.http import JsonResponse
 from rest_framework import viewsets, status, permissions
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 from questions.models import Answer, Question
 from questions.serializers import AnswerSerializer, QuestionSerializer
 from user.models import Teacher
+from .serializers import QuestionWithAnswersSerializer
 
 
 class QuestionViewSet(viewsets.ModelViewSet):
@@ -23,7 +18,7 @@ class QuestionViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         queryset = Question.objects.filter(teacher=request.user)
-        serializer = QuestionWithAnswersSerializer(queryset,many=True)
+        serializer = QuestionWithAnswersSerializer(queryset, many=True)
         return Response(serializer.data)
 
     @staticmethod

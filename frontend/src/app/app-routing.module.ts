@@ -12,6 +12,7 @@ import { QuestionImportComponent } from "./question-import/question-import.compo
 import { ProfileComponent } from './profile/profile.component';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 import {AutoExamCreationComponent} from "./auto-exam-creation/auto-exam-creation.component";
+import {QuestionOpenComponent} from "./question-open/question-open.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'question-creation', component: QuestionCreationComponent },
       { path: 'browse-exams', component: BrowseExamsComponent },
       { path: 'auto-exam-creation', component: AutoExamCreationComponent },
+      { path: 'question-open', component: QuestionOpenComponent },
       {path: "", redirectTo:"question-creation", pathMatch:"full"},
     ]
   },
