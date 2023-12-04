@@ -22,3 +22,15 @@ class QuestionWithAnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = ['question_id', 'teacher', 'text', 'score', 'topic', 'created_at', 'latest_version', 'answers']
+
+class AnswerToStudentsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Answer
+        fields = ['answer_id', 'text']
+          
+class QuestionToStudentSerializer(serializers.ModelSerializer):
+    answers = AnswerToStudentsSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Question
+        fields = ['question_id', 'text', 'score', 'answers']

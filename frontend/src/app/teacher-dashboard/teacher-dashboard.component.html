@@ -5,35 +5,69 @@
     <span class="spacer"></span>
 
     <div class="button-container">
-
-      <button mat-button id="importQuestion-Button" class="center-icon" routerLink="/question-import">
-        <span class="material-icons" >edit</span>
+      <button
+        mat-button
+        id="importQuestion-Button"
+        class="center-icon"
+        routerLink="question-import"
+      >
+        <span class="material-icons">insert_drive_file</span>
         Import Questions
       </button>
 
-      <button mat-button [matMenuTriggerFor]="menu" id="NewQuestion-Button" class="center-icon">
-        <span class="material-icons" >edit</span>
-        New Question</button>
-      <mat-menu #menu="matMenu" >
-        <button mat-menu-item routerLink="question-creation">Multiple Choice</button>
-        <button mat-menu-item routerLink="question-open">Open</button>
-      </mat-menu>
+      <button
+        mat-button
+        id="NewQuestion-Button"
+        class="center-icon"
+        routerLink="question-creation"
+      >
+        <span class="material-icons">edit</span>
+        New Question
+      </button>
 
-      <button mat-button id="NewExam-Button" class="center-icon" routerLink="auto-exam-creation">
-        <span class="material-icons" >edit</span>
+      <button
+        mat-button
+        id="NewExam-Button"
+        class="center-icon"
+        routerLink="auto-exam-creation"
+      >
+        <span class="material-icons">edit</span>
         New Exam
       </button>
 
-      <button mat-button id="QuestionsList-Button" class="center-icon" routerLink="/questions-list">
+      <button
+        mat-button
+        id="QuestionsList-Button"
+        class="center-icon"
+        routerLink="/questions-list"
+      >
         <span class="material-icons">list</span>
-        Question list</button>
-        <button mat-button id="ExamsList-Button" class="center-icon" routerLink="browse-exams">
-          <span class="material-icons">list</span>
-          My Exams</button>
-      <button mat-button id="Profile-Button" class="center-icon" routerLink="profile">
+        Question list
+      </button>
+      <button
+        mat-button
+        id="ExamsList-Button"
+        class="center-icon"
+        routerLink="browse-exams"
+      >
+        <span class="material-icons">list</span>
+        My Exams
+      </button>
+      <button
+        mat-button
+        id="Profile-Button"
+        class="center-icon"
+        routerLink="profile"
+      >
         <span class="material-icons">person</span>
-        Profile</button>
-      <button mat-button id="LogOut-Button" class="center-icon" (click)="logout()">
+        Profile
+      </button>
+      <button
+        mat-button
+        id="LogOut-Button"
+        class="center-icon"
+        (click)="logout()"
+      >
         <span class="material-icons">logout</span>
         Log out
       </button>

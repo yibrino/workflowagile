@@ -1,15 +1,30 @@
 <div class="exam-container">
   <h2>Create Question</h2>
+  <p>You can import questions from excel or json file</p>
   <form class="exam-form">
-
     <!-- Question text area in the center -->
     <div class="upload-field">
-      <input  type="file" placeholder="Browse file" (change)="onFileChange($event)"/>
+      <!-- 
+        [(ngModel)]="selectedFile" -->
+      <input
+        type="file"
+        name="fileInput"
+        id="fileInput"
+        placeholder="Browse file"
+        accept=".xlsx,.csv,.json"
+        (change)="onFileChange($event)"
+      />
     </div>
 
     <div class="button-container">
-      <button mat-raised-button color="accent" type="button" (click)="onSubmit()">Submit Question</button>
+      <button
+        mat-raised-button
+        color="accent"
+        type="button"
+        (click)="onSubmit()"
+      >
+        Submit Question
+      </button>
     </div>
   </form>
 </div>
-

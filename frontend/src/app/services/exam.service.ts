@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AlertService } from '../alert.service';
-import { Exam } from '../models';
 import * as http from "http";
+import { ActiveExam, Exam } from '../models';
 
 @Injectable({
   providedIn: 'root',
@@ -28,6 +28,16 @@ export class ExamService {
   createExam(exam: Exam): Observable<Exam> {
     const url = `${this.apiUrl}/exams/create`
     return this.http.post<Exam>(url, exam, {withCredentials: true})
+  }
+
+  startExam(exam_id : number,end_date:string) : Observable<any> {
+    return this.http.post<any>(this.apiUrl+"/active-exam/", {'exam':exam_id,'end_date':end_date}, {withCredentials: true});
+  }
+
+  getActiveExams() : Observable<ActiveExam[]> {
+    return this.http.get<ActiveExam[]>(this.apiUrl + '/active-exam/', {
+      withCredentials: true,
+      });
   }
 
 }
