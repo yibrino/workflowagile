@@ -31,7 +31,31 @@ class ExamViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'], url_path='create-manually')
     def create_manually(self, request):
-        return Response(status=201)
+        exam_title = request.data['title']
+        exam_description = request.data['description']
+        questions = request.data['questions']
+        exam_questions = []
+
+        print(questions)
+
+        for question in questions:
+            exam_questions.append(question['question_id'])
+
+        exam_serializer = ExamSerializer(
+            data={
+                'teacher': request.user.pk,
+                'title': exam_title,
+                'description': exam_description,
+                'questions': exam_questions,
+                'is_active': True
+            }
+        )
+        print(exam_serializer)
+        exam_serializer.is_valid(raise_exception=True)
+        print(exam_serializer)
+        exam_serializer.save()
+
+        return Response(exam_serializer.data, status=201)
 
     @action(detail=False, methods=['post'], url_path='create-automatically')
     def create_automatically(self, request):
