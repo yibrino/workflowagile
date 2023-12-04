@@ -19,8 +19,6 @@ class ExamViewSetAPITestCase(APITestCase):
         self.client.force_authenticate(user=self.user)
         self.exam1 = Exam.objects.create(teacher=self.user, title='Exam 1', description='Description 1')
         self.exam2 = Exam.objects.create(teacher=self.user, title='Exam 2', description='Description 2')
-        self.question1 = Question.objects.create(teacher=self.user, text='Textqqqq', score=5, topic='Topic')
-
 
     def test_list_exams(self):
         url = reverse('exam-list')
@@ -37,6 +35,7 @@ class ExamViewSetAPITestCase(APITestCase):
         self.assertEqual(response.data, expected_data)
 
     def test_post_exam(self):
+        Question.objects.create(teacher=self.user, text='Textqqqq', score=5, topic='Topic')
         url = reverse('create-manually')
         data = {
           "title": "Exam 1",
@@ -56,6 +55,29 @@ class ExamViewSetAPITestCase(APITestCase):
         expected_data = ExamDetailSerializer(Exam.objects.get(exam_id=self.exam1.exam_id)).data
         self.assertEqual(response.data['title'], expected_data['title'])
         self.assertEqual(response.data['description'], expected_data['description'])
-        self.assertEqual(response.data['teacher'], 1)
-        self.assertEqual(response.data['exam_id'], 3)
+        self.assertEqual(response.data['teacher'], self.user.pk)
         self.assertEqual(len(response.data['questions']), 1)
+
+    def test_post_exam_questions_not_found_throws_error(self):
+        url = reverse('create-manually')
+        data = {
+          "title": "Exam 1",
+          "description": "Description 1",
+          "questions": [
+            {
+              "question_id": 1
+            }
+          ]
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_post_exam_without_questions_throws_error(self):
+        url = reverse('create-manually')
+        data = {
+          "title": "Exam 1",
+          "description": "Description 1",
+          "questions": []
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
