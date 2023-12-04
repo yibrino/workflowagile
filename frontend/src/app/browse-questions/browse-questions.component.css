@@ -1,13 +1,8 @@
-/* src/app/browse-questions/browse-questions.component.css */
-
-/* Add styling for the component here */
-
 /* Example styles for the questions container */
 .questions-container {
   margin: 20px;
   margin-top: 28px;
 }
-
 /* Example styles for individual questions */
 .question {
   margin-bottom: 20px;
@@ -145,4 +140,91 @@
 
 .browse-button:hover {
   background-color: #45a049; /* Darker green on hover */
+}
+
+.question-group {
+  margin-bottom: 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+.topic-heading {
+  margin: 0;
+}
+
+.question {
+  border: 1px solid #ddd;
+  margin-top: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.question:hover {
+  background-color: #f9f9f9;
+}
+
+.question-text {
+  margin: 0;
+}
+
+.choices-container {
+  margin-top: 10px;
+}
+
+.choice-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.choice-radio {
+  margin-right: 5px;
+}
+
+.edit-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-button:hover {
+  background-color: #45a049;
+}
+
+.edit-mode {
+  margin-top: 20px;
+}
+
+.edit-mode input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.edit-mode button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.edit-mode button:hover {
+  background-color: #45a049;
 }

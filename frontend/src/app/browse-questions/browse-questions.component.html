@@ -1,42 +1,61 @@
 <!-- src/app/browse-questions/browse-questions.component.html -->
 
-<div class="questions-container">
-  <div class="browse-button-container">
-    <button class="browse-button" (click)="showQuestions = true">
-      Browse All Questions
-    </button>
+<div class="filter-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Filter:</mat-label>
+    <mat-select [(value)]="selectedFilter" (selectionChange)="applyFilter()">
+      <mat-option value="all">All Questions</mat-option>
+      <mat-option value="latest">Latest Questions</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="showExportButtons">
+  <button class="export-button" (click)="exportToCSV()">Export to CSV</button>
+  <button class="export-button" (click)="exportToXLSX()">Export to XLSX</button>
+  <button class="export-button" (click)="exportToJSON()">Export to JSON</button>
+</div>
+<div *ngFor="let questionGroup of filteredQuestions" class="question-group">
+  <div class="header-container">
+    <h3 class="topic-heading">{{ questionGroup.topic }}</h3>
+    <div class="header-actions">
+      <!-- Add any attractive header actions or buttons here -->
+    </div>
   </div>
-
-  <div *ngIf="showQuestions" class="questions-container">
-    <div
-      *ngFor="let questionGroup of questionsGroupedByTopic"
-      class="question-group"
-    >
-      <div class="header-container">
-        <h3 class="topic-heading">{{ questionGroup.topic }}</h3>
-        <div class="header-actions">
-          <!-- Add any attractive header actions or buttons here -->
-        </div>
-      </div>
+  <div
+    *ngFor="let question of questionGroup.questions; let i = index"
+    class="question"
+    (click)="toggleChoices(questionGroup.topic, i)"
+  >
+    <div *ngIf="!question.editing">
+      <p class="question-text">
+        Question {{ i + 1 }}: {{ question.text }} (Score: {{ question.score }})
+      </p>
       <div
-        *ngFor="let question of questionGroup.questions; let i = index"
-        class="question"
-        (click)="toggleChoices(questionGroup.topic, i)"
+        class="choices-container"
+        [class.hidden]="!showChoices[questionGroup.topic][i]"
       >
-        <p class="question-text">
-          Question {{ i + 1 }}: {{ question.text }} (Score:
-          {{ question.score }})
-        </p>
-        <div
-          class="choices-container"
-          [class.hidden]="!showChoices[questionGroup.topic][i]"
-        >
-          <label *ngFor="let answer of question.answers" class="choice-label">
-            <input type="radio" [name]="'question' + i" class="choice-radio" />
-            <span class="choice-text">{{ answer.text }}</span>
-          </label>
-        </div>
+        <label *ngFor="let answer of question.answers" class="choice-label">
+          <input type="radio" [name]="'question' + i" class="choice-radio" />
+          <span class="choice-text">{{ answer.text }}</span>
+        </label>
       </div>
+      <button
+        class="edit-button"
+        *ngIf="showChoices[questionGroup.topic][i]"
+        (click)="startEditQuestion(question)"
+      >
+        Edit
+      </button>
+    </div>
+    <div *ngIf="question.editing" class="edit-mode">
+      <input [(ngModel)]="question.text" placeholder="Enter question text" />
+      <input [(ngModel)]="question.score" placeholder="Enter score" />
+      <div *ngFor="let answer of question.answers; let j = index">
+        <input [(ngModel)]="answer.text" placeholder="Enter answer text" />
+        <input [(ngModel)]="answer.correct" type="checkbox" />
+      </div>
+      <button (click)="saveEdit(question)">Save</button>
+      <button (click)="cancelEdit(question)">Cancel</button>
     </div>
   </div>
 </div>

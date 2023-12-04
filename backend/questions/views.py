@@ -10,6 +10,7 @@ from django.db.models import Count
 from django.http import JsonResponse
 from rest_framework import viewsets, status, permissions
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import action
 
 from questions.models import Answer, Question
 from questions.serializers import AnswerSerializer, QuestionSerializer
@@ -32,32 +33,48 @@ class QuestionViewSet(viewsets.ModelViewSet):
         unique_topics = [item['topic'] for item in topics_count]
         unique_topics.append("Scrum")
         return JsonResponse(unique_topics, safe=False)
-
     @staticmethod
     def create(request, pk=None):
-        question_text = request.data['text']
-        question_score = request.data['score']
-        question_topic = request.data['topic']
-        teacher = Teacher.objects.get(email=request.user)
-        question_serializer = QuestionSerializer(
-            data={'teacher': teacher.pk, 'text': question_text, 'score': question_score,
-                  'topic': question_topic})
-        if question_serializer.is_valid():
-            question = question_serializer.save()
-            answers_data = request.data.get('answers', [])  # Ottieni la lista delle risposte
-            for answer_data in answers_data:
-                answer_data['question'] = question  # Collega la risposta alla nuova domanda
-                answer = Answer(question=answer_data['question'], text=answer_data['text'],
-                                correct=answer_data['isCorrect'] or False)
-                answer.save()
-            if pk is not None:
-                question = Question.objects.get(question_id=pk)
-                question.latest_version = False
-                question.save()
+     question_text = request.data['text']
+     question_score = request.data['score']
+     question_topic = request.data['topic']
+     teacher = Teacher.objects.get(email=request.user)
+    
+    # Create a new question
+     question_serializer = QuestionSerializer(
+        data={'teacher': teacher.pk, 'text': question_text, 'score': question_score, 'topic': question_topic}
+    )
+     if question_serializer.is_valid():
+        question = question_serializer.save()
 
-            return JsonResponse(QuestionSerializer(question).data, safe=False, status=status.HTTP_201_CREATED)
+        # Extract answers data from the request
+        answers_data = request.data.get('answers', [])
+        for answer_data in answers_data:
+            answer_data['question'] = question
+            answer = Answer(
+                question=answer_data['question'],
+                text=answer_data['text'],
+                correct=answer_data.get('correct', False)  # Use 'correct' key for correctness
+            )
+            answer.save()
 
-        return JsonResponse(question_serializer.errors, safe=False, status=status.HTTP_400_BAD_REQUEST)
+        # If pk is provided, set the latest_version of the pre-edited question to False
+        if pk is not None:
+            preedited_question = Question.objects.get(question_id=pk)
+            preedited_question.latest_version = False
+            preedited_question.save()
+
+        return JsonResponse(QuestionSerializer(question).data, safe=False, status=status.HTTP_201_CREATED)
+
+     return JsonResponse(question_serializer.errors, safe=False, status=status.HTTP_400_BAD_REQUEST)
+   
+    @action(detail=True, methods=['put'])
+    def update_latest_version(self, request, pk=None):
+        question = self.get_object()
+        question.latest_version = False
+        question.save()
+        return JsonResponse({'message': 'Latest version updated successfully'}, safe=False, status=status.HTTP_200_OK)
+
 
     @staticmethod
     def import_json(request):
