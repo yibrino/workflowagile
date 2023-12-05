@@ -8,7 +8,8 @@
 }
 
 .card {
-  min-height: 200px;
+  min-height: 205px;
+  max-height: 205px;
   cursor: pointer;
   width: 350px;
   border: none;
@@ -88,16 +89,23 @@ background-color: #e2e6ea;
 }
 
 .question-text {
-display: inline-block;
-width: 70%;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
+  display: inline-block;
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: larger;
+}
+
+.question-text-clicked {
+  display: inline-block;
+  width: 85%;
+  font-size: larger;
 }
 
 .tag {
 display: inline-block;
-width: 30%;
+width: 15%;
 text-align: right;
 color: #6c757d;
 overflow: hidden;
@@ -160,6 +168,7 @@ font-size:x-large;
 .answer-item {
 margin-bottom: 2px;
 font-style: italic;
+font-size: 16px;
 }
 
 .answers-list {
@@ -201,7 +210,8 @@ transform: scale(0.98);
 }
 
 .time-left {
-margin-top: 4px;
+  margin-top: 7px;
+  font-weight: 400;
 }
 
 .error-message {
@@ -209,4 +219,90 @@ margin-top: 4px;
   font-size: 14px;
   margin-bottom: 10px;
   margin-top: -10px;
+}
+
+.token-btn-i {
+  height: auto;
+}
+
+.token-btn-i:active {
+  transform: scale(0.98);
+}
+
+.exam-key-col {
+  display:flex;
+}
+
+.exam-key-text {
+  margin-top: 5px;
+  margin-right: 8px;
+}
+
+.exam-key-row {
+  margin-top: 25px;
+}
+
+.stop-col {
+  align-items: end;
+  text-align: right;
+}
+
+.stats-row {
+  margin-top: 20px;
+}
+
+.stats-row .col {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  table-layout: fixed;
+}
+
+th {
+  background-color: #bebebe;
+  color: #ffffff;
+  text-align: left;
+  width:180px;
+}
+
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+.table-cont {
+  margin-top: 35px;
+}
+
+.table-cont h5 {
+  font-weight: 600;
+  margin-left: 0px;
+}
+
+.active-exam-container {
+  min-height: 20vh;
+}
+
+.fixed-header tbody {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  max-height: 40vh;
+}
+.fixed-header tr {
+  display: block;
+}
+.fixed-header th,
+.fixed-header td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  width: 200px;
+  text-align: left;
 }

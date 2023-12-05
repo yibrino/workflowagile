@@ -25,6 +25,8 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'question-import', component: QuestionImportComponent },
       { path: 'question-creation', component: QuestionCreationComponent },
+      { path: 'questions-list', component: BrowseQuestionsComponent },
+
       { path: 'browse-exams', component: BrowseExamsComponent },
       { path: 'auto-exam-creation', component: AutoExamCreationComponent },
       { path: 'create-exam', component: CreateExamComponent },
