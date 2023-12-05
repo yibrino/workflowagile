@@ -12,6 +12,8 @@ import { QuestionImportComponent } from './question-import/question-import.compo
 import { ProfileComponent } from './profile/profile.component';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 import { AutoExamCreationComponent } from './auto-exam-creation/auto-exam-creation.component';
+import { CreateExamComponent } from "./create-exam/create-exam.component";
+import {QuestionOpenComponent} from "./question-open/question-open.component";
 
 const routes: Routes = [
   {
@@ -23,13 +25,14 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'question-import', component: QuestionImportComponent },
       { path: 'question-creation', component: QuestionCreationComponent },
+      { path: 'questions-list', component: BrowseQuestionsComponent },
       { path: 'browse-exams', component: BrowseExamsComponent },
       { path: 'auto-exam-creation', component: AutoExamCreationComponent },
-      { path: '', redirectTo: 'question-creation', pathMatch: 'full' },
-    ],
+      { path: 'create-exam', component: CreateExamComponent },
+      { path: 'question-open', component: QuestionOpenComponent },
+      {path: "", redirectTo:"browse-exams", pathMatch:"full"},
+    ]
   },
-  // { path: 'question-import', component: QuestionImportComponent },
-  { path: 'questions-list', component: BrowseQuestionsComponent },
   { path: 'contactus', component: ContactComponent },
   { path: 'examlists', component: ExamListsComponent },
   { path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard] },

@@ -1,5 +1,5 @@
 <div class="exam-container">
-  <h2>Create Question</h2>
+  <h2>Create Open Question</h2>
   <form [formGroup]="questionForm" class="exam-form">
 
 
@@ -32,34 +32,10 @@
     </mat-form-field>
 
 
-    <div formArrayName="answers">
-      <div *ngFor="let answer of answers.controls; let i = index" class="answer-container">
-        <mat-form-field>
-          <input matInput placeholder="Answer {{ i + 1 }}" [formControl]="answer.get('text')" />
-        </mat-form-field>
-
-        <mat-checkbox [formControl]="answer.get('isCorrect')" (click)="checkCorrectAnswers()">Correct Answer</mat-checkbox>
-
-        <button mat-icon-button type="button" (click)="removeAnswer(i)">
-          <mat-icon>clear</mat-icon>
-        </button>
-      </div>
-
-      <div *ngIf="showDeleteErrorMessage" class="error-message">
-        At least two answers are required.</div>
-      <div *ngIf="!showDeleteErrorMessage" class="error-message"></div>
-    </div>
-
-    <div *ngIf="!hasCorrectAnswer" class="error-correct-message">
-      At least one correct answer is required.
-    </div>
-
-    <div *ngIf="hasCorrectAnswer" class="error-correct-message"></div>
-
     <div class="button-container">
-      <button mat-raised-button color="primary" type="button" (click)="addAnswer()">Add Answer</button>
       <button mat-raised-button color="accent" type="button" (click)="submitQuestion()">Submit Question</button>
     </div>
   </form>
 </div>
+
 

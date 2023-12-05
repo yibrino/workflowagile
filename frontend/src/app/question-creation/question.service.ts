@@ -22,6 +22,10 @@ export class QuestionService {
     return this.http.post<Question>(`${this.apiUrl}questions/create`, question, {withCredentials:true});
   }
 
+  getQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>(`${this.apiUrl}questions/`, {withCredentials:true});
+  }
+
   importQuestions(questions: Question[]): Observable<number> {
     console.log('Import questions')
     return this.http.post<number>(`${this.apiUrl}questions/import`, questions, {withCredentials:true});
