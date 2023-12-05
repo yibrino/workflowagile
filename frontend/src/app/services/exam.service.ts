@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AlertService } from '../alert.service';
+import * as http from "http";
 import { ActiveExam, Exam } from '../models';
 
 @Injectable({
@@ -22,6 +23,11 @@ export class ExamService {
   getExam(exam_id : number) : Observable<Exam> {
     const url = `${this.apiUrl}/exams/${exam_id}/`;
     return this.http.get<Exam>(url, {withCredentials: true});
+  }
+
+  createExam(exam: Exam): Observable<Exam> {
+    const url = `${this.apiUrl}/exams/create`
+    return this.http.post<Exam>(url, exam, {withCredentials: true})
   }
 
   startExam(exam_id : number,end_date:string) : Observable<any> {

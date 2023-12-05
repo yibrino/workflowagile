@@ -3,17 +3,12 @@ from questions.serializers import QuestionSerializer, QuestionToStudentSerialize
 from rest_framework import serializers
 from django.utils import timezone
 
-from exam.models import ActiveExam, Exam
-from questions.serializers import QuestionWithAnswersSerializer
-
-
 class ExamSerializer(serializers.ModelSerializer):
     is_active = serializers.SerializerMethodField()
-
     class Meta:
         model = Exam
         fields = ['exam_id', 'teacher', 'title', 'description', 'created_at', 'questions', 'is_active']
-
+    
     def get_is_active(self, obj):
         active_exam = ActiveExam.objects.filter(exam=obj).first()
         if active_exam and active_exam.end_date<timezone.now() and active_exam.end_date!=active_exam.start_date:
@@ -21,10 +16,8 @@ class ExamSerializer(serializers.ModelSerializer):
             return False
         return active_exam and (active_exam.end_date>timezone.now() or active_exam.end_date==active_exam.start_date)
 
-
 class ExamDetailSerializer(serializers.ModelSerializer):
     questions = QuestionWithAnswersSerializer(many=True, read_only=True)
-
     class Meta:
         model = Exam
         fields = ['exam_id', 'title', 'description', 'created_at', 'questions']

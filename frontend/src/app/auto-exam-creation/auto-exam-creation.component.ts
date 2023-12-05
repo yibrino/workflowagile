@@ -8,10 +8,9 @@ import { AlertService } from '../alert.service';
 @Component({
   selector: 'app-auto-exam-creation',
   templateUrl: './auto-exam-creation.component.html',
-  styleUrls: ['./auto-exam-creation.component.css']
+  styleUrls: ['./auto-exam-creation.component.css'],
 })
 export class AutoExamCreationComponent implements OnInit {
-
   examForm?: FormGroup;
   items?: Map<string, number>;
   dropdownOptions: String[] = [];
@@ -28,9 +27,9 @@ export class AutoExamCreationComponent implements OnInit {
       rows: this.formBuilder.array([
         this.formBuilder.group({
           topic: ['', Validators.required],
-          num_questions: [0, Validators.required]
-        })
-      ])
+          num_questions: [0, Validators.required],
+        }),
+      ]),
     });
   }
   

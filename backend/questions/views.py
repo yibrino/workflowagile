@@ -1,4 +1,5 @@
 # views.py
+from rest_framework.decorators import action
 
 from django.db.models import Count
 from django.http import JsonResponse
@@ -53,6 +54,12 @@ class QuestionViewSet(viewsets.ModelViewSet):
             return JsonResponse(QuestionSerializer(question).data, safe=False, status=status.HTTP_201_CREATED)
 
         return JsonResponse(question_serializer.errors, safe=False, status=status.HTTP_400_BAD_REQUEST)
+    @action(detail=True, methods=['put'])
+    def update_latest_version(self, request, pk=None):
+        question = self.get_object()
+        question.latest_version = False
+        question.save()
+        return JsonResponse({'message': 'Latest version updated successfully'}, safe=False, status=status.HTTP_200_OK)
 
     @staticmethod
     def import_json(request):

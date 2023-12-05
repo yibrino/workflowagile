@@ -1,8 +1,6 @@
 from django.db import models
-
 from questions.models import Question
 from user.models import Teacher
-
 
 class Exam(models.Model):
     exam_id = models.BigAutoField(primary_key=True)

@@ -3,6 +3,7 @@ from django.core.cache import cache
 from django.utils import timezone
 from exam.models import ActiveExam, Exam
 from exam.serializers import ActiveExamToStudentsSerializer, ExamDetailSerializer, ExamSerializer
+from questions.models import Question
 from rest_framework.test import APITestCase
 from rest_framework import status
 from user.models import Teacher
@@ -33,6 +34,54 @@ class ExamViewSetAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         expected_data = ExamDetailSerializer(Exam.objects.get(exam_id=self.exam1.exam_id)).data
         self.assertEqual(response.data, expected_data)
+        
+    def test_post_exam(self):
+        Question.objects.create(teacher=self.user, text='Textqqqq', score=5, topic='Topic')
+        url = reverse('create-manually')
+        data = {
+          "title": "Exam 1",
+          "description": "Description 1",
+          "questions": [
+            {
+              "question_id": 1,
+              "teacher": 1,
+              "text": "Text",
+              "score": 5,
+              "topic": "Topic"
+            }
+          ]
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        expected_data = ExamDetailSerializer(Exam.objects.get(exam_id=self.exam1.exam_id)).data
+        self.assertEqual(response.data['title'], expected_data['title'])
+        self.assertEqual(response.data['description'], expected_data['description'])
+        self.assertEqual(response.data['teacher'], self.user.pk)
+        self.assertEqual(len(response.data['questions']), 1)
+
+    def test_post_exam_questions_not_found_throws_error(self):
+        url = reverse('create-manually')
+        data = {
+          "title": "Exam 1",
+          "description": "Description 1",
+          "questions": [
+            {
+              "question_id": 1
+            }
+          ]
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_post_exam_without_questions_throws_error(self):
+        url = reverse('create-manually')
+        data = {
+          "title": "Exam 1",
+          "description": "Description 1",
+          "questions": []
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
 
 class ActiveExamViewSetTests(APITestCase):
