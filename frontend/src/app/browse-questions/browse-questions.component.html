@@ -10,8 +10,8 @@
   </mat-form-field>
 </div>
 <div *ngIf="showExportButtons">
-  <button class="export-button" (click)="exportToCSV()">Export to CSV</button>
   <button class="export-button" (click)="exportToXLSX()">Export to XLSX</button>
+  <button class="export-button" (click)="exportToCSV()">Export to CSV</button>
   <button class="export-button" (click)="exportToJSON()">Export to JSON</button>
 </div>
 <div *ngFor="let questionGroup of filteredQuestions" class="question-group">

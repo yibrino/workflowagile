@@ -16,6 +16,9 @@
 .question:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+.export-button:hover {
+  background-color: gray; /* Change background color to gray on hover */
+}
 
 /* Example styles for question text */
 .question-text {

@@ -136,42 +136,38 @@ export class BrowseQuestionsComponent implements OnInit {
 
   exportToCSV() {
     let csvData =
-      'ID';'Topic';'Text';'Score';'MultipleChoiceOptions';'MultipleChoiceAnswers\n';
-
+      'ID;Topic;Text;Score;MultipleChoiceOptions;MultipleChoiceAnswers\n';
+  
     this.questionsGroupedByTopic.forEach((group) => {
       group.questions.forEach((question) => {
         if (question.latest_version) {
           const answerTexts = question.answers
             .map((answer) => `"${answer.text}"`)
             .join(';');
-          const correctIndices: number[] = question.answers.reduce(
-            (indices: number[], answer, index) => {
-              if (answer.correct) {
-                indices.push(index + 1); // Add 1 for 1-based indexing
-              }
-              return indices;
-            },
-            []
-          );
-
-          const correctIndicesString = correctIndices.join(';');
+  
+          const correctAnswersIndices = question.answers
+            .map((answer, index) => (answer.correct ? index + 1 : null))
+            .filter((index) => index !== null)
+            .join(';');
+  
           const rowData = [
             question.question_id,
             question.topic,
             question.text,
             question.score,
             answerTexts,
-            correctIndicesString,
+            correctAnswersIndices,
           ].join(';');
-
+  
           csvData += rowData + '\n';
         }
       });
     });
-
+  
     const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
     FileSaver.saveAs(blob, 'questions.csv');
   }
+  
 
   toggleChoices(topic: string, index: number) {
     this.showChoices[topic][index] = !this.showChoices[topic][index];
