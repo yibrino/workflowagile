@@ -15,25 +15,28 @@
         Import Questions
       </button>
 
-      <button
-        mat-button
-        id="NewQuestion-Button"
-        class="center-icon"
-        routerLink="question-creation"
-      >
-        <span class="material-icons">edit</span>
-        New Question
-      </button>
+      <button mat-button [matMenuTriggerFor]="menu" id="NewQuestion-Button" class="center-icon">
+        <span class="material-icons" >edit</span>
+        New Question</button>
+      <mat-menu #menu="matMenu" >
+        <button mat-menu-item class="menu-item" routerLink="question-creation">Multiple Choice</button>
+        <button mat-menu-item class="menu-item" routerLink="question-open">Open</button>
+      </mat-menu>
+      
 
       <button
         mat-button
+        [matMenuTriggerFor]="newExam"
         id="NewExam-Button"
         class="center-icon"
-        routerLink="auto-exam-creation"
       >
         <span class="material-icons">edit</span>
         New Exam
       </button>
+      <mat-menu #newExam="matMenu" >
+        <button mat-menu-item class="menu-item" routerLink="create-exam">Manual</button>
+        <button mat-menu-item class="menu-item" routerLink="auto-exam-creation">Automatic</button>
+      </mat-menu>
 
       <button
         mat-button

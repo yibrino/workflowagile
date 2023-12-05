@@ -26,16 +26,13 @@ const routes: Routes = [
       { path: 'question-import', component: QuestionImportComponent },
       { path: 'question-creation', component: QuestionCreationComponent },
       { path: 'questions-list', component: BrowseQuestionsComponent },
-
       { path: 'browse-exams', component: BrowseExamsComponent },
       { path: 'auto-exam-creation', component: AutoExamCreationComponent },
       { path: 'create-exam', component: CreateExamComponent },
       { path: 'question-open', component: QuestionOpenComponent },
-      {path: "", redirectTo:"question-creation", pathMatch:"full"},
+      {path: "", redirectTo:"browse-exams", pathMatch:"full"},
     ]
   },
-  // { path: 'question-import', component: QuestionImportComponent },
-  // { path: 'questions-list', component: BrowseQuestionsComponent },
   { path: 'contactus', component: ContactComponent },
   { path: 'examlists', component: ExamListsComponent },
   { path: 'home-page', component: HomePageComponent, canActivate: [AuthGuard] },

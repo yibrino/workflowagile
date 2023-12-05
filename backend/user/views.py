@@ -153,7 +153,11 @@ class TeacherView(APIView):
         filtered_data = {key: serializer.data[key] for key in ['email', 'first_name', 'last_name']}
         return JsonResponse(filtered_data, safe=False)
 
-    def delete(self, request):
+    def delete(self,request):
+        #user = Teacher.objects.get(email=request.user)
+        #user.delete()
         user = Teacher.objects.get(email=request.user)
-        user.delete()
+        serializer = TeacherSerializer(user, data={"is_active":False,},partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return _do_logout(request)

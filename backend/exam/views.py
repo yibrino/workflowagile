@@ -56,7 +56,9 @@ class ExamViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=['post'], url_path='create-automatically')
     def create_automatically(self, request):
-        topics_questions = request.data["items"]
+        title = request.data["title"]
+        description = request.data["description"]
+        topics_questions = request.data["requestData"]["items"]
         questions = []
         for dictionary in topics_questions:
             topic = dictionary['topic']
@@ -68,37 +70,14 @@ class ExamViewSet(viewsets.ViewSet):
             for question in questions_of_topic:
                 questions.append(question.pk)
         exam_serializer = ExamSerializer(
-            data={'teacher': request.user.pk, 'title': 'ciao', 'description': 'ciao',
+            data={'teacher': request.user.pk, 'title': title, 'description': description,
                   'questions': questions
                   }
         )
         exam_serializer.is_valid(raise_exception=True)
         exam_serializer.save()
         return Response(status=201)
-
-    """def update(self, request, pk=None):
-        queryset = Exam.objects.get(pk=pk)
-        serializer = ExamSerializer(queryset, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=400)
-
-    def destroy(self, request, pk=None):
-        queryset = Exam.objects.get(pk=pk)
-        queryset.delete()
-        return Response(status=204)
-        
-    def create(self, request):
-        request.data["teacher"]=request.user.pk
-        serializer = ExamSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400) 
-        
-        """
-
+    
 class ActiveExamViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = ActiveExam.objects.filter()
@@ -124,10 +103,11 @@ class ActiveExamViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return ActiveExam.objects.filter(Q(end_date__gt=timezone.now()) | Q(end_date__exact=F('start_date')))
     
-    @action(detail=False, methods=['get'])
+    @action(detail=False, methods=['get'], url_path='get-exam')
     def get_exam(self, request):
-        token = request.query_params.get('token').strip()
+        token = request.query_params.get('token')
         if token:
+            token = token.strip()
             cached_exam_data = cache.get(token)
             if cached_exam_data:
                 return Response(cached_exam_data)
@@ -142,4 +122,11 @@ class ActiveExamViewSet(viewsets.ModelViewSet):
             return Response({'detail': 'Exam not found'}, status=404)
         else:
             return Response({'detail': 'Token parameter is missing'}, status=400)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        if cache.get(instance.token):
+            cache.delete(instance.token)
+        self.perform_destroy(instance)
+        return Response(status=204)
 

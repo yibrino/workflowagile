@@ -9,7 +9,7 @@ class Exam(models.Model):
     description = models.TextField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     questions = models.ManyToManyField(Question, related_name='exams')
-
+   
 
 class ActiveExam(models.Model):
     active_exam_id = models.BigAutoField(primary_key=True)

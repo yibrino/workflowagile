@@ -37,11 +37,10 @@ import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-import { CreateExamComponent } from './create-exam/create-exam.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import { QuestionOpenComponent } from './question-open/question-open.component';
 import {MatMenuModule} from "@angular/material/menu";
+import { CreateExamComponent } from './create-exam/create-exam.component';
 
 @NgModule({
   declarations: [
@@ -90,13 +89,12 @@ import {MatMenuModule} from "@angular/material/menu";
     FormsModule,
     MatExpansionModule,
     MatAutocompleteModule,
-    MatMenuModule,
-    MatAutocompleteModule,
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     ClipboardModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatMenuModule
   ],
   providers: [
     {
