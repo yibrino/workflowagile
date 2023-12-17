@@ -5,16 +5,15 @@ name: Python application
 
 on:
   push:
-    branches: [ "**" ]
+    branches: ["**"]
   pull_request:
-    branches: [ "**" ]
+    branches: ["**"]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-
   test:
     runs-on: ubuntu-latest
     environment: test
@@ -31,7 +30,6 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     env:
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
       DEBUG: ${{ secrets.DEBUG }}
       ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
       POSTGRES_ENGINE: django.db.backends.postgresql
@@ -62,6 +60,6 @@ jobs:
           poetry run pytest
       - name: Calculate Code Coverage.
         run: |
-            cd backend  
-            poetry run coverage run --source=. -m pytest
-            poetry run coverage report -m
+          cd backend  
+          poetry run coverage run --source=. -m pytest
+          poetry run coverage report -m
