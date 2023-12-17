@@ -50,8 +50,8 @@ export class BrowseQuestionsComponent implements OnInit {
 
   ngOnInit() {
     this.itemService.getQuestions().subscribe((data) => {
-      console.log(data);
       this.questionsGroupedByTopic = this.groupQuestionsByTopic(data);
+      console.log('Questions Grouped by Topc', this.questionsGroupedByTopic);
       this.initializeShowChoices();
       this.applyFilter();
     });
@@ -67,11 +67,13 @@ export class BrowseQuestionsComponent implements OnInit {
       'MultipleChoiceAnswers',
     ];
     const xlsxData: any[][] = [];
-  
+
     this.questionsGroupedByTopic.forEach((group) => {
       group.questions.forEach((question) => {
         if (question.latest_version) {
-          const answerTexts = question.answers.map((answer) => answer.text).join(';');
+          const answerTexts = question.answers
+            .map((answer) => answer.text)
+            .join(';');
           const correctIndices: number[] = question.answers.reduce(
             (indices: number[], answer, index) => {
               if (answer.correct) {
@@ -81,7 +83,7 @@ export class BrowseQuestionsComponent implements OnInit {
             },
             []
           );
-  
+
           const correctIndicesString = correctIndices.join(';');
           xlsxData.push([
             question.question_id,
@@ -94,11 +96,14 @@ export class BrowseQuestionsComponent implements OnInit {
         }
       });
     });
-  
+
     const worksheet = XLSX.utils.aoa_to_sheet([header, ...xlsxData]);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'questions');
-    const xlsxOutput = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const xlsxOutput = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array',
+    });
     const blob = new Blob([xlsxOutput], { type: 'application/octet-stream' });
     FileSaver.saveAs(blob, 'questions.xlsx');
   }
@@ -137,19 +142,19 @@ export class BrowseQuestionsComponent implements OnInit {
   exportToCSV() {
     let csvData =
       'ID;Topic;Text;Score;MultipleChoiceOptions;MultipleChoiceAnswers\n';
-  
+
     this.questionsGroupedByTopic.forEach((group) => {
       group.questions.forEach((question) => {
         if (question.latest_version) {
           const answerTexts = question.answers
             .map((answer) => `"${answer.text}"`)
             .join(';');
-  
+
           const correctAnswersIndices = question.answers
             .map((answer, index) => (answer.correct ? index + 1 : null))
             .filter((index) => index !== null)
             .join(';');
-  
+
           const rowData = [
             question.question_id,
             question.topic,
@@ -158,16 +163,15 @@ export class BrowseQuestionsComponent implements OnInit {
             answerTexts,
             correctAnswersIndices,
           ].join(';');
-  
+
           csvData += rowData + '\n';
         }
       });
     });
-  
+
     const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
     FileSaver.saveAs(blob, 'questions.csv');
   }
-  
 
   toggleChoices(topic: string, index: number) {
     this.showChoices[topic][index] = !this.showChoices[topic][index];
@@ -180,10 +184,14 @@ export class BrowseQuestionsComponent implements OnInit {
   saveEdit(question: Question) {
     if (question) {
       const questionId = question.question_id;
+      console.log('Question afet i cliked save button', question);
 
       this.questionService.updateQuestionLatestVersion(questionId).subscribe(
         (updateResponse) => {
-          console.log('Latest version updated successfully:', updateResponse);
+          console.log(
+            ' RESPONE create question inside question component',
+            updateResponse
+          );
 
           const updatedQuestion = {
             text: question.text,
@@ -199,6 +207,10 @@ export class BrowseQuestionsComponent implements OnInit {
             (createResponse) => {
               console.log(
                 'Edited question created successfully:',
+                createResponse
+              );
+              console.log(
+                'inside question component updated question',
                 createResponse
               );
               question.editing = false;

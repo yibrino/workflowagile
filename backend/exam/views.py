@@ -53,7 +53,34 @@ class ExamViewSet(viewsets.ViewSet):
         exam_serializer.save()
 
         return Response(exam_serializer.data, status=201)
+    @action(detail=False, methods=['post'], url_path='update-question-id')
+    def update_question_id(self, request):
+        exam_id = request.data.get('exam_id')
+        current_question_index = int(request.data.get('current_question_index'))
+        new_question_id = int(request.data.get('new_question_id'))
 
+        try:
+            exam = Exam.objects.get(pk=exam_id)
+        except Exam.DoesNotExist:
+            return Response(
+                {'error': 'Exam not found'},
+                status=404
+            )
+
+        questions = list(exam.questions.all())
+
+        if current_question_index < 0 or current_question_index >= len(questions):
+            return Response(
+                {'error': 'Invalid current_question_index'},
+                status=400
+            )
+
+        question = questions[current_question_index]
+        question.question_id = new_question_id
+        exam.questions.set(questions)
+        updated_exam = Exam.objects.get(pk=exam_id)
+        serializer = ExamSerializer(updated_exam)
+        return Response(serializer.data, status=200)
     @action(detail=False, methods=['post'], url_path='create-automatically')
     def create_automatically(self, request):
         title = request.data["title"]

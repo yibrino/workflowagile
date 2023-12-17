@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AlertService } from '../alert.service';
-import * as http from "http";
+import * as http from 'http';
 import { ActiveExam, Exam } from '../models';
 
 @Injectable({
@@ -12,37 +12,57 @@ import { ActiveExam, Exam } from '../models';
 export class ExamService {
   readonly apiUrl = 'http://localhost:8000/api';
 
-  constructor(private http: HttpClient, private router: Router, private alert: AlertService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private alert: AlertService
+  ) {}
 
-  getExams() : Observable<Exam[]> {
+  getExams(): Observable<Exam[]> {
     return this.http.get<Exam[]>(this.apiUrl + '/exams/', {
       withCredentials: true,
     });
   }
 
-  getExam(exam_id : number) : Observable<Exam> {
+  getExam(exam_id: number): Observable<Exam> {
     const url = `${this.apiUrl}/exams/${exam_id}/`;
-    return this.http.get<Exam>(url, {withCredentials: true});
+    return this.http.get<Exam>(url, { withCredentials: true });
   }
 
   createExam(exam: Exam): Observable<Exam> {
-    const url = `${this.apiUrl}/exams/create`
-    return this.http.post<Exam>(url, exam, {withCredentials: true})
+    const url = `${this.apiUrl}/exams/create`;
+    return this.http.post<Exam>(url, exam, { withCredentials: true });
+  }
+  updateQuestionId(
+    examId: number,
+    currentQuestionIndex: number,
+    newQuestionId: number
+  ): Observable<Exam> {
+    const updateUrl = `${this.apiUrl}/exams/update-question-id`;
+    const payload = {
+      exam_id: examId,
+      current_question_index: currentQuestionIndex,
+      new_question_id: newQuestionId,
+    };
+    console.log('Inside updateQuestion', payload);
+    return this.http.post<Exam>(updateUrl, payload, { withCredentials: true });
+  }
+  startExam(exam_id: number, end_date: string): Observable<any> {
+    return this.http.post<any>(
+      this.apiUrl + '/active-exam/',
+      { exam: exam_id, end_date: end_date },
+      { withCredentials: true }
+    );
   }
 
-  startExam(exam_id : number,end_date:string) : Observable<any> {
-    return this.http.post<any>(this.apiUrl+"/active-exam/", {'exam':exam_id,'end_date':end_date}, {withCredentials: true});
-  }
-
-  getActiveExams() : Observable<ActiveExam[]> {
+  getActiveExams(): Observable<ActiveExam[]> {
     return this.http.get<ActiveExam[]>(this.apiUrl + '/active-exam/', {
       withCredentials: true,
-      });
+    });
   }
 
-  removeActiveExam(exam_id : number) : Observable<any> {
+  removeActiveExam(exam_id: number): Observable<any> {
     const url = `${this.apiUrl}/active-exam/${exam_id}/`;
-    return this.http.delete<any>(url, {withCredentials: true});
+    return this.http.delete<any>(url, { withCredentials: true });
   }
-
 }

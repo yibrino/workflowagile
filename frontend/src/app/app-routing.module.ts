@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TeacherDashboardComponent } from './teacher-dashboard/teacher-dashboard.component';
 import { QuestionCreationComponent } from './question-creation/question-creation.component';
@@ -12,9 +12,9 @@ import { QuestionImportComponent } from './question-import/question-import.compo
 import { ProfileComponent } from './profile/profile.component';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 import { AutoExamCreationComponent } from './auto-exam-creation/auto-exam-creation.component';
-import { CreateExamComponent } from "./create-exam/create-exam.component";
-import {QuestionOpenComponent} from "./question-open/question-open.component";
-
+import { CreateExamComponent } from './create-exam/create-exam.component';
+import { QuestionOpenComponent } from './question-open/question-open.component';
+import { ExamDetailsComponent } from './exam-details/exam-details.component';
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -23,6 +23,7 @@ const routes: Routes = [
     data: { role: 'teacher' },
     children: [
       { path: 'profile', component: ProfileComponent },
+      { path: 'exam-details', component: ExamDetailsComponent },
       { path: 'question-import', component: QuestionImportComponent },
       { path: 'question-creation', component: QuestionCreationComponent },
       { path: 'questions-list', component: BrowseQuestionsComponent },
@@ -30,8 +31,9 @@ const routes: Routes = [
       { path: 'auto-exam-creation', component: AutoExamCreationComponent },
       { path: 'create-exam', component: CreateExamComponent },
       { path: 'question-open', component: QuestionOpenComponent },
-      {path: "", redirectTo:"browse-exams", pathMatch:"full"},
-    ]
+
+      { path: '', redirectTo: 'browse-exams', pathMatch: 'full' },
+    ],
   },
   { path: 'contactus', component: ContactComponent },
   { path: 'examlists', component: ExamListsComponent },

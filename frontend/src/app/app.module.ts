@@ -32,15 +32,20 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowseExamsComponent } from './browse-exams/browse-exams.component';
 import { FormsModule } from '@angular/forms';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {AutoExamCreationComponent} from './auto-exam-creation/auto-exam-creation.component';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import { NgxMatDatetimePickerModule, NgxMatNativeDateModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AutoExamCreationComponent } from './auto-exam-creation/auto-exam-creation.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { QuestionOpenComponent } from './question-open/question-open.component';
-import {MatMenuModule} from "@angular/material/menu";
+import { MatMenuModule } from '@angular/material/menu';
 import { CreateExamComponent } from './create-exam/create-exam.component';
+import { ExamDetailsComponent } from './exam-details/exam-details.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +67,7 @@ import { CreateExamComponent } from './create-exam/create-exam.component';
     AutoExamCreationComponent,
     CreateExamComponent,
     QuestionOpenComponent,
+    ExamDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +100,7 @@ import { CreateExamComponent } from './create-exam/create-exam.component';
     NgxMatTimepickerModule,
     ClipboardModule,
     MatSlideToggleModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   providers: [
     {
