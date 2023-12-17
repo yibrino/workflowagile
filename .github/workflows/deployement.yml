@@ -30,8 +30,7 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     env:
-      DEBUG: ${{ secrets.DEBUG }}
-      ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
       POSTGRES_ENGINE: django.db.backends.postgresql
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
